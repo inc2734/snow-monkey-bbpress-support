@@ -69,11 +69,17 @@ gulp.task('zip', function(){
   return gulp.src(
       [
         '**',
+        '!tests',
+        '!test/**',
         '!node_modules',
         '!node_modules/**',
         '!package.json',
         '!gulpfile.js',
         '!yarn.lock',
+        '!composer.json',
+        '!composer.lock',
+        '!phpcs.ruleset.xml',
+        '!phpunit.xml.dist'
       ],
       {base: './'}
     )

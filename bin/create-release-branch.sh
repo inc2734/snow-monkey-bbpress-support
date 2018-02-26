@@ -26,7 +26,8 @@ rm -rf node_modules
 yarn install
 rm -rf vendor
 composer install --no-dev
-cp -r ./ release/
+rsync -av --exclude="release" --exclude=".*" --exclude="tests" --exclude="package.json" --exclude="gulpfile.js" --exclude="yarn.lock" --exclude="composer.*"  --exclude="phpcs.ruleset.xml" --exclude="phpunit.xml.dist" ./ release/
+
 cd release
 ls -la
 
