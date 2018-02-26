@@ -27,9 +27,9 @@ yarn install
 rm -rf vendor
 composer install --no-dev
 yarn run gulp build
-rsync -a --exclude="release" --exclude=".git" --exclude=".gitignore" --exclude=".editorconfig" --exclude=".travis.yml" --exclude=".travis" --exclude="node_modules" --exclude="tests" --exclude="package.json" --exclude="gulpfile.js" --exclude="yarn.lock" --exclude="composer.*"  --exclude="phpcs.ruleset.xml" --exclude="phpunit.xml.dist" ./ release/
-
+rsync -a --exclude="release" --exclude=".*" ./ release/
 cd release
+rm -rf .gitignore .editorconfig .travis.yml .travis node_modules tests package.json gulpfile.js yarn.lock composer.json composer.lock phpcs.ruleset.xml phpunit.xml.dist
 ls -la
 
 git add -A
