@@ -5,9 +5,7 @@
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /language/
  *
- * @todo plugin updater
  * @todo 翻訳ファイル
- * @todo Travis CI auto build
  * @todo テスト組み込み
  *
  * @package snow-monkey-bbpress-support
