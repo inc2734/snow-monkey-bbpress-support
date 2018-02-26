@@ -32,19 +32,8 @@ install:
 - composer install
 before_script:
 - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-- export PATH="$HOME/.composer/vendor/bin:$PATH"
-- |
-  if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
-    composer global require "phpunit/phpunit=5.7.*"
-  else
-    composer global require "phpunit/phpunit=4.8.*"
-  fi
-- |
-  composer global require wp-coding-standards/wpcs
-  phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
 script:
-- phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
-- phpunit
+- composer test
 - bash bin/create-release-branch.sh
 before_install:
 - openssl aes-256-cbc -K $encrypted_be1b58611344_key -iv $encrypted_be1b58611344_iv -in .travis/github_deploy_key.enc -out .travis/github_deploy_key -d
