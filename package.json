@@ -1,7 +1,9 @@
 {
   "author": "inc2734",
   "license": "GPL-2.0+",
-  "dependencies": {},
+  "dependencies": {
+    "sass-basis": "^8.0.5"
+  },
   "devDependencies": {
     "@alrra/travis-scripts": "^3.0.1",
     "autoprefixer": "^7.1.6",
