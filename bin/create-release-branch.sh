@@ -26,7 +26,7 @@ rm -rf node_modules
 yarn install
 rm -rf vendor
 composer install --no-dev
-cp -r . release/
+cp -r ./ release/
 cd release
 ls -la
 
