@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.1.0
+ * Version: 0.1.1
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /language/
  *
