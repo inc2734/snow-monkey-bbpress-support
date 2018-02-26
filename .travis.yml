@@ -36,14 +36,16 @@ script:
 - composer test
 - bash bin/create-release-branch.sh
 before_install:
-- openssl aes-256-cbc -K $encrypted_be1b58611344_key -iv $encrypted_be1b58611344_iv -in .travis/github_deploy_key.enc -out .travis/github_deploy_key -d
+- openssl aes-256-cbc -K $encrypted_be1b58611344_key -iv $encrypted_be1b58611344_iv
+  -in .travis/github_deploy_key.enc -out .travis/github_deploy_key -d
 - mv .travis/github_deploy_key ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 after_success:
 - pwd
 - ls -al
 before_deploy:
-- git clone -b release --quiet git@github.com:inc2734/snow-monkey-bbpress-support.git release
+- git clone -b release --quiet git@github.com:inc2734/snow-monkey-bbpress-support.git
+  release
 - cp package.json gulpfile.js yarn.lock release
 - cd release
 - yarn install
