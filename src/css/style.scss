@@ -1,0 +1,88 @@
+$_base-font-size-px: 16px !default;
+$_between-lines: (1rem / 2.3) !default;
+$_container-max-width: 1280px !default;
+$_transition-duration: .2s !default;
+$_font-path: '../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font' !default;
+$_base-margin-bottom: 1 !default;
+$_h2-font-size-scale: 1.5 !default;
+$_h2-margin-top: $_base-margin-bottom * 2 !default;
+$_h3-margin-top: $_base-margin-bottom * 1.5 !default;
+$_h3-margin-bottom: $_base-margin-bottom * .75 !default;
+$_h4-margin-bottom: $_base-margin-bottom * .75 !default;
+
+@import '../../../../themes/snow-monkey/resources/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/css/basis-core';
+
+@import 'mixin/input-group';
+@import 'mixin/widget-list-base';
+
+.bbpress .p-trackbacks {
+  display: none;
+}
+
+#bbpress-forums,
+#bbpress-forums ul.bbp-replies {
+  font-size: 100%;
+}
+
+.bbp-replies .bbp-author-name {
+  font-size: 12px;
+}
+
+#bbpress-forums #bbp-your-profile fieldset {
+  border: none;
+  padding: 0;
+}
+
+#bbpress-forums .status-closed,
+#bbpress-forums .status-closed a {
+  color: inherit;
+}
+
+.status-closed .bbp-topic-title::before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  content: "\f00c";
+}
+
+#bbpress-forums {
+  .bbp-the-content {
+    @include _form-control();
+    margin: 0 -1px -1px !important;
+    width: calc(100% + 2px) !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .bbp-submit-wrapper {
+    .button {
+      @include _btn();
+      @include _form-control-base-border();
+      @include _form-control-base-padding();
+    }
+  }
+
+  @import 'components/snow-monkey-bbpress-support-my-topic-close-link';
+  @import 'components/subscription-toggle';
+  @import 'components/favorite-toggle';
+  @import 'components/bbp-topic-freshness-author';
+  @import 'components/bbp-forums';
+  @import 'components/bbp-form';
+  @import 'components/bbp-topics';
+  @import 'components/bbp-replies';
+  @import 'components/content';
+  @import 'components/avatar';
+  @import 'components/breadcrumb';
+  @import 'components/search-form';
+  @import 'components/pagination';
+}
+
+@import 'widgets/search';
+@import 'widgets/login';
+@import 'widgets/stats';
+@import 'widgets/replies';
+@import 'widgets/topics';
+@import 'widgets/forums';
+@import 'widgets/views';

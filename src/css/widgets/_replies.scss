@@ -1,0 +1,9 @@
+.widget_display_replies {
+  ul {
+    @include snow-monkey-bbpress-support-widget-list-base();
+  }
+
+  a {
+    @include snow-monkey-bbpress-support-widget-link-base();
+  }
+}

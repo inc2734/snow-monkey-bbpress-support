@@ -1,0 +1,27 @@
+div.bbp-forum-author,
+div.bbp-topic-author,
+div.bbp-reply-author {
+  img.avatar {
+    max-width: 60px;
+  }
+}
+
+.bbp-forum-description,
+.bbp-topic-description,
+.bbp-topic-started-by {
+  .bbp-author-avatar {
+    line-height: 1;
+
+    .avatar {
+      vertical-align: top;
+      margin-top: 1px;
+    }
+  }
+}
+.bbp-topic-started-by {
+  .bbp-author-avatar {
+    .avatar {
+      margin-top: 3px;
+    }
+  }
+}

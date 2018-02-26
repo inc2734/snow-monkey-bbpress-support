@@ -1,0 +1,28 @@
+.bbp-topics {
+  .forum-titles {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    > * {
+      float: none;
+    }
+  }
+
+  .bbp-topic-title {
+    @include _font-size-line-height($_base-font-size-px);
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .bbp-topic-permalink {
+    text-decoration: none;
+  }
+
+  .bbp-topic-freshness,
+  .bbp-topic-meta {
+    a {
+      text-decoration: none;
+    }
+  }
+}

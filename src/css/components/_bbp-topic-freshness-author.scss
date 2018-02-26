@@ -1,0 +1,13 @@
+.bbp-topic-freshness-author {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+
+  .bbp-author-avatar {
+    line-height: 1;
+
+    .avatar {
+      vertical-align: top;
+    }
+  }
+}

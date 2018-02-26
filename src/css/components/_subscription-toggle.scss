@@ -1,0 +1,14 @@
+#subscription-toggle {
+  display: block;
+  overflow: hidden;
+
+  .subscription-toggle {
+    float: right;
+    @include _btn();
+    @include _form-control-base-border();
+    @include _form-control-base-padding();
+    background-color: #fff;
+    color: $_color-text;
+    text-decoration: none;
+  }
+}

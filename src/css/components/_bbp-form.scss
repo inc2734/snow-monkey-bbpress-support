@@ -1,0 +1,28 @@
+.bbp-form {
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  input[type="text"] {
+    @include _form-control();
+  }
+
+  .wp-editor-container {
+    .bbp-the-content {
+      @include _font-size-line-height($_base-font-size-px - 2);
+    }
+  }
+
+  p {
+    @include _font-size-line-height($_base-font-size-px - 2);
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  label {
+    font-weight: bold;
+  }
+}

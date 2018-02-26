@@ -1,0 +1,58 @@
+.bbp_widget_login {
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  .bbp-login-form {
+    position: relative;
+
+    label {
+      width: auto;
+    }
+
+    .bbp-submit-wrapper {
+      overflow: hidden;
+    }
+
+    .bbp-submit-wrapper {
+      float: none;
+    }
+
+    .bbp-login-links {
+      clear: both;
+    }
+
+    #wpg-login {
+      float: left;
+      margin: 0;
+    }
+
+    .bbp-username,
+    .bbp-email,
+    .bbp-password {
+      input {
+        @include _form-control();
+        width: 100%;
+      }
+    }
+  }
+
+  .button {
+    float: right;
+    @include _btn();
+    @include _form-control-base-border();
+    @include _form-control-base-padding();
+    color: $_color-text;
+    text-decoration: none;
+  }
+
+  .bbp-logged-in {
+    overflow: hidden;
+
+    h4 > a {
+      color: $_color-text;
+      text-decoration: underline;
+    }
+  }
+}

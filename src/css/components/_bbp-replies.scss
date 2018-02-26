@@ -1,0 +1,7 @@
+.bbp-replies {
+  .bbp-header,
+  .bbp-footer,
+  .bbp-reply-post-date {
+    @include _font-size-line-height($_base-font-size-px - 2);
+  }
+}

@@ -1,0 +1,8 @@
+.topic,
+.reply {
+  .bbp-reply-content,
+  .bbp-topic-content {
+    @include _font-size-line-height($_base-font-size-px - 2);
+    @include _content(.5);
+  }
+}

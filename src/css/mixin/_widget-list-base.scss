@@ -1,0 +1,22 @@
+/**
+ * Unstyled list base style
+ */
+@mixin snow-monkey-bbpress-support-widget-list-base() {
+  @include _list-unstyled();
+
+  > li + li {
+    @include _margin(.25, 0, 0);
+  }
+}
+
+/**
+ * Text link base style
+ */
+@mixin snow-monkey-bbpress-support-widget-link-base() {
+  color: $_color-text;
+  text-decoration: none;
+
+  @include _hover(lg) {
+    text-decoration: underline;
+  }
+}

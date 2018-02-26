@@ -1,0 +1,15 @@
+.bbp-forums {
+  @include _margin-top(1);
+
+  .bbp-forum-title {
+    @include _font-size-line-height($_base-font-size-px);
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .bbp-forum-freshness {
+    a {
+      text-decoration: none;
+    }
+  }
+}

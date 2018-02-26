@@ -1,0 +1,12 @@
+.snow-monkey-bbpress-support-my-topic-close-link {
+  @include _margin-bottom(.5);
+  text-align: right;
+
+  .button {
+    @include _btn();
+    @include _form-control-base-border();
+    @include _form-control-base-padding();
+    @include _font-size($_base-font-size-px - 2);
+    color: $_color-text;
+  }
+}
