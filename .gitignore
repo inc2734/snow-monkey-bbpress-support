@@ -7,3 +7,4 @@ vendor/
 *.sql
 release/
 snow-monkey-bbpress-support.zip
+.travis/github_deploy_key
