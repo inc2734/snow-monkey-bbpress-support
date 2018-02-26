@@ -8,6 +8,7 @@ var rename       = require('gulp-rename');
 var autoprefixer = require('autoprefixer');
 var rimraf       = require('rimraf');
 var runSequence  = require('run-sequence');
+var zip          = require('gulp-zip');
 
 var dir = {
   src: {
@@ -59,6 +60,26 @@ function sassCompile(src, dest) {
  * Build
  */
 gulp.task('build', ['css']);
+
+/**
+ * Creates the zip file
+ * This command must be build beforehand on Travis CI !!
+ */
+gulp.task('zip', function(){
+  return gulp.src(
+      [
+        '**',
+        '!node_modules',
+        '!node_modules/**',
+        '!package.json',
+        '!gulpfile.js',
+        '!yarn.lock',
+      ],
+      {base: './'}
+    )
+    .pipe(zip('snow-monkey-bbpress-support.zip'))
+    .pipe(gulp.dest('./'));
+});
 
 /**
  * Auto build and browsersync
