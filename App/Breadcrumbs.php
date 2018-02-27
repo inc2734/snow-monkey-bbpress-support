@@ -46,16 +46,19 @@ class Breadcrumbs {
 	protected function _single_topic( $breadcrumbs ) {
 		foreach ( $breadcrumbs as $key => $item ) {
 			if ( isset( $item['link'] ) && bbp_get_topics_url() === $item['link'] ) {
-				$adding_items = [
-					[
-						'title' => bbp_get_forum_archive_title(),
-						'link'  => bbp_get_forums_url(),
-					],
-					[
-						'title' => bbp_get_forum_title(),
-						'link'  => bbp_get_forums_url(),
-					],
+				$adding_items[] = [
+					'title' => bbp_get_forum_archive_title(),
+					'link'  => bbp_get_forums_url(),
 				];
+
+				$ancestors = array_reverse( (array) get_post_ancestors( get_the_ID() ) );
+				foreach ( $ancestors as $post_id ) {
+					$adding_items[] = [
+						'title' => bbp_get_forum_title( $post_id ),
+						'link'  => bbp_get_forum_permalink( $post_id ),
+					];
+				}
+
 				unset( $breadcrumbs[ $key ] );
 				array_splice( $breadcrumbs, $key, 0, $adding_items );
 			}
