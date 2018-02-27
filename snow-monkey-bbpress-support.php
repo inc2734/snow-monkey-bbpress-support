@@ -35,12 +35,18 @@ class Bootstrap {
 		new App\NavMenu();
 		new App\Breadcrumbs();
 		new App\DocumentTitle();
+		new App\Templates();
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
 		new App\Controller\Topic();
 	}
 
+	/**
+	 * Activate auto update using GitHub
+	 *
+	 * @return [void]
+	 */
 	public function _activate_autoupdate() {
 		$plugin_slug = plugin_basename( __FILE__ );
 		$gh_user = 'inc2734';
