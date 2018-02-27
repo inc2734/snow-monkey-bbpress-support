@@ -10,9 +10,16 @@ if [ ! -e .plugins ]; then
 fi
 
 if [ ! -e .themes ]; then
-  SNOW_MONKEY=$(curl "https://api.github.com/repos/inc2734/snow-monkey/releases/latest" | jq -r .assets[0].browser_download_url)
-  curl -sL $SNOW_MONKEY -o snow-monkey.zip
-  mkdir -p .themes/snow-monkey
-  unzip -q snow-monkey.zip -d .themes/snow-monkey
-  rm -f snow-monkey.zip
+  GH=$(curl "https://api.github.com/repos/inc2734/snow-monkey/releases/latest");
+  SNOW_MONKEY=$(echo "$GH" | jq -r .assets[0].browser_download_url)
+
+  if [ -n "$SNOW_MONKEY" ]; then
+    curl -sL $SNOW_MONKEY -o snow-monkey.zip
+    mkdir -p .themes/snow-monkey
+    unzip -q snow-monkey.zip -d .themes/snow-monkey
+    rm -f snow-monkey.zip
+  else
+    echo $GH;
+    exit 1;
+  fi
 fi
