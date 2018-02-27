@@ -8,6 +8,10 @@
     @include _form-control();
   }
 
+  input[name="bbp_topic_title"] {
+    width: 100%;
+  }
+
   .wp-editor-container {
     .bbp-the-content {
       @include _font-size-line-height($_base-font-size-px - 2);
