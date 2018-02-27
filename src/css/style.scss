@@ -38,6 +38,7 @@ $_h4-margin-bottom: $_base-margin-bottom * .75 !default;
   color: inherit;
 }
 
+.status-closed .c-entry__title::before,
 .status-closed .bbp-topic-title::before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -45,6 +46,9 @@ $_h4-margin-bottom: $_base-margin-bottom * .75 !default;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   content: "\f00c";
+}
+.status-closed .c-entry__title::before {
+  margin-right: 2px;
 }
 
 #bbpress-forums {
