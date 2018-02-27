@@ -12,8 +12,21 @@
     width: 100%;
   }
 
+  .bbp-submit-wrapper {
+    .button {
+      @include _btn();
+      @include _form-control-base-border();
+      @include _form-control-base-padding();
+    }
+  }
+
   .wp-editor-container {
     .bbp-the-content {
+      @include _form-control();
+      margin: 0 -1px -1px !important;
+      width: calc(100% + 2px) !important;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
       @include _font-size-line-height($_base-font-size-px - 2);
     }
   }
