@@ -17,7 +17,13 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
+	register_theme_directory( dirname( dirname( __FILE__ ) ) . '/.themes/' );
+	switch_theme( 'snow-monkey' );
+	search_theme_directories();
+
 	require dirname( dirname( __FILE__ ) ) . '/snow-monkey-bbpress-support.php';
+
+	require dirname( dirname( __FILE__ ) ) . '/.plugins/bbpress/bbpress.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

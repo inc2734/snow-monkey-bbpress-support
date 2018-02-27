@@ -6,7 +6,6 @@
  * Domain Path: /language/
  *
  * @todo 翻訳ファイル
- * @todo テスト組み込み
  *
  * @package snow-monkey-bbpress-support
  * @author inc2734
@@ -18,15 +17,20 @@ namespace Snow_Monkey\Plugin\bbPressSupport;
 class Bootstrap {
 
 	public function __construct() {
-		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
-
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
 	}
 
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-bbpress-support', false, basename( __DIR__ ) . '/languages' );
 
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+		if ( ! class_exists( 'bbPress' ) ) {
+			return;
+		}
+
+		$theme = wp_get_theme();
+		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+			return;
+		}
 
 		new App\Assets();
 		new App\Sidebar();
@@ -40,6 +44,8 @@ class Bootstrap {
 		new App\Controller\Admin();
 		new App\Controller\Front();
 		new App\Controller\Topic();
+
+		add_action( 'init', [ $this, '_activate_autoupdate' ] );
 	}
 
 	/**
@@ -55,10 +61,5 @@ class Bootstrap {
 	}
 }
 
-$theme = wp_get_theme();
-if ( 'snow-monkey' === $theme->template || 'snow-monkey/resources' === $theme->template ) {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-	if ( is_plugin_active( 'bbpress/bbpress.php' ) ) {
-		new \Snow_Monkey\Plugin\bbPressSupport\Bootstrap();
-	}
-}
+require_once( __DIR__ . '/vendor/autoload.php' );
+new \Snow_Monkey\Plugin\bbPressSupport\Bootstrap();
