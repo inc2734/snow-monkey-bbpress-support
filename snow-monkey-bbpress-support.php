@@ -1,11 +1,9 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.1.1
+ * Version: 0.1.2
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /language/
- *
- * @todo 翻訳ファイル
  *
  * @package snow-monkey-bbpress-support
  * @author inc2734
