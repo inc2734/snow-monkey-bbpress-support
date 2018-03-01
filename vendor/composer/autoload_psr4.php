@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Snow_Monkey\\Plugin\\bbPressSupport\\' => array($baseDir . '/'),
-    'Miya\\WP\\' => array($vendorDir . '/miya/gh-auto-updater/src'),
+    'Inc2734\\WP_GitHub_Plugin_Updater\\' => array($vendorDir . '/inc2734/wp-github-plugin-updater/src'),
 );

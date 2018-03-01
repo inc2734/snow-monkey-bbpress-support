@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.1.2
+ * Version: 0.1.3
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /language/
  *
@@ -52,10 +52,7 @@ class Bootstrap {
 	 * @return [void]
 	 */
 	public function _activate_autoupdate() {
-		$plugin_slug = plugin_basename( __FILE__ );
-		$gh_user = 'inc2734';
-		$gh_repo = 'snow-monkey-bbpress-support';
-		new \Miya\WP\GH_Auto_Updater( $plugin_slug, $gh_user, $gh_repo );
+		new \Inc2734\WP_GitHub_Plugin_Updater\GitHub_Plugin_Updater( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
 	}
 }
 

@@ -4,16 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489
+class ComposerStaticInit19ffc6edd2bacf26e329145eaf0f8cdc
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
             'Snow_Monkey\\Plugin\\bbPressSupport\\' => 34,
         ),
-        'M' => 
+        'I' => 
         array (
-            'Miya\\WP\\' => 8,
+            'Inc2734\\WP_GitHub_Plugin_Updater\\' => 33,
         ),
     );
 
@@ -22,9 +22,9 @@ class ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489
         array (
             0 => __DIR__ . '/../..' . '/',
         ),
-        'Miya\\WP\\' => 
+        'Inc2734\\WP_GitHub_Plugin_Updater\\' => 
         array (
-            0 => __DIR__ . '/..' . '/miya/gh-auto-updater/src',
+            0 => __DIR__ . '/..' . '/inc2734/wp-github-plugin-updater/src',
         ),
     );
 
@@ -41,9 +41,9 @@ class ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit15a7ab558fbbd7e12d4733dff568c489::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit19ffc6edd2bacf26e329145eaf0f8cdc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit19ffc6edd2bacf26e329145eaf0f8cdc::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit19ffc6edd2bacf26e329145eaf0f8cdc::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
