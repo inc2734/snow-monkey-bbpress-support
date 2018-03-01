@@ -19,9 +19,15 @@ class Assets {
 	 * @return [void]
 	 */
 	public function _wp_enqueue_scripts() {
+		$relative_path = '/../assets/css/style.min.css';
+		$src  = plugins_url( $relative_path, __FILE__ );
+		$path = untrailingslashit( plugin_dir_path( __FILE__ ) ) . $relative_path;
+
 		wp_enqueue_style(
 			'snow-monkey-bbpress-support',
-			plugins_url( '/../assets/css/style.min.css', __FILE__ )
+			$src,
+			[],
+			filemtime( $path )
 		);
 	}
 }

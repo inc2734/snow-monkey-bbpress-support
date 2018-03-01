@@ -4,4 +4,19 @@
   .bbp-reply-post-date {
     @include _font-size-line-height($_base-font-size-px - 2);
   }
+
+  .bbp-header,
+  .bbp-footer {
+    .bbp-reply-author {
+      @include _media-max(sm) {
+        width: 70px;
+      }
+    }
+
+    .bbp-reply-content {
+      @include _media-max(sm) {
+        margin-left: 90px;
+      }
+    }
+  }
 }
