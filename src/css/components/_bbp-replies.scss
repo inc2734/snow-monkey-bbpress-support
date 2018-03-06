@@ -20,10 +20,22 @@
     }
   }
 
-  .bbp-reply-author {
-    .bbp-author-name {
-      margin-top: 5px;
-      line-height: 1.4;
+  .bbp-body {
+    .bbp-reply-author {
+      @include _margin-top(1);
+
+      @include _media-max(480px) {
+        @include _margin(0, .5);
+      }
+
+      .avatar {
+        margin-top: 0;
+      }
+
+      .bbp-author-name {
+        margin-top: 5px;
+        line-height: 1.4;
+      }
     }
   }
 }
