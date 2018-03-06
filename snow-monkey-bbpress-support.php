@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.1.3
+ * Version: 0.1.4
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /language/
  *
@@ -30,6 +30,7 @@ class Bootstrap {
 			return;
 		}
 
+		new App\Avatar();
 		new App\Assets();
 		new App\Sidebar();
 		new App\AdminBar();
