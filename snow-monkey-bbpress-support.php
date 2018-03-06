@@ -30,6 +30,7 @@ class Bootstrap {
 			return;
 		}
 
+		new App\Avatar();
 		new App\Assets();
 		new App\Sidebar();
 		new App\AdminBar();

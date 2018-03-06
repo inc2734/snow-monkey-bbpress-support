@@ -11,4 +11,5 @@ Premium WordPress plugin by Monkey Wrench
 - Added topic close button for the topic creater.
 - Added bbPress sidebar widget area.
 - Remove widget areas ob Snow Monkey and advatisement (that setting at customizer).
+- If using facebook of Gianism, facebook user picture is used as avatar.
 - One-click update.
