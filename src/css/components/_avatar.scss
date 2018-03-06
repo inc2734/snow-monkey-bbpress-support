@@ -18,10 +18,19 @@ div.bbp-reply-author {
     }
   }
 }
+
 .bbp-topic-started-by {
   .bbp-author-avatar {
     .avatar {
       margin-top: 3px;
+    }
+  }
+}
+
+.bbp-reply-revision-log {
+  .bbp-reply-revision-log-item {
+    .avatar {
+      margin-bottom: 0;
     }
   }
 }

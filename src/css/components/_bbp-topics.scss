@@ -1,18 +1,29 @@
 .bbp-topics {
-  .forum-titles {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+  .bbp-header {
+    .forum-titles {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
 
-    > * {
-      float: none;
+      > * {
+        float: none;
+      }
+    }
+
+    .bbp-topic-title,
+    .bbp-topic-voice-count,
+    .bbp-topic-reply-count,
+    .bbp-topic-freshness {
+      @include _font-size-line-height($_base-font-size-px - 2);
     }
   }
 
-  .bbp-topic-title {
-    @include _font-size-line-height($_base-font-size-px);
-    font-weight: bold;
-    text-decoration: none;
+  .bbp-body {
+    .bbp-topic-title {
+      @include _font-size-line-height($_base-font-size-px);
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 
   .bbp-topic-permalink {

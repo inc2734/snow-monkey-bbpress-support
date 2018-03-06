@@ -4,5 +4,11 @@
   .bbp-topic-content {
     @include _font-size-line-height($_base-font-size-px - 2);
     @include _content(.5);
+
+    pre {
+      code {
+        line-height: 1.6;
+      }
+    }
   }
 }
