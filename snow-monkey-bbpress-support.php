@@ -39,6 +39,7 @@ class Bootstrap {
 		new App\Breadcrumbs();
 		new App\DocumentTitle();
 		new App\Templates();
+		new App\Content();
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
