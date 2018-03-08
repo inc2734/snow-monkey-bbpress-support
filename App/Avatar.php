@@ -24,6 +24,14 @@ class Avatar {
 	 * @return [string]
 	 */
 	public function _get_avatar( $img, $id_or_email, $size, $default, $alt ) {
+		if ( ! is_int( $id_or_email ) ) {
+			$user = get_user_by( 'email', $id_or_email );
+			if ( ! $user ) {
+				return $img;
+			}
+			$id_or_email = $user->ID;
+		}
+
 		$_wpg_facebook_id = get_the_author_meta( '_wpg_facebook_id', $id_or_email );
 		if ( ! $_wpg_facebook_id ) {
 			return $img;
