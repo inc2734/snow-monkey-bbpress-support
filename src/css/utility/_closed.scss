@@ -1,0 +1,19 @@
+.status-closed {
+  .bbp-topic-title > a {
+    color: $_color-text;
+  }
+
+  .#{$_prefix}c-entry__title::before,
+  .bbp-topic-title::before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    content: "\f00c";
+  }
+
+  .#{$_prefix}c-entry__title::before {
+    margin-right: 2px;
+  }
+}

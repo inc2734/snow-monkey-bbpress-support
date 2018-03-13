@@ -1,0 +1,8 @@
+[id="bbpress-forums"] .indicator-hint {
+  display: block;
+  border: 1px solid #e6db55;
+  border-radius: $_border-radius;
+  background-color: #ffffe0;
+  @include _font-size-line-height($_base-font-size-px - 2);
+  @include _padding(.25, .5);
+}

@@ -40,19 +40,26 @@
 
   .button {
     float: right;
-    @include _btn();
-    @include _form-control-base-border();
-    @include _form-control-base-padding();
-    color: $_color-text;
-    text-decoration: none;
+    @include snow-monkey-bbpress-support-btn();
   }
 
   .bbp-logged-in {
     overflow: hidden;
 
-    h4 > a {
-      color: $_color-text;
-      text-decoration: underline;
+    .user-submit {
+      display: block;
+      float: left;
+      margin-right: 1em;
+    }
+
+    h4 {
+      @include _padding-bottom(.25);
+      overflow: hidden;
+
+      > a {
+        color: $_color-text;
+        text-decoration: underline;
+      }
     }
   }
 }

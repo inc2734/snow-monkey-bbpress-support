@@ -1,14 +1,26 @@
-.bbp-replies {
+.bbp-search-results {
+  .bbp-search-author,
+  .bbp-forum-author,
+  .bbp-topic-author,
   .bbp-reply-author,
+  .bbp-forum-content,
+  .bbp-search-content,
+  .bbp-topic-content,
   .bbp-reply-content {
     @include _padding(.25, .5);
   }
 
   .bbp-header {
+    .bbp-search-author,
+    .bbp-forum-author,
+    .bbp-topic-author,
     .bbp-reply-author {
       @include _row__col--width(20%);
     }
 
+    .bbp-forum-content,
+    .bbp-search-content,
+    .bbp-topic-content,
     .bbp-reply-content {
       @include _row__col--width(auto);
       @include _row();
@@ -32,12 +44,18 @@
   }
 
   .bbp-body {
+    .bbp-forum-author,
+    .bbp-topic-author,
     .bbp-reply-author,
+    .bbp-forum-content,
+    .bbp-topic-content,
     .bbp-reply-content {
       @include _padding-top(0);
       @include _padding-bottom(0);
     }
 
+    .bbp-forum-author,
+    .bbp-topic-author,
     .bbp-reply-author {
       @include _row__col--width(100%);
       @include _font-size-line-height($_base-font-size-px - 4);
@@ -62,6 +80,8 @@
       }
     }
 
+    .bbp-forum-content,
+    .bbp-topic-content,
     .bbp-reply-content {
       @include _content();
       @include _row__col--width(100%);

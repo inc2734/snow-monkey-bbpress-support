@@ -1,0 +1,42 @@
+.bbp-forum-header,
+.bbp-topic-header,
+.bbp-reply-header {
+  margin-bottom: -1px;
+  background-color: _lightest($_color-gray);
+  border-top: 1px solid _lighter($_color-gray);
+  border-bottom: 1px solid _lighter($_color-gray);
+  @include _padding(.25, .5);
+
+  .bbp-meta {
+    @include _clearfix();
+    @include _font-size-line-height($_base-font-size-px - 2);
+
+    a {
+      color: _light($_color-gray);
+      text-decoration: none;
+
+      @include _hover(lg) {
+        color: $_color-text;
+        text-decoration: underline;
+      }
+    }
+
+    .bbp-forum-permalink,
+    .bbp-topic-permalink,
+    .bbp-reply-permalink {
+      float: right;
+      margin-left: 1em;
+      @include _font-size-line-height($_base-font-size-px - 4);
+    }
+
+    .bbp-admin-links {
+      float: right;
+      color: _light($_color-gray);
+      @include _font-size-line-height($_base-font-size-px - 4);
+
+      a {
+        margin: 0 2px;
+      }
+    }
+  }
+}

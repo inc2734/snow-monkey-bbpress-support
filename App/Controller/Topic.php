@@ -23,7 +23,7 @@ class Topic {
 		$topic        = bbp_get_topic( $topic_id );
 		$current_user = wp_get_current_user();
 
-		if ( ! current_user_can( 'participate', $topic->ID ) || (int) $current_user->ID !== (int) $topic->post_author ) {
+		if ( empty( $topic->ID ) || ! current_user_can( 'participate', $topic->ID ) || (int) $current_user->ID !== (int) $topic->post_author ) {
 			return;
 		}
 

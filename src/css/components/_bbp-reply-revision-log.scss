@@ -1,0 +1,4 @@
+.bbp-reply-revision-log {
+  @include _list-unstyled();
+  @include _font-size-line-height($_base-font-size-px - 4);
+}

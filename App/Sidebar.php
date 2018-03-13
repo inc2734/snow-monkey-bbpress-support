@@ -10,9 +10,60 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 class Sidebar {
 
 	public function __construct() {
+		add_filter( 'snow_monkey_use_post_type_widget_area', [ $this, '_snow_monkey_use_post_type_widget_area' ] );
+		add_filter( 'is_active_sidebar', [ $this, '_is_active_sidebar' ], 10, 2 );
 		add_action( 'wp_head', [ $this, '_remove_sidebars' ], 11 );
 		add_action( 'snow_monkey_sidebar', [ $this, '_snow_monkey_sidebar' ] );
 		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
+	}
+
+	/**
+	 * Return false snow_monkey_use_post_type_widget_area hook in bbbPress
+	 *
+	 * @param  [boolean]  $boolean
+	 * @return [boolean]
+	 */
+	public function _snow_monkey_use_post_type_widget_area( $boolean ) {
+		if ( ! is_bbpress() ) {
+			return $boolean;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Update is_active_sidebar() in bbPress
+	 *
+	 * @param  [boolean]  $is_active
+	 * @param  [string]   $id
+	 * @return [boolean]
+	 */
+	public function _is_active_sidebar( $is_active, $id ) {
+		if ( ! is_bbpress() ) {
+			return $is_active;
+		}
+
+		if ( 'contents-bottom-widget-area' === $id ) {
+			return false;
+		}
+
+		if ( 'title-top-widget-area' === $id ) {
+			return false;
+		}
+
+		if ( 'archive-top-widget-area' === $id ) {
+			return false;
+		}
+
+		if ( 'sidebar-widget-area' === $id ) {
+			return false;
+		}
+
+		if ( 'archive-sidebar-widget-area' === $id ) {
+			return false;
+		}
+
+		return $is_active;
 	}
 
 	/**

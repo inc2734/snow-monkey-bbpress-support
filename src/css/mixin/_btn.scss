@@ -1,0 +1,8 @@
+@mixin snow-monkey-bbpress-support-btn() {
+  @include _btn();
+  @include _form-control-base-border();
+  @include _form-control-base-padding();
+  background-color: #fff;
+  color: $_color-text;
+  text-decoration: none;
+}

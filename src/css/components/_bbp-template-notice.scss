@@ -1,0 +1,32 @@
+.bbp-template-notice {
+  display: block;
+  border: 1px solid #e6db55;
+  border-radius: $_border-radius;
+  background-color: #ffffe0;
+  @include _font-size-line-height($_base-font-size-px - 2);
+  @include _padding(.25, .5);
+
+  &.info {
+    border-color: #cee1ef;
+    background-color: #f0f8ff;
+  }
+
+  &.important {
+    border-color: #e6db55;
+    background-color: #fffbcc;
+  }
+
+  &.error,
+  &.warning {
+    background-color: #ffebe8;
+    border-color: #c00;
+
+    a {
+      color: #c00;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

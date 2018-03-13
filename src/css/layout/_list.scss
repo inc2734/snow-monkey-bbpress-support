@@ -1,0 +1,56 @@
+.bbp-topics,
+.bbp-forums,
+.bbp-replies,
+.bbp-search-results {
+  @include _list-unstyled();
+  border-right: 1px solid _lighter($_color-gray);
+  border-left: 1px solid _lighter($_color-gray);
+}
+
+.bbp-header,
+.bbp-footer {
+  @include _list-unstyled();
+  @include _row();
+  align-items: center;
+  background-color: _lightest($_color-gray);
+  border-top: 1px solid _lighter($_color-gray);
+  border-bottom: 1px solid _lighter($_color-gray);
+  @include _font-size-line-height($_base-font-size-px - 4);
+
+  @include _media-min(md) {
+    @include _font-size-line-height($_base-font-size-px - 2);
+  }
+
+  > :not(.forum-titles) {
+    @include _row__col();
+  }
+
+  .forum-titles {
+    flex: 1 1 auto;
+  }
+}
+
+.forum-titles {
+  @include _list-unstyled();
+  @include _row();
+  align-items: center;
+
+  > * {
+    @include _row__col();
+  }
+}
+
+.bbp-body {
+  > .#{$_prefix}c-entry {
+    @include _list-unstyled();
+    @include _row();
+
+    &:not(:first-child) {
+      border-top: 1px solid _lighter($_color-gray);
+    }
+
+    > {
+      @include _row__col();
+    }
+  }
+}
