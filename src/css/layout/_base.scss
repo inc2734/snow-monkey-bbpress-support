@@ -1,0 +1,13 @@
+[id="bbpress-forums"] {
+  @include _content();
+
+  .bbp-pagination + .bbp-topics,
+  .bbp-topics + .bbp-pagination,
+  .bbp-pagination + .bbp-replies,
+  .bbp-replies + .bbp-pagination,
+  .bbp-pagination + .bbp-search-results,
+  .bbp-search-results + .bbp-pagination,
+  .snow-monkey-bbpress-support-my-topic-close-link + .bbp-replies {
+    @include _margin-top(.5);
+  }
+}

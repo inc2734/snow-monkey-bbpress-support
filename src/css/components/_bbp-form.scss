@@ -1,26 +1,49 @@
 .bbp-form {
+  @include _content(.5);
   display: block;
+  border: none;
   min-width: 0;
   max-width: 100%;
+  border: 1px solid _lighter($_color-gray);
+  @include _padding(.5);
 
-  fieldset {
+  @include _media-min(md) {
+    @include _padding(1);
+  }
+
+  .bbp-form {
     border: none;
     padding: 0;
   }
 
-  input[type="text"] {
-    @include _form-control();
+  > legend {
+    margin-bottom: -1em;
+    @include _font-size-line-height($_base-font-size-px + 2);
+    font-weight: bold;
   }
 
-  input[name="bbp_topic_title"] {
+  > div {
+    @include _content(.5);
+
+    > label + * {
+      margin-top: 0 !important;
+    }
+  }
+
+  label {
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  [id="description"] {
+    @include _form-control();
     width: 100%;
   }
 
   .bbp-submit-wrapper {
     .button {
-      @include _btn();
-      @include _form-control-base-border();
-      @include _form-control-base-padding();
+      @include snow-monkey-bbpress-support-btn();
     }
   }
 
@@ -33,17 +56,5 @@
       border-top-right-radius: 0;
       @include _font-size-line-height($_base-font-size-px - 2);
     }
-  }
-
-  p {
-    @include _font-size-line-height($_base-font-size-px - 2);
-  }
-
-  legend {
-    font-weight: bold;
-  }
-
-  label {
-    font-weight: bold;
   }
 }
