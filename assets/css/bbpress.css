@@ -3816,21 +3816,27 @@ Abstract pulse spinner component
 .bbp-forums .bbp-body .bbp-forum-content {
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
 
 .bbp-forums .bbp-body .bbp-forum-topic-count,
 .bbp-forums .bbp-body .bbp-forum-reply-count,
 .bbp-forums .bbp-body .bbp-forum-freshness {
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
   @media (min-width: 40em) {
     .bbp-forums .bbp-body .bbp-forum-topic-count,
     .bbp-forums .bbp-body .bbp-forum-reply-count,
     .bbp-forums .bbp-body .bbp-forum-freshness {
       font-size: 14px;
       font-size: 0.875rem;
-      line-height: 1.99379; } }
+      line-height: 1.63241; } }
+
+.bbp-forums .bbp-body .bbp-forum-freshness a {
+  color: #333;
+  text-decoration: none; }
+  .bbp-forums .bbp-body .bbp-forum-freshness a:hover, .bbp-forums .bbp-body .bbp-forum-freshness a:active, .bbp-forums .bbp-body .bbp-forum-freshness a:focus {
+    text-decoration: underline; }
 
 .bbp-topics .bbp-topic-title,
 .bbp-topics .bbp-topic-voice-count,
@@ -3889,29 +3895,43 @@ Abstract pulse spinner component
 .bbp-topics .bbp-body .bbp-topic-content {
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
 
 .bbp-topics .bbp-body .bbp-topic-voice-count,
 .bbp-topics .bbp-body .bbp-topic-reply-count,
 .bbp-topics .bbp-body .bbp-topic-freshness {
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
   @media (min-width: 40em) {
     .bbp-topics .bbp-body .bbp-topic-voice-count,
     .bbp-topics .bbp-body .bbp-topic-reply-count,
     .bbp-topics .bbp-body .bbp-topic-freshness {
       font-size: 14px;
       font-size: 0.875rem;
-      line-height: 1.99379; } }
+      line-height: 1.63241; } }
 
-.bbp-topics .bbp-body .bbp-topic-meta {
+.bbp-topics .bbp-body .bbp-topic-freshness a {
+  color: #333;
+  text-decoration: none; }
+  .bbp-topics .bbp-body .bbp-topic-freshness a:hover, .bbp-topics .bbp-body .bbp-topic-freshness a:active, .bbp-topics .bbp-body .bbp-topic-freshness a:focus {
+    text-decoration: underline; }
+
+.bbp-topics .bbp-body .bbp-topic-started-by,
+.bbp-topics .bbp-body .bbp-topic-started-in {
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
-  .bbp-topics .bbp-body .bbp-topic-meta > .bbp-topic-started-by,
-  .bbp-topics .bbp-body .bbp-topic-meta > .bbp-topic-started-in {
-    display: block; }
+  line-height: 1.69565;
+  display: block; }
+  .bbp-topics .bbp-body .bbp-topic-started-by a,
+  .bbp-topics .bbp-body .bbp-topic-started-in a {
+    color: #333;
+    text-decoration: none; }
+    .bbp-topics .bbp-body .bbp-topic-started-by a:hover, .bbp-topics .bbp-body .bbp-topic-started-by a:active, .bbp-topics .bbp-body .bbp-topic-started-by a:focus,
+    .bbp-topics .bbp-body .bbp-topic-started-in a:hover,
+    .bbp-topics .bbp-body .bbp-topic-started-in a:active,
+    .bbp-topics .bbp-body .bbp-topic-started-in a:focus {
+      text-decoration: underline; }
 
 .bbp-replies .bbp-reply-author,
 .bbp-replies .bbp-reply-content {
@@ -3966,7 +3986,7 @@ Abstract pulse spinner component
   max-width: 100%;
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
   @media (min-width: 40em) {
     .bbp-replies .bbp-body .bbp-reply-author {
       -webkit-box-flex: 0;
@@ -3985,30 +4005,33 @@ Abstract pulse spinner component
         display: none; } }
 
 .bbp-replies .bbp-body .bbp-reply-content {
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 1.92754;
   -webkit-box-flex: 0;
   -ms-flex: 0 1 100%;
   flex: 0 1 100%;
   max-width: 100%; }
   .bbp-replies .bbp-body .bbp-reply-content > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) + :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-    margin-top: 1.86957rem; }
+    margin-top: 0.93478rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h1 {
     margin-top: 0;
-    margin-bottom: 1.86957rem; }
+    margin-bottom: 0.93478rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h2 {
-    margin-top: 3.73913rem;
-    margin-bottom: 1.86957rem; }
+    margin-top: 1.86957rem;
+    margin-bottom: 0.93478rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h3 {
-    margin-top: 2.80435rem;
-    margin-bottom: 1.40217rem; }
+    margin-top: 1.40217rem;
+    margin-bottom: 0.70109rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h4 {
-    margin-top: 2.33696rem;
-    margin-bottom: 1.40217rem; }
+    margin-top: 1.16848rem;
+    margin-bottom: 0.70109rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h5 {
-    margin-top: 1.86957rem;
-    margin-bottom: 0.93478rem; }
+    margin-top: 0.93478rem;
+    margin-bottom: 0.46739rem; }
   .bbp-replies .bbp-body .bbp-reply-content > h6 {
-    margin-top: 1.86957rem;
-    margin-bottom: 0.93478rem; }
+    margin-top: 0.93478rem;
+    margin-bottom: 0.46739rem; }
   .bbp-replies .bbp-body .bbp-reply-content > :first-child {
     margin-top: 0; }
   .bbp-replies .bbp-body .bbp-reply-content > ol ol,
@@ -4122,7 +4145,7 @@ Abstract pulse spinner component
   max-width: 100%;
   font-size: 12px;
   font-size: 0.75rem;
-  line-height: 2.15942; }
+  line-height: 1.69565; }
   @media (min-width: 40em) {
     .bbp-search-results .bbp-body .bbp-forum-author,
     .bbp-search-results .bbp-body .bbp-topic-author,
@@ -4473,26 +4496,33 @@ Abstract pulse spinner component
 
 .bbp-template-notice {
   display: block;
-  border: 1px solid #e6db55;
+  border: 1px solid #ffff7a;
   border-radius: 3px;
   background-color: #ffffe0;
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.99379;
   padding: 0.46739rem 0.93478rem; }
-  .bbp-template-notice.info {
-    border-color: #cee1ef;
-    background-color: #f0f8ff; }
-  .bbp-template-notice.important {
-    border-color: #e6db55;
-    background-color: #fffbcc; }
-  .bbp-template-notice.error, .bbp-template-notice.warning {
-    background-color: #ffebe8;
-    border-color: #c00; }
-    .bbp-template-notice.error a, .bbp-template-notice.warning a {
-      color: #c00; }
   .bbp-template-notice a {
+    color: #7a7a00;
     text-decoration: none; }
+    .bbp-template-notice a:hover, .bbp-template-notice a:active, .bbp-template-notice a:focus {
+      text-decoration: underline; }
+  .bbp-template-notice.info {
+    border-color: #8ac8ff;
+    background-color: #f0f8ff; }
+    .bbp-template-notice.info a {
+      color: #004a8a; }
+  .bbp-template-notice.important {
+    border-color: #fff366;
+    background-color: #fffbcc; }
+    .bbp-template-notice.important a {
+      color: #665e00; }
+  .bbp-template-notice.error, .bbp-template-notice.warning {
+    border-color: #ff9282;
+    background-color: #ffebe8; }
+    .bbp-template-notice.error a, .bbp-template-notice.warning a {
+      color: #821100; }
 
 [id="bbpress-forums"] .indicator-hint {
   display: block;
@@ -4511,6 +4541,11 @@ Abstract pulse spinner component
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 2.15942; }
+  .bbp-reply-revision-log a {
+    color: #333;
+    text-decoration: none; }
+    .bbp-reply-revision-log a:hover, .bbp-reply-revision-log a:active, .bbp-reply-revision-log a:focus {
+      text-decoration: underline; }
 
 .bbp-search-form {
   display: none; }
@@ -4668,7 +4703,10 @@ Abstract pulse spinner component
     .snow-monkey-bbpress-support-my-topic-close-link .button:active, .snow-monkey-bbpress-support-my-topic-close-link .button:focus, .snow-monkey-bbpress-support-my-topic-close-link .button[aria-selected="true"] {
       border-color: #85b7d9; }
 
-[id="bbp-user-wrapper"] {
+[id="bbp-user-wrapper"] > [id="bbp-user-body"] {
+  margin-top: 2.80435rem; }
+
+[id="bbp-single-user-details"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4676,9 +4714,10 @@ Abstract pulse spinner component
   flex-wrap: wrap;
   margin-right: -0.93478rem;
   margin-left: -0.93478rem;
-  margin-bottom: -1.86957rem; }
-  [id="bbp-user-wrapper"] > [id="bbp-single-user-details"],
-  [id="bbp-user-wrapper"] > [id="bbp-user-body"] {
+  margin-bottom: -1.86957rem;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap; }
+  [id="bbp-single-user-details"] > * {
     max-width: 100%;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 0%;
@@ -4686,35 +4725,34 @@ Abstract pulse spinner component
     padding-right: 0.93478rem;
     padding-left: 0.93478rem;
     margin-bottom: 1.86957rem; }
-  [id="bbp-user-wrapper"] > [id="bbp-single-user-details"] {
+  [id="bbp-single-user-details"] > [id="bbp-user-avatar"] {
     -webkit-box-flex: 0;
-    -ms-flex: 0 1 100%;
-    flex: 0 1 100%;
-    max-width: 100%; }
-    @media (min-width: 40em) {
-      [id="bbp-user-wrapper"] > [id="bbp-single-user-details"] {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 1 20%;
-        flex: 0 1 20%;
-        max-width: 20%; } }
-    [id="bbp-user-wrapper"] > [id="bbp-single-user-details"] > [id="bbp-user-avatar"] {
-      margin-bottom: 0.46739rem; }
-  [id="bbp-user-wrapper"] > [id="bbp-user-body"] {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 1 100%;
-    flex: 0 1 100%;
-    max-width: 100%; }
-    @media (min-width: 40em) {
-      [id="bbp-user-wrapper"] > [id="bbp-user-body"] {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 1 80%;
-        flex: 0 1 80%;
-        max-width: 80%; } }
+    -ms-flex: 0 1 150px;
+    flex: 0 1 150px;
+    max-width: 150px;
+    min-width: 150px; }
+  [id="bbp-single-user-details"] > [id="bbp-user-navigation"] {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -ms-flex-item-align: end;
+    align-self: flex-end; }
 
 [id="bbp-user-navigation"] > ul {
   list-style: none;
   margin-left: 0;
   padding-left: 0; }
+  [id="bbp-user-navigation"] > ul:before, [id="bbp-user-navigation"] > ul:after {
+    content: " ";
+    display: table; }
+  [id="bbp-user-navigation"] > ul:after {
+    clear: both; }
+  [id="bbp-user-navigation"] > ul > li {
+    margin-right: 1em;
+    float: left;
+    display: inline-block; }
+    [id="bbp-user-navigation"] > ul > li.current a {
+      font-weight: bold; }
 
 [id="bbp-user-body"] .entry-title {
   margin-bottom: 0.93478rem; }

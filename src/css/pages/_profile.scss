@@ -1,37 +1,46 @@
 [id="bbp-user-wrapper"] {
+  > [id="bbp-user-body"] {
+    @include _margin-top(1.5);
+  }
+}
+
+[id="bbp-single-user-details"] {
   @include _row();
   @include _row--margin(1);
+  flex-wrap: nowrap;
 
-  > [id="bbp-single-user-details"],
-  > [id="bbp-user-body"] {
+  > * {
     @include _row__col();
     @include _row__col--margin(1);
   }
 
-  > [id="bbp-single-user-details"] {
-    @include _row__col--width(100%);
-
-    @include _media-min(md) {
-      @include _row__col--width(20%);
-    }
-
-    > [id="bbp-user-avatar"] {
-      @include _margin-bottom(.25);
-    }
+  > [id="bbp-user-avatar"] {
+    @include _row__col--width(150px);
+    min-width: 150px;
   }
 
-  > [id="bbp-user-body"] {
-    @include _row__col--width(100%);
-
-    @include _media-min(md) {
-      @include _row__col--width(80%);
-    }
+  > [id="bbp-user-navigation"] {
+    @include _row__col--width(auto);
+    align-self: flex-end;
   }
 }
 
 [id="bbp-user-navigation"] {
   > ul {
     @include _list-unstyled();
+    @include _clearfix();
+
+    > li {
+      margin-right: 1em;
+      float: left;
+      display: inline-block;
+
+      &.current {
+        a{
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
 

@@ -1,32 +1,45 @@
 .bbp-template-notice {
   display: block;
-  border: 1px solid #e6db55;
+  border: 1px solid _dark(#ffffe0);
   border-radius: $_border-radius;
   background-color: #ffffe0;
   @include _font-size-line-height($_base-font-size-px - 2);
   @include _padding(.25, .5);
 
+  a {
+    color: darken(#ffffe0, 70%);
+    text-decoration: none;
+
+    @include _hover() {
+      text-decoration: underline;
+    }
+  }
+
   &.info {
-    border-color: #cee1ef;
+    border-color: _dark(#f0f8ff);
     background-color: #f0f8ff;
+
+    a {
+      color: darken(#f0f8ff, 70%);
+    }
   }
 
   &.important {
-    border-color: #e6db55;
+    border-color: _dark(#fffbcc);
     background-color: #fffbcc;
+
+    a {
+      color: darken(#fffbcc, 70%);
+    }
   }
 
   &.error,
   &.warning {
+    border-color: _dark(#ffebe8);
     background-color: #ffebe8;
-    border-color: #c00;
 
     a {
-      color: #c00;
+      color: darken(#ffebe8, 70%);
     }
-  }
-
-  a {
-    text-decoration: none;
   }
 }

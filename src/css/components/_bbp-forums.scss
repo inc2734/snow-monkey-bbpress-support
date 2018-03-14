@@ -42,16 +42,30 @@
     }
 
     .bbp-forum-content {
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
     }
 
     .bbp-forum-topic-count,
     .bbp-forum-reply-count,
     .bbp-forum-freshness {
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
 
       @include _media-min(md) {
-        @include _font-size-line-height($_base-font-size-px - 2);
+        @include _font-size($_base-font-size-px - 2);
+        @include _line-height($_base-font-size-px + 6);
+      }
+    }
+
+    .bbp-forum-freshness {
+      a {
+        color: $_color-text;
+        text-decoration: none;
+
+        @include _hover() {
+          text-decoration: underline;
+        }
       }
     }
   }

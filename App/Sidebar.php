@@ -43,23 +43,7 @@ class Sidebar {
 			return $is_active;
 		}
 
-		if ( 'contents-bottom-widget-area' === $id ) {
-			return false;
-		}
-
-		if ( 'title-top-widget-area' === $id ) {
-			return false;
-		}
-
-		if ( 'archive-top-widget-area' === $id ) {
-			return false;
-		}
-
-		if ( 'sidebar-widget-area' === $id ) {
-			return false;
-		}
-
-		if ( 'archive-sidebar-widget-area' === $id ) {
+		if ( ! is_registered_sidebar( $id ) ) {
 			return false;
 		}
 
@@ -80,6 +64,7 @@ class Sidebar {
 		unregister_sidebar( 'title-top-widget-area' );
 		unregister_sidebar( 'archive-top-widget-area' );
 		unregister_sidebar( 'sidebar-widget-area' );
+		unregister_sidebar( 'sidebar-sticky-widget-area' );
 		unregister_sidebar( 'archive-sidebar-widget-area' );
 	}
 
