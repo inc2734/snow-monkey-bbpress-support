@@ -42,25 +42,46 @@
     }
 
     .bbp-topic-content {
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
     }
 
     .bbp-topic-voice-count,
     .bbp-topic-reply-count,
     .bbp-topic-freshness {
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
 
       @include _media-min(md) {
-        @include _font-size-line-height($_base-font-size-px - 2);
+        @include _font-size($_base-font-size-px - 2);
+        @include _line-height($_base-font-size-px + 6);
       }
     }
 
-    .bbp-topic-meta {
-      @include _font-size-line-height($_base-font-size-px - 4);
+    .bbp-topic-freshness {
+      a {
+        color: $_color-text;
+        text-decoration: none;
 
-      > .bbp-topic-started-by,
-      > .bbp-topic-started-in {
-        display: block;
+        @include _hover() {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .bbp-topic-started-by,
+    .bbp-topic-started-in {
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
+      display: block;
+
+      a {
+        color: $_color-text;
+        text-decoration: none;
+
+        @include _hover() {
+          text-decoration: underline;
+        }
       }
     }
   }

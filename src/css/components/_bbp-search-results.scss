@@ -58,7 +58,8 @@
     .bbp-topic-author,
     .bbp-reply-author {
       @include _row__col--width(100%);
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
 
       @include _media-min(md) {
         @include _row__col--width(20%);

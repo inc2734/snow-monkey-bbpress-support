@@ -40,7 +40,8 @@
 
     .bbp-reply-author {
       @include _row__col--width(100%);
-      @include _font-size-line-height($_base-font-size-px - 4);
+      @include _font-size($_base-font-size-px - 4);
+      @include _line-height($_base-font-size-px + 4);
 
       @include _media-min(md) {
         @include _row__col--width(20%);
@@ -63,7 +64,8 @@
     }
 
     .bbp-reply-content {
-      @include _content();
+      @include _content(.5);
+      @include _font-size-line-height($_base-font-size-px - 1);
       @include _row__col--width(100%);
 
       @include _media-min(md) {
