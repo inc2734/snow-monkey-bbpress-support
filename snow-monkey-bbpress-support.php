@@ -41,6 +41,7 @@ class Bootstrap {
 		new App\Templates();
 		new App\Content();
 		new App\Pagination();
+		new App\Comments();
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
