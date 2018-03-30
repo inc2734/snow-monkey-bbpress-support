@@ -31,7 +31,8 @@
     @include _clearfix();
 
     > li {
-      margin-right: 1em;
+      margin-right: 5px;
+      margin-top: 5px;
       float: left;
       display: inline-block;
 
@@ -39,6 +40,10 @@
         a{
           font-weight: bold;
         }
+      }
+
+      a {
+        @include snow-monkey-bbpress-support-btn();
       }
     }
   }

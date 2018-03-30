@@ -24,6 +24,10 @@ class Avatar {
 	 * @return [string]
 	 */
 	public function _get_avatar( $img, $id_or_email, $size, $default, $alt ) {
+		if ( ! is_bbpress() ) {
+			return $img;
+		}
+
 		if ( ! is_int( $id_or_email ) ) {
 			$user = get_user_by( 'email', $id_or_email );
 			if ( ! $user ) {
@@ -38,7 +42,7 @@ class Avatar {
 		}
 
 		$img = sprintf(
-			'<img src="https://graph.facebook.com/%1$s/picture?type=square" alt="%2$s" width="%3$s" height="%3$s" class="avatar photo" />',
+			'<img src="https://graph.facebook.com/%1$s/picture?type=large" alt="%2$s" width="%3$s" height="%3$s" class="avatar photo" />',
 			esc_attr( $_wpg_facebook_id ),
 			esc_attr( $alt ),
 			esc_attr( $size )
