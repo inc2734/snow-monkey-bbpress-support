@@ -1,21 +1,27 @@
 'use strict';
 
-var gulp         = require('gulp');
-var sass         = require('gulp-sass');
-var postcss      = require('gulp-postcss');
-var cssnano      = require('cssnano');
-var rename       = require('gulp-rename');
-var autoprefixer = require('autoprefixer');
-var rimraf       = require('rimraf');
-var runSequence  = require('run-sequence');
-var zip          = require('gulp-zip');
+var gulp          = require('gulp');
+var sass          = require('gulp-sass');
+var postcss       = require('gulp-postcss');
+var cssnano       = require('cssnano');
+var rename        = require('gulp-rename');
+var autoprefixer  = require('autoprefixer');
+var rimraf        = require('rimraf');
+var runSequence   = require('run-sequence');
+var zip           = require('gulp-zip');
+var uglify        = require('gulp-uglify');
+var babel         = require('gulp-babel');
+var webpackStream = require('webpack-stream');
+var webpack       = require('webpack');
 
 var dir = {
   src: {
-    css: 'src/css'
+    css: 'src/css',
+    js:  'src/js'
   },
   dist: {
-    css: 'assets/css'
+    css: 'assets/css',
+    js:  'assets/js'
   }
 }
 
@@ -57,9 +63,60 @@ function sassCompile(src, dest) {
 }
 
 /**
+ * Build javascript
+ */
+gulp.task('js', function() {
+  runSequence('js:app');
+});
+gulp.task('js:app', function() {
+  return jsCompile('app.js');
+});
+
+function jsCompile(distFileName) {
+  return gulp.src(dir.src.js + '/' + distFileName)
+    .pipe(webpackStream({
+      output: {
+        filename: distFileName
+      },
+      externals: {
+        jquery: 'jQuery',
+        _: '_',
+        backbone: 'Backbone'
+      },
+      mode: 'none',
+      module: {
+        rules: [{
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  "env", {
+                    "modules": false,
+                    "targets": {
+                      "browsers": ['last 2 versions']
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        }]
+      }
+    }, webpack))
+    .pipe(gulp.dest(dir.dist.js))
+    .on('end', function() {
+      gulp.src([dir.dist.js + '/' + distFileName])
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(dir.dist.js));
+    });
+}
+
+/**
  * Build
  */
-gulp.task('build', ['css']);
+gulp.task('build', ['css', 'js']);
 
 /**
  * Creates the zip file
@@ -92,4 +149,5 @@ gulp.task('zip', function(){
  */
 gulp.task('default', ['build'], function() {
   gulp.watch([dir.src.css + '/**/*.scss'], ['css']);
+  gulp.watch([dir.src.js + '/**/*.js'] , ['js']);
 });
