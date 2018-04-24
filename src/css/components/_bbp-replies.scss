@@ -4,7 +4,8 @@
     @include _padding(.25, .5);
   }
 
-  .bbp-header {
+  .bbp-header,
+  .bbp-footer {
     .bbp-reply-author {
       @include _row__col--width(20%);
     }
