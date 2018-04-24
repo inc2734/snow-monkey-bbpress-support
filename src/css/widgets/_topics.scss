@@ -3,7 +3,23 @@
     @include snow-monkey-bbpress-support-widget-list-base();
   }
 
-  a {
-    @include snow-monkey-bbpress-support-widget-link-base();
+  li {
+    color: _lighter($_color-text);
+    @include _font-size-line-height($_base-font-size-px - 4);
+
+    .bbp-forum-title {
+      @include snow-monkey-bbpress-support-widget-link-base();
+      display: block;
+      @include _font-size-line-height($_base-font-size-px - 2);
+    }
+
+    .bbp-author-name {
+      color: _lighter($_color-text);
+    }
+
+    > div {
+      margin-left: .5em;
+      display: inline-block;
+    }
   }
 }
