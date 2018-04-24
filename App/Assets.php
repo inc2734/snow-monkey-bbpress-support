@@ -27,7 +27,7 @@ class Assets {
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
 			plugin_dir_url( __FILE__ ) . '../assets/js/app.min.js',
-			['jquery'],
+			[ 'jquery' ],
 			false,
 			true
 		);
