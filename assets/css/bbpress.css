@@ -3729,6 +3729,7 @@ Abstract pulse spinner component
     flex: 1 1 0%; }
 
 .bbp-body > .c-entry {
+  margin: 0;
   list-style: none;
   margin-left: 0;
   padding-left: 0;
