@@ -21,6 +21,10 @@ class AdminBar {
 	 * @return [object]
 	 */
 	public function _admin_bar_menu( $wp_admin_bar ) {
+		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
+			return;
+		}
+
 		if ( current_user_can( 'moderate' ) ) {
 			return;
 		}
@@ -35,6 +39,10 @@ class AdminBar {
 	 * @return [void]
 	 */
 	public function _wp_before_admin_bar_render() {
+		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
+			return;
+		}
+
 		if ( current_user_can( 'moderate' ) ) {
 			return;
 		}
