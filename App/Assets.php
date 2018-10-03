@@ -15,10 +15,13 @@ class Assets {
 	}
 
 	public function _bbp_default_styles( $styles ) {
-		$styles['bbp-default'] = array_merge( $styles['bbp-default'], [
-			'file'         => '../../../snow-monkey-bbpress-support/assets/css/bbpress.min.css',
-			'dependencies' => [ get_template() ],
-		] );
+		$styles['bbp-default'] = array_merge(
+			$styles['bbp-default'],
+			[
+				'file'         => '../../../snow-monkey-bbpress-support/assets/css/bbpress.min.css',
+				'dependencies' => [ get_template() ],
+			]
+		);
 
 		return $styles;
 	}

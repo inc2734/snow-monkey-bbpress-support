@@ -29,6 +29,7 @@
       "vendor/bin/phpcs -p -s -v -n . --standard=./phpcs.ruleset.xml --extensions=php",
       "bash bin/phpunit.sh"
     ],
+    "phpcbf": "vendor/bin/phpcbf -p -s -v -n . --standard=./phpcs.ruleset.xml --extensions=php",
     "wpphpunit": "bash bin/wpphpunit.sh",
     "phpunit": "bash bin/phpunit.sh"
   },

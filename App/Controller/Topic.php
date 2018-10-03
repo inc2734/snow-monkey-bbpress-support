@@ -27,16 +27,22 @@ class Topic {
 			return;
 		}
 
-		$r = bbp_parse_args( [], [
-			'close_text' => __( 'Close this topic', 'snow-monkey-bbpress-support' ),
-			'open_text'  => __( 'Open this topic', 'snow-monkey-bbpress-support' ),
-		], 'get_topic_close_link' );
+		$r = bbp_parse_args(
+			[],
+			[
+				'close_text' => __( 'Close this topic', 'snow-monkey-bbpress-support' ),
+				'open_text'  => __( 'Open this topic', 'snow-monkey-bbpress-support' ),
+			],
+			'get_topic_close_link'
+		);
 
 		$display = bbp_is_topic_open( $topic->ID ) ? $r['close_text'] : $r['open_text'];
-		$uri = add_query_arg( [
-			'action'   => 'bbp_toggle_topic_close',
-			'topic_id' => $topic->ID,
-		] );
+		$uri = add_query_arg(
+			[
+				'action'   => 'bbp_toggle_topic_close',
+				'topic_id' => $topic->ID,
+			]
+		);
 		$uri = wp_nonce_url( $uri, 'close-topic_' . $topic->ID );
 		?>
 		<div class="snow-monkey-bbpress-support-my-topic-close-link">
