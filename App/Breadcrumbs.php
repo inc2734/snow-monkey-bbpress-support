@@ -32,6 +32,8 @@ class Breadcrumbs {
 			$breadcrumbs = $this->_topic_tag( $breadcrumbs );
 		} elseif ( bbp_is_topic_archive() ) {
 			$breadcrumbs = $this->_topic_archive( $breadcrumbs );
+		} elseif ( bbp_is_single_reply() ) {
+			$breadcrumbs = $this->_single_reply( $breadcrumbs );
 		}
 
 		return $breadcrumbs;
@@ -137,6 +139,31 @@ class Breadcrumbs {
 		];
 
 		array_splice( $breadcrumbs, -1, 0, $adding_items );
+
+		return $breadcrumbs;
+	}
+
+	/**
+	 * Update breadcrumbs for single reply
+	 *
+	 * @param  [array] $breadcrumbs
+	 * @return [array]
+	 */
+	protected function _single_reply( $breadcrumbs ) {
+		$breadcrumbs[] = [
+			'title' => bbp_get_forum_archive_title(),
+			'link'  => bbp_get_forums_url(),
+		];
+
+		$breadcrumbs[] = [
+			'title' => bbp_get_topic_title(),
+			'link'  => bbp_get_topic_permalink(),
+		];
+
+		$breadcrumbs[] = [
+			'title' => bbp_get_reply_title(),
+			'link'  => '',
+		];
 
 		return $breadcrumbs;
 	}

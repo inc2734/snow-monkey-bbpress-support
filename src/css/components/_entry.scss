@@ -1,0 +1,57 @@
+[id="bbpress-forums"] .#{$_prefix}c-entry {
+  @include _row();
+  @include _padding(.5, 0);
+
+  @include _media-min(md) {
+    @include _padding(1, 0);
+  }
+
+  .bbp-forum-author,
+  .bbp-topic-author,
+  .bbp-reply-author,
+  .bbp-forum-content,
+  .bbp-topic-content,
+  .bbp-reply-content {
+    @include _padding(0, .5);
+  }
+
+  .bbp-forum-author,
+  .bbp-topic-author,
+  .bbp-reply-author {
+    @include _row__col--width(100%);
+    @include _font-size($_base-font-size-px - 4);
+    @include _line-height($_base-font-size-px + 4);
+
+    @include _media-min(md) {
+      @include _row__col--width(20%);
+      @include _padding-left(1);
+    }
+
+    @include _media-max(sm) {
+      @include _margin-bottom(1);
+
+      .bbp-author-avatar {
+        display: block;
+        float: left;
+        margin-right: 1em;
+      }
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .bbp-forum-content,
+  .bbp-topic-content,
+  .bbp-reply-content {
+    @include _content();
+    @include _font-size-line-height($_base-font-size-px - 1);
+    @include _row__col--width(100%);
+
+    @include _media-min(md) {
+      @include _row__col--width(80%);
+      @include _padding-right(1);
+    }
+  }
+}

@@ -49,16 +49,20 @@ class AdminBar {
 
 		global $wp_admin_bar;
 
-		$wp_admin_bar->add_menu( [
-			'id'    => 'snow-monkey-bbpress-support-logout',
-			'title' => __( 'Logout', 'snow-monkey-bbpress-support' ),
-			'href'  => wp_logout_url( home_url() ),
-		] );
+		$wp_admin_bar->add_menu(
+			[
+				'id'    => 'snow-monkey-bbpress-support-logout',
+				'title' => __( 'Logout', 'snow-monkey-bbpress-support' ),
+				'href'  => wp_logout_url( home_url() ),
+			]
+		);
 
-		$wp_admin_bar->add_menu( [
-			'id'    => 'snow-monkey-bbpress-support-account',
-			'title' => __( 'Account', 'snow-monkey-bbpress-support' ),
-			'href'  => bbp_get_user_profile_url( bbp_get_current_user_id() ),
-		] );
+		$wp_admin_bar->add_menu(
+			[
+				'id'    => 'snow-monkey-bbpress-support-account',
+				'title' => __( 'Account', 'snow-monkey-bbpress-support' ),
+				'href'  => bbp_get_user_profile_url( bbp_get_current_user_id() ),
+			]
+		);
 	}
 }

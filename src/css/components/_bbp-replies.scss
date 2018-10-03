@@ -1,11 +1,11 @@
 .bbp-replies {
-  .bbp-reply-author,
-  .bbp-reply-content {
-    @include _padding(.25, .5);
-  }
-
   .bbp-header,
   .bbp-footer {
+    .bbp-reply-author,
+    .bbp-reply-content {
+      @include _padding(.25, .5);
+    }
+
     .bbp-reply-author {
       @include _row__col--width(20%);
     }
@@ -28,58 +28,6 @@
         > span {
           float: left;
         }
-      }
-    }
-  }
-
-  .bbp-body {
-    .bbp-reply-author,
-    .bbp-reply-content {
-      @include _padding-top(0);
-      @include _padding-bottom(0);
-    }
-
-    .bbp-reply-author {
-      @include _row__col--width(100%);
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
-
-      @include _media-min(md) {
-        @include _row__col--width(20%);
-        @include _padding-left(1);
-      }
-
-      @include _media-max(sm) {
-        @include _margin-bottom(1);
-
-        .bbp-author-avatar {
-          display: block;
-          float: left;
-          margin-right: 1em;
-        }
-
-        br {
-          display: none;
-        }
-      }
-    }
-
-    .bbp-reply-content {
-      @include _content(.5);
-      @include _font-size-line-height($_base-font-size-px - 1);
-      @include _row__col--width(100%);
-
-      @include _media-min(md) {
-        @include _row__col--width(80%);
-        @include _padding-right(1);
-      }
-    }
-
-    .#{$_prefix}c-entry {
-      @include _padding(.5, 0);
-
-      @include _media-min(md) {
-        @include _padding(1, 0);
       }
     }
   }
