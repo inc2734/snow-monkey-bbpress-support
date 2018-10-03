@@ -1,3 +1,7 @@
+[id="bbpress-forums"] ul.#{$_prefix}c-entry {
+  @include _list-unstyled();
+}
+
 [id="bbpress-forums"] .#{$_prefix}c-entry {
   @include _row();
   @include _padding(.5, 0);
