@@ -37,6 +37,15 @@
   }
 
   .bbp-body {
+    > .#{$_prefix}c-entry {
+      @include _padding-top(.25);
+      @include _padding-bottom(.25);
+
+      &:not(:first-child) {
+        border-top: 1px solid _lighter($_color-gray);
+      }
+    }
+
     .bbp-topic-permalink {
       font-weight: bold;
     }

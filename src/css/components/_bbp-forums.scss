@@ -37,34 +37,47 @@
   }
 
   .bbp-body {
-    .bbp-forum-title {
-      font-weight: bold;
-    }
+    > .#{$_prefix}c-entry {
+      @include _padding-top(.25);
+      @include _padding-bottom(.25);
 
-    .bbp-forum-content {
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
-    }
-
-    .bbp-forum-topic-count,
-    .bbp-forum-reply-count,
-    .bbp-forum-freshness {
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
-
-      @include _media-min(md) {
-        @include _font-size($_base-font-size-px - 2);
-        @include _line-height($_base-font-size-px + 6);
+      &:not(:first-child) {
+        border-top: 1px solid _lighter($_color-gray);
       }
-    }
 
-    .bbp-forum-freshness {
-      a {
-        color: $_color-text;
-        text-decoration: none;
+      .bbp-forum-title {
+        font-weight: bold;
+      }
 
-        @include _hover() {
-          text-decoration: underline;
+      .bbp-forum-content {
+        flex-basis: auto;
+        max-width: none;
+        @include _font-size($_base-font-size-px - 4);
+        @include _line-height($_base-font-size-px + 4);
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+      .bbp-forum-topic-count,
+      .bbp-forum-reply-count,
+      .bbp-forum-freshness {
+        @include _font-size($_base-font-size-px - 4);
+        @include _line-height($_base-font-size-px + 4);
+
+        @include _media-min(md) {
+          @include _font-size($_base-font-size-px - 2);
+          @include _line-height($_base-font-size-px + 6);
+        }
+      }
+
+      .bbp-forum-freshness {
+        a {
+          color: $_color-text;
+          text-decoration: none;
+
+          @include _hover() {
+            text-decoration: underline;
+          }
         }
       }
     }
