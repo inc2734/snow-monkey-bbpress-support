@@ -39,19 +39,3 @@
     @include _row__col();
   }
 }
-
-.bbp-body {
-  > .#{$_prefix}c-entry {
-    margin: 0;
-    @include _list-unstyled();
-    @include _row();
-
-    &:not(:first-child) {
-      border-top: 1px solid _lighter($_color-gray);
-    }
-
-    > {
-      @include _row__col();
-    }
-  }
-}
