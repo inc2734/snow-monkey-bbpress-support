@@ -24,6 +24,7 @@ class Rest {
 			$object = get_post_type_object( $post_type );
 			$object->show_in_rest = true;
 			$object->rest_controller_class = 'WP_REST_Posts_Controller';
+			$object->labels = (array) $object->labels;
 			register_post_type( $post_type, (array) $object );
 		}
 	}
