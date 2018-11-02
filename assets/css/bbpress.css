@@ -4267,6 +4267,7 @@ Abstract pulse spinner component
   [id="bbpress-forums"] .c-entry .bbp-forum-content,
   [id="bbpress-forums"] .c-entry .bbp-topic-content,
   [id="bbpress-forums"] .c-entry .bbp-reply-content {
+    margin-top: 0;
     font-size: 15px;
     font-size: 0.9375rem;
     line-height: 1.92754;
