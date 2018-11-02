@@ -953,8 +953,8 @@ $_font-path: '../font';
 */
 @font-face {
   font-family: 'basis';
-  src: url("../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font/basis.eot");
-  src: url("../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font/basis.eot#iefix") format("embedded-opentype"), url("../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font/basis.ttf") format("truetype"), url("../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font/basis.woff") format("woff"), url("../../../../themes/snow-monkey/vendor/inc2734/wp-basis/src/assets/packages/sass-basis/src/font/basis.svg#basis") format("svg");
+  src: url("false/basis.eot");
+  src: url("false/basis.eot#iefix") format("embedded-opentype"), url("false/basis.ttf") format("truetype"), url("false/basis.woff") format("woff"), url("false/basis.svg#basis") format("svg");
   font-weight: normal;
   font-style: normal; }
 
