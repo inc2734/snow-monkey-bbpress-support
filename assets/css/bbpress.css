@@ -3991,6 +3991,18 @@ Abstract pulse spinner component
 .bbp-search-results .bbp-reply-content {
   padding: 0.46739rem 0.93478rem; }
 
+.bbp-search-results .bbp-reply-title > h3,
+.bbp-search-results .bbp-topic-title > h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.77295; }
+
+.bbp-search-results .bbp-reply-title .bbp-topic-title-meta,
+.bbp-search-results .bbp-topic-title .bbp-topic-title-meta {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.99379; }
+
 .bbp-forum-header,
 .bbp-topic-header,
 .bbp-reply-header {
@@ -4223,6 +4235,8 @@ Abstract pulse spinner component
   @media (min-width: 40em) {
     [id="bbpress-forums"] .c-entry {
       padding: 1.86957rem 0; } }
+  [id="bbpress-forums"] .c-entry > * {
+    margin-top: 0; }
   [id="bbpress-forums"] .c-entry .bbp-forum-author,
   [id="bbpress-forums"] .c-entry .bbp-topic-author,
   [id="bbpress-forums"] .c-entry .bbp-reply-author,
@@ -4267,7 +4281,6 @@ Abstract pulse spinner component
   [id="bbpress-forums"] .c-entry .bbp-forum-content,
   [id="bbpress-forums"] .c-entry .bbp-topic-content,
   [id="bbpress-forums"] .c-entry .bbp-reply-content {
-    margin-top: 0;
     font-size: 15px;
     font-size: 0.9375rem;
     line-height: 1.92754;
