@@ -9,4 +9,15 @@
   .bbp-reply-content {
     @include _padding(.25, .5);
   }
+
+  .bbp-reply-title,
+  .bbp-topic-title {
+    > h3 {
+      @include _font-size-line-height($_base-font-size-px + 2);
+    }
+
+    .bbp-topic-title-meta {
+      @include _font-size-line-height($_base-font-size-px - 2);
+    }
+  }
 }
