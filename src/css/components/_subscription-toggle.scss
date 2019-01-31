@@ -1,5 +1,5 @@
 .subscription-toggle {
-  float: right;
+  float: right; // in single forum
   @include snow-monkey-bbpress-support-btn();
 
   // Profile subscription topics

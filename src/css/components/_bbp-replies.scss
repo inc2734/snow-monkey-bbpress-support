@@ -19,14 +19,14 @@
       #favorite-toggle {
         @include _row__col();
         flex: 0 1 auto;
+        margin-left: auto;
       }
 
       #subscription-toggle {
         @include _clearfix();
-        margin-left: auto;
 
-        > span {
-          float: left;
+        & + #favorite-toggle {
+          margin-left: .25rem;
         }
       }
     }

@@ -3965,21 +3965,19 @@ Abstract pulse spinner component
     flex: 1 1 0%;
     -webkit-box-flex: 0;
     -ms-flex: 0 1 auto;
-    flex: 0 1 auto; }
-  .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle,
-  .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle {
+    flex: 0 1 auto;
     margin-left: auto; }
-    .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:before, .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:after,
-    .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:before,
-    .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:after {
-      content: " ";
-      display: table; }
-    .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:after,
-    .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:after {
-      clear: both; }
-    .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle > span,
-    .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle > span {
-      float: left; }
+  .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:before, .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:after,
+  .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:before,
+  .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:after {
+    content: " ";
+    display: table; }
+  .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle:after,
+  .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle:after {
+    clear: both; }
+  .bbp-replies .bbp-header .bbp-reply-content #subscription-toggle + #favorite-toggle,
+  .bbp-replies .bbp-footer .bbp-reply-content #subscription-toggle + #favorite-toggle {
+    margin-left: .25rem; }
 
 .bbp-search-results .bbp-search-author,
 .bbp-search-results .bbp-forum-author,
