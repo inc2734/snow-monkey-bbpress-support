@@ -47,14 +47,19 @@
     }
   }
 
-  .wp-editor-container {
+  .bbp-the-content-wrapper {
     .bbp-the-content {
       @include _form-control();
-      margin: 0 -1px -1px !important;
+      @include _font-size-line-height($_base-font-size-px - 2);
       width: calc(100% + 2px) !important;
+    }
+  }
+
+  .wp-editor-container {
+    .bbp-the-content {
+      margin: 0 -1px -1px !important;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      @include _font-size-line-height($_base-font-size-px - 2);
     }
   }
 }
