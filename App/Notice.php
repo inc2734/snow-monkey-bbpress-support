@@ -37,14 +37,17 @@ class Notice {
 		}
 
 		$body  = sprintf( __( 'Title: %1$s', 'snow-monkey-bbpress-support' ), get_the_title( $post_id ) );
+		$body .= "\n";
+		$body .= sprintf( __( 'Owner: %1$s', 'snow-monkey-bbpress-support' ), get_the_author_meta( 'display_name', $post->post_author ) );
 		$body .= "\n\n";
 		$body .= strip_tags( $post->post_content );
 		$body .= "\n\n";
 		$body .= get_permalink( $post_id );
 
 		$subject = sprintf(
-			__( '【%1$s】Added new topic.', 'snow-monkey-bbpress-support' ),
-			get_bloginfo( 'name' )
+			__( '【%1$s】Added new topic - %2$s', 'snow-monkey-bbpress-support' ),
+			get_bloginfo( 'name' ),
+			get_the_title( $post_id )
 		);
 
 		$this->_mail( $subject, $body );
