@@ -4499,6 +4499,7 @@ Abstract pulse spinner component
       z-index: 1; }
 
 .favorite-toggle {
+  float: right;
   display: inline-block;
   cursor: pointer;
   line-height: 1;
@@ -4524,6 +4525,13 @@ Abstract pulse spinner component
     margin-right: 0.46739rem;
     margin-top: -3px;
     padding: 2px 6px; }
+
+[id="favorite-toggle"]:before, [id="favorite-toggle"]:after {
+  content: " ";
+  display: table; }
+
+[id="favorite-toggle"]:after {
+  clear: both; }
 
 .subscription-toggle {
   float: right;
