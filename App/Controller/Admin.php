@@ -17,6 +17,8 @@ class Admin {
 	 * General users do not log in to the management screen and redirect.
 	 * But the profile page is permitted.
 	 *
+	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 *
 	 * @return [void]
 	 */
 	public function _redirect() {

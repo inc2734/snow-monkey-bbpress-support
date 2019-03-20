@@ -29,7 +29,7 @@ composer install --no-dev
 yarn run gulp build
 rsync -a --exclude="release" --exclude=".*" ./ release/
 cd release
-rm -rf .gitignore .editorconfig .travis.yml .plugins .themes .travis node_modules tests package.json gulpfile.js yarn.lock composer.json composer.lock phpcs.ruleset.xml phpunit.xml.dist bin
+rm -rf .gitignore .editorconfig .travis.yml .plugins .themes .travis node_modules tests package.json gulpfile.js yarn.lock composer.json composer.lock .phpcs.xml.dist phpmd.ruleset.xml phpunit.xml.dist bin
 ls -la
 
 git add -A

@@ -16,6 +16,8 @@ class DocumentTitle {
 	/**
 	 * Update document title in bbPress
 	 *
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 *
 	 * @param  [string] $title
 	 * @return [string]
 	 */
