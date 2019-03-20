@@ -35,15 +35,15 @@ class Sidebar {
 	 * Update is_active_sidebar() in bbPress
 	 *
 	 * @param  [boolean]  $is_active
-	 * @param  [string]   $id
+	 * @param  [string]   $sidebar_id
 	 * @return [boolean]
 	 */
-	public function _is_active_sidebar( $is_active, $id ) {
+	public function _is_active_sidebar( $is_active, $sidebar_id ) {
 		if ( ! is_bbpress() ) {
 			return $is_active;
 		}
 
-		if ( ! is_registered_sidebar( $id ) ) {
+		if ( ! is_registered_sidebar( $sidebar_id ) ) {
 			return false;
 		}
 

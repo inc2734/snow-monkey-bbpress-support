@@ -7,7 +7,14 @@
 
 namespace Inc2734\WP_GitHub_Plugin_Updater;
 
-class GitHub_Plugin_Updater {
+class Bootstrap {
+
+	/**
+	 * The plugin name
+	 *
+	 * @var string
+	 */
+	protected $plugin_name;
 
 	/**
 	 * GitHub user name
@@ -49,9 +56,11 @@ class GitHub_Plugin_Updater {
 		$this->repository  = $repository;
 		$this->fields      = $fields;
 
+		$upgrader = new App\Model\Upgrader( $plugin_name );
+
 		add_filter( 'pre_set_site_transient_update_plugins', [ $this, '_pre_set_site_transient_update_plugins' ] );
-		add_filter( 'upgrader_pre_install', [ $this, '_upgrader_pre_install' ], 10, 2 );
-		add_filter( 'upgrader_source_selection', [ $this, '_upgrader_source_selection' ], 10, 4 );
+		add_filter( 'upgrader_pre_install', [ $upgrader, 'pre_install' ], 10, 2 );
+		add_filter( 'upgrader_source_selection', [ $upgrader, 'source_selection' ], 10, 4 );
 		add_filter( 'plugins_api', [ $this, '_plugins_api' ], 10, 3 );
 	}
 
@@ -69,18 +78,15 @@ class GitHub_Plugin_Updater {
 		$current = get_plugin_data( WP_PLUGIN_DIR . '/' . $this->plugin_name );
 
 		if ( is_null( $this->api_data ) ) {
-			$transient_name = sprintf( 'wp_github_plugin_updater_%1$s', $this->plugin_name );
-			if ( false === get_transient( $transient_name ) ) {
-				$api_data = $this->_get_github_api_data();
-				set_transient( $transient_name, $api_data, 60 * 5 );
-				$this->api_data = $api_data;
-			} else {
-				$this->api_data = get_transient( $transient_name );
-			}
+			$this->api_data = $this->_get_transient_api_data();
 		}
 
 		if ( is_wp_error( $this->api_data ) ) {
 			$this->_set_notice_error_about_github_api();
+			return $transient;
+		}
+
+		if ( ! isset( $this->api_data->tag_name ) ) {
 			return $transient;
 		}
 
@@ -89,6 +95,14 @@ class GitHub_Plugin_Updater {
 		}
 
 		$package = $this->_get_zip_url( $this->api_data );
+		$http_status_code = $this->_get_http_status_code( $package );
+		if ( ! $package || ! in_array( $http_status_code, [ 200, 302 ] ) ) {
+			$this->api_data = new \WP_Error(
+				$http_status_code,
+				'Inc2734_WP_GitHub_Plugin_Updater error. zip url not found. ' . $package
+			);
+			return $transient;
+		}
 
 		$transient->response[ $this->plugin_name ] = (object) [
 			'slug'        => $this->plugin_name,
@@ -99,60 +113,6 @@ class GitHub_Plugin_Updater {
 		];
 
 		return $transient;
-	}
-
-	/**
-	 * Correspondence when the plugin can not be updated
-	 *
-	 * @param bool $bool
-	 * @param array $hook_extra
-	 * @return bool|WP_Error.
-	 */
-	public function _upgrader_pre_install( $bool, $hook_extra ) {
-		if ( ! isset( $hook_extra['plugin'] ) || $this->plugin_name !== $hook_extra['plugin'] ) {
-			return $bool;
-		}
-
-		global $wp_filesystem;
-
-		$plugin_dir = trailingslashit( WP_PLUGIN_DIR ) . $this->plugin_name;
-		if ( ! $wp_filesystem->is_writable( $plugin_dir ) ) {
-			return new \WP_Error();
-		}
-
-		return $bool;
-	}
-
-	/**
-	 * Expand the plugin
-	 *
-	 * @param string $source
-	 * @param string $remote_source
-	 * @param WP_Upgrader $install
-	 * @param array $args['hook_extra']
-	 * @return $source|WP_Error.
-	 */
-	public function _upgrader_source_selection( $source, $remote_source, $install, $hook_extra ) {
-		if ( ! isset( $hook_extra['plugin'] ) || $this->plugin_name !== $hook_extra['plugin'] ) {
-			return $source;
-		}
-
-		global $wp_filesystem;
-
-		$source_plugin_dir = untrailingslashit( WP_CONTENT_DIR ) . '/upgrade';
-		if ( $wp_filesystem->is_writable( $source_plugin_dir ) && $wp_filesystem->is_writable( $source ) ) {
-			if ( 0 < strpos( $this->plugin_name, '/' ) ) {
-				$slug = trailingslashit( dirname( $this->plugin_name ) );
-			} else {
-				$slug = $this->plugin_name;
-			}
-			$newsource = trailingslashit( $source_plugin_dir ) . $slug;
-			if ( $wp_filesystem->move( $source, $newsource, true ) ) {
-				return $newsource;
-			}
-		}
-
-		return new \WP_Error();
 	}
 
 	/**
@@ -217,15 +177,18 @@ class GitHub_Plugin_Updater {
 			return;
 		}
 
-		add_action( 'admin_notices', function() {
-			?>
-			<div class="notice notice-error">
-				<p>
-					<?php echo esc_html( $this->api_data->get_error_message() ); ?>
-				</p>
-			</div>
-			<?php
-		} );
+		add_action(
+			'admin_notices',
+			function() {
+				?>
+				<div class="notice notice-error">
+					<p>
+						<?php echo esc_html( $this->api_data->get_error_message() ); ?>
+					</p>
+				</div>
+				<?php
+			}
+		);
 	}
 
 	/**
@@ -235,20 +198,55 @@ class GitHub_Plugin_Updater {
 	 * @return string
 	 */
 	protected function _get_zip_url( $remote ) {
+		$url = false;
+
 		if ( ! empty( $remote->assets ) && is_array( $remote->assets ) ) {
 			if ( ! empty( $remote->assets[0] ) && is_object( $remote->assets[0] ) ) {
 				if ( ! empty( $remote->assets[0]->browser_download_url ) ) {
-					return $remote->assets[0]->browser_download_url;
+					$url = $remote->assets[0]->browser_download_url;
 				}
 			}
 		}
 
-		return sprintf(
-			'https://github.com/%1$s/%2$s/archive/%3$s.zip',
+		$tag_name = isset( $remote->tag_name ) ? $remote->tag_name : null;
+
+		if ( ! $url && $tag_name ) {
+			$url = sprintf(
+				'https://github.com/%1$s/%2$s/archive/%3$s.zip',
+				$this->user_name,
+				$this->repository,
+				$tag_name
+			);
+		}
+
+		return apply_filters(
+			sprintf(
+				'inc2734_github_plugin_updater_zip_url_%1$s/%2$s',
+				$this->user_name,
+				$this->repository
+			),
+			$url,
 			$this->user_name,
 			$this->repository,
-			$remote->tag_name
+			$tag_name
 		);
+	}
+
+	/**
+	 * Return the data from the Transient API or GitHub API.
+	 *
+	 * @return object|WP_Error
+	 */
+	protected function _get_transient_api_data() {
+		$transient_name = sprintf( 'wp_github_plugin_updater_%1$s', $this->plugin_name );
+		if ( false === get_transient( $transient_name ) ) {
+			$api_data = $this->_get_github_api_data();
+			set_transient( $transient_name, $api_data, 60 * 5 );
+		} else {
+			$api_data = get_transient( $transient_name );
+		}
+
+		return $api_data;
 	}
 
 	/**
@@ -281,17 +279,32 @@ class GitHub_Plugin_Updater {
 	 * @return json|WP_Error
 	 */
 	protected function _request_github_api() {
+		global $wp_version;
+
 		$url = sprintf(
 			'https://api.github.com/repos/%1$s/%2$s/releases/latest',
 			$this->user_name,
 			$this->repository
 		);
 
-		return wp_remote_get( $url, [
-			'headers' => [
-				'Accept-Encoding' => '',
-			],
-		] );
+		return wp_remote_get(
+			apply_filters(
+				sprintf(
+					'inc2734_github_plugin_updater_request_url_%1$s/%2$s',
+					$this->user_name,
+					$this->repository
+				),
+				$url,
+				$this->user_name,
+				$this->repository
+			),
+			[
+				'user-agent' => 'WordPress/' . $wp_version,
+				'headers'    => [
+					'Accept-Encoding' => '',
+				],
+			]
+		);
 	}
 
 	/**
@@ -318,5 +331,27 @@ class GitHub_Plugin_Updater {
 			$this->_sanitize_version( $remote_version ),
 			'<'
 		);
+	}
+
+	/**
+	 * Return http status code from $url
+	 *
+	 * @param string $url
+	 * @return int
+	 */
+	protected function _get_http_status_code( $url ) {
+		global $wp_version;
+
+		$response = wp_remote_head(
+			$url,
+			[
+				'user-agent' => 'WordPress/' . $wp_version,
+				'headers'    => [
+					'Accept-Encoding' => '',
+				],
+			]
+		);
+
+		return wp_remote_retrieve_response_code( $response );
 	}
 }

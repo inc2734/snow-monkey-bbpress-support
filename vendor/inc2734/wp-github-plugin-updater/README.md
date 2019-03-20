@@ -13,5 +13,76 @@ $ composer require inc2734/wp-github-plugin-updater
 ```
 <?php
 // When Using composer auto loader
-$updater = new Inc2734\WP_GitHub_Plugin_Updater\GitHub_Plugin_Updater( plugin_basename( __FILE__ ), 'user-name', 'repository' );
+$updater = new Inc2734\WP_GitHub_Plugin_Updater\Bootstrap( plugin_basename( __FILE__ ), 'user-name', 'repository' );
+```
+
+## Filter hooks
+### inc2734_github_plugin_updater_zip_url_<$user_name>/<$repository>
+
+Customize downloaded api url.
+
+```
+add_filter(
+  'inc2734_github_plugin_updater_zip_url_inc2734/snow-monkey-blocks',
+  function( $url, $user_name, $repository, $tag_name ) {
+    return $url;
+  },
+  10,
+  4
+);
+```
+
+### inc2734_github_plugin_updater_request_url_<$user_name>/<$repository>
+
+Customize requested api url.
+
+```
+add_filter(
+  'inc2734_github_plugin_updater_request_url_inc2734/snow-monkey-blocks',
+  function( $url, $user_name, $repository ) {
+    return $url;
+  },
+  10,
+  3
+);
+```
+
+### inc2734_github_plugin_updater_zip_url
+
+**Obsolete from v2.0.0**
+
+Customize downloaded api url.
+
+```
+add_filter(
+  'inc2734_github_plugin_updater_zip_url',
+  function( $url, $user_name, $repository, $tag_name ) {
+    if ( 'inc2734' === $user_name && 'snow-monkey-blocks' === $repository ) {
+      return 'https://example.com/my-custom-updater-zip-url';
+    }
+    return $url;
+  },
+  10,
+  4
+);
+```
+
+### inc2734_github_plugin_updater_request_url
+
+**Obsolete from v2.0.0**
+
+Customize requested api url.
+
+```
+add_filter(
+  'inc2734_github_plugin_updater_request_url',
+  function( $url, $user_name, $repository ) {
+    if ( 'inc2734' === $user_name && 'snow-monkey-blocks' === $repository ) {
+      return 'https://example.com/my-custom-updater-request-url';
+    }
+    return $url;
+  },
+  10,
+  3
+);
 ```

@@ -27,7 +27,7 @@ class Topic {
 			return;
 		}
 
-		$r = bbp_parse_args(
+		$args = bbp_parse_args(
 			[],
 			[
 				'close_text' => __( 'Close this topic', 'snow-monkey-bbpress-support' ),
@@ -36,7 +36,7 @@ class Topic {
 			'get_topic_close_link'
 		);
 
-		$display = bbp_is_topic_open( $topic->ID ) ? $r['close_text'] : $r['open_text'];
+		$display = bbp_is_topic_open( $topic->ID ) ? $args['close_text'] : $args['open_text'];
 		$uri = add_query_arg(
 			[
 				'action'   => 'bbp_toggle_topic_close',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.4.8
+ * Version: 0.4.9
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /languages/
  *
@@ -12,6 +12,9 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 class Bootstrap {
 
 	public function __construct() {
@@ -58,7 +61,7 @@ class Bootstrap {
 	 * @return [void]
 	 */
 	public function _activate_autoupdate() {
-		new \Inc2734\WP_GitHub_Plugin_Updater\GitHub_Plugin_Updater( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
+		new \Inc2734\WP_GitHub_Plugin_Updater\Bootstrap( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
 	}
 }
 
