@@ -136,7 +136,7 @@ gulp.task('zip', function(){
         '!composer.json',
         '!composer.lock',
         '!.phpcs.xml.dist',
-        '!phpmd.ruleset.xml'
+        '!phpmd.ruleset.xml',
         '!phpunit.xml.dist'
       ],
       {base: './'}
