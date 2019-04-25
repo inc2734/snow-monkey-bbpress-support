@@ -80,7 +80,15 @@ class Breadcrumbs {
 	protected function _search( $breadcrumbs ) {
 		$breadcrumbs[] = [
 			'title' => bbp_get_forum_archive_title(),
-			'link'  => '',
+			'link'  => bbp_get_forums_url(),
+		];
+
+		$breadcrumbs[] = [
+			'title' => sprintf(
+				__( 'Search results of "%1$s"', 'snow-monkey-bbpress-support' ),
+				bbp_get_search_terms()
+			),
+			'link' => '',
 		];
 
 		return $breadcrumbs;
