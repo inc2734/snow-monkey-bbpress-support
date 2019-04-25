@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2018-03-01 10:25+0900\n"
-"PO-Revision-Date: 2018-03-01 10:28+0900\n"
+"POT-Creation-Date: 2019-04-25 12:45+0900\n"
+"PO-Revision-Date: 2019-04-25 12:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -21,19 +21,24 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: App/AdminBar.php:46
+#: App/AdminBar.php:55
 msgid "Logout"
 msgstr "ログアウト"
 
-#: App/AdminBar.php:52
+#: App/AdminBar.php:63
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Controller/Topic.php:31
+#: App/Breadcrumbs.php:88
+#, php-format
+msgid "Search results of \"%1$s\""
+msgstr "「%1$s」の検索結果"
+
+#: App/Controller/Topic.php:33
 msgid "Close this topic"
 msgstr "トピックを閉じる"
 
-#: App/Controller/Topic.php:32
+#: App/Controller/Topic.php:34
 msgid "Open this topic"
 msgstr "トピックを開く"
 
@@ -42,31 +47,36 @@ msgstr "トピックを開く"
 msgid "Title: %1$s"
 msgstr "タイトル: %1$s"
 
-#: App/Notice.php:46
+#: App/Notice.php:41
 #, php-format
-msgid "【%1$s】Added new topic."
-msgstr "【%1$s】新しいトピックが追加されました。"
+msgid "Owner: %1$s"
+msgstr "投稿者：%1$s"
 
-#: App/Notice.php:76
+#: App/Notice.php:48
+#, php-format
+msgid "【%1$s】Added new topic - %2$s"
+msgstr "【%1$s】新しいトピック - %2$s"
+
+#: App/Notice.php:79
 #, php-format
 msgid "Name: %1$s"
 msgstr "お名前: %1$s"
 
-#: App/Notice.php:78
+#: App/Notice.php:81
 #, php-format
 msgid "E-mail: %1$s"
 msgstr "E-mail: %1$s"
 
-#: App/Notice.php:83
+#: App/Notice.php:86
 #, php-format
 msgid "【%1$s】Added new user using %2$s."
 msgstr "【%1$s】新しいユーザーが%2$s経由で追加されました。"
 
-#: App/Sidebar.php:57
+#: App/Sidebar.php:94
 msgid "bbPress sidebar"
 msgstr "bbPress サイドバー"
 
-#: App/Sidebar.php:58
+#: App/Sidebar.php:95
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
