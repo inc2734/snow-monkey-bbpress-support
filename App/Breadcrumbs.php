@@ -10,7 +10,17 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 class Breadcrumbs {
 
 	public function __construct() {
+		add_filter( 'bbp_get_breadcrumb', [ $this, '_remove_bbpress_breadcrumbs' ] );
 		add_filter( 'snow_monkey_breadcrumbs', [ $this, '_snow_monkey_breadcrumbs' ] );
+	}
+
+	/**
+	 * Remove breadcrumbs of bbpress
+	 *
+	 * @param string $trail
+	 * @return string
+	 */
+	public function _remove_bbpress_breadcrumbs( $trail ) {
 	}
 
 	/**
