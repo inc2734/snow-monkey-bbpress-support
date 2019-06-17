@@ -31,7 +31,7 @@ class Assets {
 			'snow-monkey-bbpress-support',
 			plugin_dir_url( __FILE__ ) . '../assets/js/app.min.js',
 			[ 'jquery' ],
-			false,
+			filemtime( plugin_dir_path( __FILE__ ) . '../assets/js/app.min.js' ),
 			true
 		);
 	}

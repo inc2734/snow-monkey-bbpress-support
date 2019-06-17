@@ -95,6 +95,7 @@ class Breadcrumbs {
 
 		$breadcrumbs[] = [
 			'title' => sprintf(
+				/* translators: 1: Search terms */
 				__( 'Search results of "%1$s"', 'snow-monkey-bbpress-support' ),
 				bbp_get_search_terms()
 			),

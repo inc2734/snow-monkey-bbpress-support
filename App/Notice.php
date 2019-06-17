@@ -36,15 +36,24 @@ class Notice {
 			return;
 		}
 
-		$body  = sprintf( __( 'Title: %1$s', 'snow-monkey-bbpress-support' ), get_the_title( $post_id ) );
+		$body  = sprintf(
+			/* translators: 1: Topic title */
+			__( 'Title: %1$s', 'snow-monkey-bbpress-support' ),
+			get_the_title( $post_id )
+		);
 		$body .= "\n";
-		$body .= sprintf( __( 'Owner: %1$s', 'snow-monkey-bbpress-support' ), get_the_author_meta( 'display_name', $post->post_author ) );
+		$body .= sprintf(
+			/* translators: 1: User name */
+			__( 'Owner: %1$s', 'snow-monkey-bbpress-support' ),
+			get_the_author_meta( 'display_name', $post->post_author )
+		);
 		$body .= "\n\n";
 		$body .= strip_tags( $post->post_content );
 		$body .= "\n\n";
 		$body .= get_permalink( $post_id );
 
 		$subject = sprintf(
+			/* translators: 1: Site name, 2: Topic title */
 			__( '【%1$s】Added new topic - %2$s', 'snow-monkey-bbpress-support' ),
 			get_bloginfo( 'name' ),
 			get_the_title( $post_id )
@@ -76,13 +85,22 @@ class Notice {
 			$name = $display_name;
 		}
 
-		$body  = sprintf( __( 'Name: %1$s', 'snow-monkey-bbpress-support' ), $name );
+		$body  = sprintf(
+			/* translators: 1: User name */
+			__( 'Name: %1$s', 'snow-monkey-bbpress-support' ),
+			$name
+		);
 		$body .= "\n";
-		$body .= sprintf( __( 'E-mail: %1$s', 'snow-monkey-bbpress-support' ), get_the_author_meta( 'user_email', $user_id ) );
+		$body .= sprintf(
+			/* translators: 1: User email */
+			__( 'E-mail: %1$s', 'snow-monkey-bbpress-support' ),
+			get_the_author_meta( 'user_email', $user_id )
+		);
 		$body .= "\n\n";
 		$body .= admin_url( 'users.php' );
 
 		$subject = sprintf(
+			/* translators: 1: Site name, 2: oAuth service name */
 			__( '【%1$s】Added new user using %2$s.', 'snow-monkey-bbpress-support' ),
 			get_bloginfo( 'name' ),
 			$service_name
