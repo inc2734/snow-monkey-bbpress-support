@@ -27,7 +27,8 @@ class Admin {
 		}
 
 		if ( is_admin() && ! current_user_can( 'moderate' ) && ! preg_match( '/profile\.php$/', $_SERVER['REQUEST_URI'] ) ) {
-			wp_redirect( home_url() );
+			$redirect_to = apply_filters( 'snow_monkey_bbpress_support_unauthorized_user_redirect_to', home_url() );
+			wp_redirect( $redirect_to );
 			exit;
 		}
 	}
