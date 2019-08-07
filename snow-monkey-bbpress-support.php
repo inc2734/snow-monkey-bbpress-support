@@ -12,6 +12,8 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport;
 
+use Inc2734\WP_GitHub_Plugin_Updater\Bootstrap as Updater;
+
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -61,7 +63,7 @@ class Bootstrap {
 	 * @return [void]
 	 */
 	public function _activate_autoupdate() {
-		new \Inc2734\WP_GitHub_Plugin_Updater\Bootstrap( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
+		new Updater( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
 	}
 }
 
