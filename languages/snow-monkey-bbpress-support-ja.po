@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2019-04-25 12:45+0900\n"
-"PO-Revision-Date: 2019-04-25 12:45+0900\n"
+"POT-Creation-Date: 2019-08-21 23:07+0900\n"
+"PO-Revision-Date: 2019-08-21 23:07+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -29,7 +29,7 @@ msgstr "ログアウト"
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Breadcrumbs.php:88
+#: App/Breadcrumbs.php:99
 #, php-format
 msgid "Search results of \"%1$s\""
 msgstr "「%1$s」の検索結果"
@@ -42,32 +42,32 @@ msgstr "トピックを閉じる"
 msgid "Open this topic"
 msgstr "トピックを開く"
 
-#: App/Notice.php:39
+#: App/Notice.php:41
 #, php-format
 msgid "Title: %1$s"
 msgstr "タイトル: %1$s"
 
-#: App/Notice.php:41
+#: App/Notice.php:47
 #, php-format
 msgid "Owner: %1$s"
 msgstr "投稿者：%1$s"
 
-#: App/Notice.php:48
+#: App/Notice.php:57
 #, php-format
 msgid "【%1$s】Added new topic - %2$s"
 msgstr "【%1$s】新しいトピック - %2$s"
 
-#: App/Notice.php:79
+#: App/Notice.php:90
 #, php-format
 msgid "Name: %1$s"
 msgstr "お名前: %1$s"
 
-#: App/Notice.php:81
+#: App/Notice.php:96
 #, php-format
 msgid "E-mail: %1$s"
 msgstr "E-mail: %1$s"
 
-#: App/Notice.php:86
+#: App/Notice.php:104
 #, php-format
 msgid "【%1$s】Added new user using %2$s."
 msgstr "【%1$s】新しいユーザーが%2$s経由で追加されました。"
@@ -79,6 +79,14 @@ msgstr "bbPress サイドバー"
 #: App/Sidebar.php:95
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
+
+#: snow-monkey-bbpress-support.php:80
+msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
+msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
+
+#: snow-monkey-bbpress-support.php:95
+msgid "[Snow Monkey bbPress Support] Needs the bbPress."
+msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
 #. Plugin Name of the plugin/theme
 msgid "Snow Monkey bbPress Support"
