@@ -26,12 +26,16 @@ class Bootstrap {
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-bbpress-support', false, basename( __DIR__ ) . '/languages' );
 
-		if ( ! class_exists( 'bbPress' ) ) {
+		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+
+		$theme = wp_get_theme( get_template() );
+		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+			add_action( 'admin_notices', [ $this, '_admin_notice_no_snow_monkey' ] );
 			return;
 		}
 
-		$theme = wp_get_theme();
-		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
+		if ( ! class_exists( 'bbPress' ) ) {
+			add_action( 'admin_notices', [ $this, '_admin_notice_no_bbpress' ] );
 			return;
 		}
 
@@ -53,8 +57,6 @@ class Bootstrap {
 		new App\Controller\Admin();
 		new App\Controller\Front();
 		new App\Controller\Topic();
-
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
 	}
 
 	/**
@@ -64,6 +66,36 @@ class Bootstrap {
 	 */
 	public function _activate_autoupdate() {
 		new Updater( plugin_basename( __FILE__ ), 'inc2734', 'snow-monkey-bbpress-support' );
+	}
+
+	/**
+	 * Admin notice for no Snow Monkey
+	 *
+	 * @return void
+	 */
+	public function _admin_notice_no_snow_monkey() {
+		?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php esc_html_e( '[Snow Monkey bbPress Support] Needs the Snow Monkey.', 'snow-monkey-bbpress-support' ); ?>
+			</p>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Admin notice for no bbPress
+	 *
+	 * @return void
+	 */
+	public function _admin_notice_no_bbpress() {
+		?>
+		<div class="notice notice-warning is-dismissible">
+			<p>
+				<?php esc_html_e( '[Snow Monkey bbPress Support] Needs the bbPress.', 'snow-monkey-bbpress-support' ); ?>
+			</p>
+		</div>
+		<?php
 	}
 }
 
