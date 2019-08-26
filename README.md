@@ -1,6 +1,6 @@
 # Snow Monkey bbPress Support
 
-Premium WordPress plugin by Monkey Wrench
+This plugin makes Snow Monkey beautifully display bbPress and adds some features.
 
 ## Features
 

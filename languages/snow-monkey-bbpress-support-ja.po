@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2019-08-21 23:07+0900\n"
-"PO-Revision-Date: 2019-08-21 23:07+0900\n"
+"POT-Creation-Date: 2019-08-26 15:08+0900\n"
+"PO-Revision-Date: 2019-08-26 15:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -20,6 +20,8 @@ msgstr ""
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: .themes\n"
 
 #: App/AdminBar.php:55
 msgid "Logout"
@@ -80,14 +82,20 @@ msgstr "bbPress サイドバー"
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
-#: snow-monkey-bbpress-support.php:80
+#: snow-monkey-bbpress-support.php:81
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:95
+#: snow-monkey-bbpress-support.php:96
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
 #. Plugin Name of the plugin/theme
 msgid "Snow Monkey bbPress Support"
 msgstr "Snow Monkey bbPress Support"
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin makes Snow Monkey beautifully display bbPress and adds some "
+"features."
+msgstr "Snow MonkeyでbbPress を美しく表示し、いくつかの機能を追加します。"
