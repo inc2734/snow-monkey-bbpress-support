@@ -43,5 +43,6 @@
 	</rule>
 	<rule ref="WordPress-Extra">
 		<exclude name="WordPress.Files.FileName" />
+    <exclude name="Generic.Arrays.DisallowShortArraySyntax.Found" />
 	</rule>
 </ruleset>

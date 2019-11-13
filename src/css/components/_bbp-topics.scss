@@ -16,6 +16,14 @@
     @include _media-min(md) {
       @include _row__col--width(50%);
     }
+
+    > .bbp-row-actions {
+      display: none;
+    }
+  }
+
+  .bbp-author-avatar {
+    margin-right: 3px;
   }
 
   .bbp-topic-voice-count,

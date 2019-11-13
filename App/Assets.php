@@ -29,9 +29,9 @@ class Assets {
 	public function _wp_enqueue_scripts() {
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
-			plugin_dir_url( __FILE__ ) . '../assets/js/app.min.js',
+			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.min.js',
 			[ 'jquery' ],
-			filemtime( plugin_dir_path( __FILE__ ) . '../assets/js/app.min.js' ),
+			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.min.js' ),
 			true
 		);
 	}

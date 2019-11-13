@@ -15,6 +15,9 @@ namespace Snow_Monkey\Plugin\bbPressSupport;
 
 use Inc2734\WP_GitHub_Plugin_Updater\Bootstrap as Updater;
 
+define( 'SNOW_MONKEY_BBPRESS_SUPPORT_URL', plugin_dir_url( __FILE__ ) );
+define( 'SNOW_MONKEY_BBPRESS_SUPPORT_PATH', plugin_dir_path( __FILE__ ) );
+
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */

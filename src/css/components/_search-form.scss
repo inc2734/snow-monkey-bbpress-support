@@ -1,7 +1,8 @@
 .bbp-search-form {
-  display: none;
 }
 
+#bbp-reply-search-form,
+#bbp-topic-search-form,
 #bbp-search-form {
   > div {
     @include snow-monkey-bbpress-support-input-group();

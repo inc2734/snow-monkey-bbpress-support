@@ -42,4 +42,8 @@
       color: darken(#ffebe8, 70%);
     }
   }
+
+  ul {
+    @include _list-unstyled();
+  }
 }

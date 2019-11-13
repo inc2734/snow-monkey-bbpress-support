@@ -13,6 +13,19 @@
       @include _font-size-line-height($_base-font-size-px - 2);
     }
 
+    .bbp-author-link {
+      color: _lighter($_color-text);
+      text-decoration: none;
+
+      @include _hover(lg) {
+        text-decoration: underline;
+      }
+    }
+
+    .bbp-author-avatar {
+      margin-right: 3px;
+    }
+
     .bbp-author-name {
       color: _lighter($_color-text);
     }

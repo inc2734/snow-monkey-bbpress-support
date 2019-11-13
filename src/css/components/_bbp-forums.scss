@@ -1,3 +1,11 @@
+[id="bbpress-forums"] {
+  > [id="subscription-toggle"],
+  > [id="favorite-toggle"] {
+    margin: 0;
+    display: inline-block;
+  }
+}
+
 .bbp-forums {
   .bbp-forum-info,
   .bbp-forum-topic-count,

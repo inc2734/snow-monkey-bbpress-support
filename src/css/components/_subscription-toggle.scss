@@ -1,10 +1,10 @@
 .subscription-toggle {
-  float: right; // in single forum
+  // float: right; // in single forum
   @include snow-monkey-bbpress-support-btn();
 
   // Profile subscription topics
   .bbp-topic-title & {
-    float: none;
+    // float: none;
     @include _margin-right(.25);
     margin-top: -3px;
     padding: 2px 6px;

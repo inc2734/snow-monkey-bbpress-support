@@ -37,16 +37,21 @@
 
     @include _media-max(sm) {
       @include _margin-bottom(1);
+    }
 
-      .bbp-author-avatar {
-        display: block;
-        float: left;
-        margin-right: 1em;
-      }
+    .bbp-author-avatar {
+      display: block;
+      float: left;
+      margin-right: 1em;
 
-      br {
-        display: none;
+      @include _media-min(md) {
+        float: none;
+        margin: 0 0 .25em;
       }
+    }
+
+    br {
+      display: none;
     }
   }
 

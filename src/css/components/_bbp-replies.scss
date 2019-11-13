@@ -15,6 +15,7 @@
       @include _row();
       align-items: center;
 
+      /*
       #subscription-toggle,
       #favorite-toggle {
         @include _row__col();
@@ -29,6 +30,7 @@
           margin-left: .25rem;
         }
       }
+      */
     }
   }
 }
