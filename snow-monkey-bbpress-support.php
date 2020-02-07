@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.6.0
+ * Version: 0.7.0
  * Description: This plugin makes Snow Monkey beautifully display bbPress and adds some features.
  * Text Domain: snow-monkey-bbpress-support
  * Domain Path: /languages/
