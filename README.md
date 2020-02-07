@@ -13,3 +13,4 @@ This plugin makes Snow Monkey beautifully display bbPress and adds some features
 - Remove widget areas ob Snow Monkey and advatisement (that setting at customizer).
 - If using facebook of Gianism, facebook user picture is used as avatar.
 - One-click update.
+- Add stars to reply. (Login user only)
