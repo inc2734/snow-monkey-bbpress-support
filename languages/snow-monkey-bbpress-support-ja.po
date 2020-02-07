@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2019-08-26 15:08+0900\n"
-"PO-Revision-Date: 2019-08-26 15:09+0900\n"
+"POT-Creation-Date: 2020-02-07 11:59+0900\n"
+"PO-Revision-Date: 2020-02-07 11:59+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -31,7 +31,7 @@ msgstr "ログアウト"
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Breadcrumbs.php:99
+#: App/Breadcrumbs.php:101
 #, php-format
 msgid "Search results of \"%1$s\""
 msgstr "「%1$s」の検索結果"
@@ -82,11 +82,15 @@ msgstr "bbPress サイドバー"
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
-#: snow-monkey-bbpress-support.php:81
+#: App/Stars.php:27
+msgid "Add stars"
+msgstr "スターを追加する"
+
+#: snow-monkey-bbpress-support.php:85
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:96
+#: snow-monkey-bbpress-support.php:100
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
