@@ -20,6 +20,7 @@ $_h4-margin-bottom: $_base-margin-bottom * .75 !default;
 @import 'layout/list';
 @import 'layout/form';
 
+@import 'components/bbp-author-link';
 @import 'components/bbp-breadcrumb';
 @import 'components/bbp-pagination';
 @import 'components/bbp-forums';
