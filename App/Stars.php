@@ -14,6 +14,7 @@ class Stars {
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 		add_action( 'wp_ajax_snow_monkey_bbpress_support_star', [ $this, '_update_stars' ] );
 		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_star', [ $this, '_update_stars' ] );
+		add_action( 'bbp_template_after_user_profile', [ $this, '_bbp_template_after_user_profile' ] );
 	}
 
 	public function _bbp_theme_after_reply_content() {
@@ -58,9 +59,15 @@ class Stars {
 		$current_user = wp_get_current_user();
 
 		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && $current_user->ID != $author_id ) {
-			$stars = get_post_meta( $reply_id, 'smbbpress-support-stars', true );
-			$stars = $stars ? $stars : 0;
-			update_post_meta( $reply_id, 'smbbpress-support-stars', $stars + 1 );
+			$stars     = get_post_meta( $reply_id, 'smbbpress-support-stars', true );
+			$stars     = $stars ? $stars : 0;
+			$new_stars = $stars + 1;
+			update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
+
+			$stars     = get_user_meta( $author_id, 'smbbpress-support-stars', true );
+			$stars     = $stars ? $stars : 0;
+			$new_stars = $stars + 1;
+			update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
 		}
 
 		$new_stars = get_post_meta( $reply_id, 'smbbpress-support-stars', true );
@@ -73,5 +80,23 @@ class Stars {
 			]
 		);
 		die();
+	}
+
+	public function _bbp_template_after_user_profile() {
+		?>
+		<div class="bbp-user-section">
+			<span></span>
+			<hr>
+			<h3><?php esc_html_e( 'Additional Information', 'snow-monkey-bbpress-support' ); ?></h3>
+			<p>
+				<?php
+				$user  = bbpress()->displayed_user;
+				$stars = get_user_meta( $user->ID, 'smbbpress-support-stars', true );
+				$stars = $stars ? $stars : 0;
+				?>
+				<?php esc_html_e( 'Total stars', 'snow-monkey-bbpress-support' ); ?>: <?php echo esc_html( $stars ); ?>
+			</p>
+		</div>
+		<?php
 	}
 }

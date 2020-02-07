@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2020-02-07 11:59+0900\n"
-"PO-Revision-Date: 2020-02-07 11:59+0900\n"
+"POT-Creation-Date: 2020-02-07 12:21+0900\n"
+"PO-Revision-Date: 2020-02-07 12:21+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -82,9 +82,17 @@ msgstr "bbPress サイドバー"
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
-#: App/Stars.php:27
+#: App/Stars.php:28
 msgid "Add stars"
 msgstr "スターを追加する"
+
+#: App/Stars.php:90
+msgid "Additional Information"
+msgstr "追加情報"
+
+#: App/Stars.php:97
+msgid "Total stars"
+msgstr "総スター数"
 
 #: snow-monkey-bbpress-support.php:85
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
