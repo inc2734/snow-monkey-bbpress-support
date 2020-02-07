@@ -58,6 +58,8 @@ class Breadcrumbs {
 	 * @return [array]
 	 */
 	protected function _single_topic( $breadcrumbs ) {
+		$adding_items = [];
+
 		foreach ( $breadcrumbs as $key => $item ) {
 			if ( isset( $item['link'] ) && bbp_get_topics_url() === $item['link'] ) {
 				$adding_items[] = [
