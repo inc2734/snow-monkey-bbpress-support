@@ -57,6 +57,7 @@ class Bootstrap {
 		new App\SubscribeLink();
 		new App\Comments();
 		new App\Rest();
+		new App\Stars();
 
 		new App\Controller\Admin();
 		new App\Controller\Front();

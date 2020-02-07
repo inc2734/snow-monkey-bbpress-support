@@ -1,0 +1,22 @@
+.smbbpress-stars {
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: #f9bb2d;
+  line-height: 1;
+
+  &__stars {
+  }
+
+  &__count {
+  }
+}
+
+button.smbbpress-stars {
+  border: 1px solid _lighter($_color-gray);
+  background-color: _lightest($_color-gray);
+  border-radius: $_border-radius;
+  cursor: pointer;
+  @include _padding(.25);
+}
