@@ -5,9 +5,9 @@
  * @license GPL-2.0+
  */
 
-namespace Snow_Monkey\Plugin\bbPressSupport\App\Controller;
+namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
-class Topic {
+class TopicCloseLink {
 
 	public function __construct() {
 		add_action( 'bbp_template_before_replies_loop', [ $this, '_display_topic_close_link' ] );
