@@ -57,7 +57,10 @@ class Bootstrap {
 		new App\SubscribeLink();
 		new App\Comments();
 		new App\Rest();
-		new App\Stars();
+
+		if ( apply_filters( 'snow_monkey_bbpress_support_activate_replies_stars_feature', '__return_true' ) ) {
+			new App\Stars();
+		}
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
