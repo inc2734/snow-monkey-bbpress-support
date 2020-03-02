@@ -173,10 +173,21 @@ class Breadcrumbs {
 	 * @return [array]
 	 */
 	protected function _single_reply( $breadcrumbs ) {
+		array_splice( $breadcrumbs, -1, 1 );
+
 		$breadcrumbs[] = [
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
 		];
+
+		$ancestors = array_reverse( (array) get_post_ancestors( get_the_ID() ) );
+		foreach ( $ancestors as $post_id ) {
+			$breadcrumbs[] = [
+				'title' => bbp_get_forum_title( $post_id ),
+				'link'  => bbp_get_forum_permalink( $post_id ),
+			];
+			break;
+		}
 
 		$breadcrumbs[] = [
 			'title' => bbp_get_topic_title(),
