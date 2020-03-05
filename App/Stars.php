@@ -36,11 +36,10 @@ class Stars {
 		</span>
 		<?php
 		$replies_stars_html = ob_get_clean();
-		$replies_stars_html = apply_filters( 'snow_monkey_bbpress_support_replies_stars_html', $replies_stars_html );
 		?>
 		<div class="u-text-right">
 			<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>">
-				<?php echo $replies_stars_html; ?>
+				<?php echo apply_filters( 'snow_monkey_bbpress_support_replies_stars_html', $replies_stars_html ); ?>
 			</<?php echo esc_html( $button_tag ); ?>>
 		</div>
 		<?php
