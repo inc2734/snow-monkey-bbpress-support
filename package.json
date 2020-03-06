@@ -2,23 +2,23 @@
   "author": "inc2734",
   "license": "GPL-2.0+",
   "dependencies": {
-    "sass-basis": "^9.6.0"
+    "sass-basis": "^9.6.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "@wordpress/browserslist-config": "^2.6.0",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
-    "cpy-cli": "^3.0.0",
+    "cpy-cli": "^3.1.0",
     "cssnano": "^4.1.10",
     "node-sass": "^4.13.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^7.1.0",
-    "rimraf": "^3.0.1",
+    "rimraf": "^3.0.2",
     "run-sequence": "^2.2.1",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "clean:css": "rimraf assets/css && mkdir -p assets/css",

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2020-02-07 12:21+0900\n"
-"PO-Revision-Date: 2020-02-07 12:21+0900\n"
+"POT-Creation-Date: 2020-03-06 15:09+0900\n"
+"PO-Revision-Date: 2020-03-06 15:09+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -31,18 +31,18 @@ msgstr "ログアウト"
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Breadcrumbs.php:101
+#: App/Breadcrumbs.php:105
 #, php-format
 msgid "Search results of \"%1$s\""
 msgstr "「%1$s」の検索結果"
 
-#: App/Controller/Topic.php:33
-msgid "Close this topic"
-msgstr "トピックを閉じる"
+#: App/Breadcrumbs.php:222
+msgid "Topics with no replies"
+msgstr "返信がないトピック"
 
-#: App/Controller/Topic.php:34
-msgid "Open this topic"
-msgstr "トピックを開く"
+#: App/Breadcrumbs.php:242
+msgid "Popular Topics"
+msgstr "人気のトピック"
 
 #: App/Notice.php:41
 #, php-format
@@ -94,11 +94,19 @@ msgstr "追加情報"
 msgid "Total stars"
 msgstr "総スター数"
 
-#: snow-monkey-bbpress-support.php:85
+#: App/TopicCloseLink.php:33
+msgid "Close this topic"
+msgstr "トピックを閉じる"
+
+#: App/TopicCloseLink.php:34
+msgid "Open this topic"
+msgstr "トピックを開く"
+
+#: snow-monkey-bbpress-support.php:91
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:100
+#: snow-monkey-bbpress-support.php:106
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 

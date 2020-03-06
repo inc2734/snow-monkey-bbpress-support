@@ -46,6 +46,10 @@ class Breadcrumbs {
 			$breadcrumbs = $this->_topic_archive( $breadcrumbs );
 		} elseif ( bbp_is_single_reply() ) {
 			$breadcrumbs = $this->_single_reply( $breadcrumbs );
+		} elseif ( 'no-replies' === bbp_get_view_id() ) {
+			$breadcrumbs = $this->_no_replies( $breadcrumbs );
+		} elseif ( 'popular' === bbp_get_view_id() ) {
+			$breadcrumbs = $this->_popular( $breadcrumbs );
 		}
 
 		return $breadcrumbs;
@@ -197,6 +201,46 @@ class Breadcrumbs {
 		$breadcrumbs[] = [
 			'title' => bbp_get_reply_title(),
 			'link'  => '',
+		];
+
+		return $breadcrumbs;
+	}
+
+	/**
+	 * Update breadcrumbs for no-replies
+	 *
+	 * @param  [array] $breadcrumbs
+	 * @return [array]
+	 */
+	protected function _no_replies( $breadcrumbs ) {
+		$breadcrumbs[] = [
+			'title' => bbp_get_forum_archive_title(),
+			'link'  => bbp_get_forums_url(),
+		];
+
+		$breadcrumbs[] = [
+			'title' => __( 'Topics with no replies', 'snow-monkey-bbpress-support' ),
+			'link'  => bbp_get_view_url( 'no-replies' ),
+		];
+
+		return $breadcrumbs;
+	}
+
+	/**
+	 * Update breadcrumbs for popular
+	 *
+	 * @param  [array] $breadcrumbs
+	 * @return [array]
+	 */
+	protected function _popular( $breadcrumbs ) {
+		$breadcrumbs[] = [
+			'title' => bbp_get_forum_archive_title(),
+			'link'  => bbp_get_forums_url(),
+		];
+
+		$breadcrumbs[] = [
+			'title' => __( 'Popular Topics', 'snow-monkey-bbpress-support' ),
+			'link'  => bbp_get_view_url( 'popular' ),
 		];
 
 		return $breadcrumbs;
