@@ -22,11 +22,12 @@ class Assets {
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/css/bbpress.min.css' )
 		);
 
+		$asset = include( SNOW_MONKEY_BLOCKS_DIR_PATH . '/assets/js/app.asset.php' );
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
-			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.min.js',
-			[ 'jquery' ],
-			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.min.js' ),
+			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.js',
+			$asset['dependencies'],
+			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.js' ),
 			true
 		);
 	}
