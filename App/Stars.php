@@ -28,10 +28,7 @@ class Stars {
 		$stars        = get_post_meta( get_the_ID(), 'smbbpress-support-stars', true );
 		$stars        = $stars ? $stars : 0;
 
-		$icon = sprintf(
-			'<span class="fas fa-heart" aria-hidden="true" title="%1$s"></span>',
-			esc_attr__( 'Like', 'snow-monkey-bbpress-support' )
-		);
+		$icon = '&hearts;';
 		$icon = apply_filters( 'snow_monkey_bbpress_support_replies_stars_icon', $icon );
 		?>
 		<div class="u-text-right">
