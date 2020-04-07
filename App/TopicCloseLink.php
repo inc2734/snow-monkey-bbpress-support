@@ -27,6 +27,10 @@ class TopicCloseLink {
 			return;
 		}
 
+		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_topic_close_link', '__return_true', $topic->ID ) ) {
+			return;
+		}
+
 		$args = bbp_parse_args(
 			[],
 			[
