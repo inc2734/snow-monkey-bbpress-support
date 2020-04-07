@@ -21,25 +21,27 @@ class Stars {
 		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_replies_stars', '__return_true', get_the_ID() ) ) {
 			return;
 		}
+
 		$current_user = wp_get_current_user();
 		$author_id    = get_the_author_meta( 'ID' );
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && $current_user->ID != $author_id ? 'button' : 'span';
-		$stars = get_post_meta( get_the_ID(), 'smbbpress-support-stars', true );
-		$stars = $stars ? $stars : 0;
-		ob_start();
-		?>
-		<span class="smbbpress-stars__stars">
-			<span class="fas fa-star" aria-hidden="true" title="<?php esc_attr_e( 'Add stars', 'snow-monkey-bbpress-support' ); ?>"></span>
-		</span>
-		<span class="smbbpress-stars__count">
-			<?php echo esc_html( $stars ); ?>
-		</span>
-		<?php
-		$replies_stars_html = ob_get_clean();
+		$stars        = get_post_meta( get_the_ID(), 'smbbpress-support-stars', true );
+		$stars        = $stars ? $stars : 0;
+
+		$icon = sprintf(
+			'<span class="fas fa-heart" aria-hidden="true" title="%1$s"></span>',
+			esc_attr__( 'Like', 'snow-monkey-bbpress-support' )
+		);
+		$icon = apply_filters( 'snow_monkey_bbpress_support_replies_stars_icon', $icon );
 		?>
 		<div class="u-text-right">
 			<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>">
-				<?php echo apply_filters( 'snow_monkey_bbpress_support_replies_stars_html', $replies_stars_html ); ?>
+				<span class="smbbpress-stars__stars">
+					<?php echo esc_html_e( $icon ); ?>
+				</span>
+				<span class="smbbpress-stars__count">
+					<?php echo esc_html( $stars ); ?>
+				</span>
 			</<?php echo esc_html( $button_tag ); ?>>
 		</div>
 		<?php
@@ -102,9 +104,8 @@ class Stars {
 				$user  = bbpress()->displayed_user;
 				$stars = get_user_meta( $user->ID, 'smbbpress-support-stars', true );
 				$stars = $stars ? $stars : 0;
-				$total_stars_title = apply_filters( 'snow_monkey_bbpress_support_total_stars_title', __( 'Total stars', 'snow-monkey-bbpress-support' ) );
 				?>
-				<?php echo esc_html( $total_stars_title ); ?>: <?php echo esc_html( $stars ); ?>
+				<?php esc_html_e( 'Total likes', 'snow-monkey-bbpress-support' ); ?>: <?php echo esc_html( $stars ); ?>
 			</p>
 		</div>
 		<?php
