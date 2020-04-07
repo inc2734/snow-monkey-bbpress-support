@@ -37,7 +37,7 @@ class Stars {
 		<div class="u-text-right">
 			<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>">
 				<span class="smbbpress-stars__stars">
-					<?php echo esc_html_e( $icon ); ?>
+					<?php echo esc_html( $icon ); ?>
 				</span>
 				<span class="smbbpress-stars__count">
 					<?php echo esc_html( $stars ); ?>
