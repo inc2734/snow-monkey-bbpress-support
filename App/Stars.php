@@ -57,7 +57,7 @@ class Stars {
 	}
 
 	/**
-	 * @SuppressWarnings(PHPMD.ExitExpression)
+	 * @return void
 	 */
 	public function _update_stars() {
 		check_ajax_referer( 'SNOW_MONKEY_BBPRESS_SUPPORT', 'secure' );

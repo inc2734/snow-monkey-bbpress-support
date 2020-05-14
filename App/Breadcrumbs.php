@@ -26,8 +26,6 @@ class Breadcrumbs {
 	/**
 	 * Update breadcrumbs in bbPress
 	 *
-	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-	 *
 	 * @param  [array] $breadcrumbs
 	 * @return [array]
 	 */

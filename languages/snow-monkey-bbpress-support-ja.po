@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2020-04-07 13:08+0900\n"
-"PO-Revision-Date: 2020-04-07 13:08+0900\n"
+"POT-Creation-Date: 2020-05-14 14:34+0900\n"
+"PO-Revision-Date: 2020-05-14 14:34+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -32,16 +32,16 @@ msgstr "ログアウト"
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Breadcrumbs.php:105
+#: App/Breadcrumbs.php:103
 #, php-format
 msgid "Search results of \"%1$s\""
 msgstr "「%1$s」の検索結果"
 
-#: App/Breadcrumbs.php:222
+#: App/Breadcrumbs.php:220
 msgid "Topics with no replies"
 msgstr "返信がないトピック"
 
-#: App/Breadcrumbs.php:242
+#: App/Breadcrumbs.php:240
 msgid "Popular Topics"
 msgstr "人気のトピック"
 
@@ -83,15 +83,11 @@ msgstr "bbPress サイドバー"
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
-#: App/Stars.php:33
-msgid "Like"
-msgstr "いいね"
-
-#: App/Stars.php:101
+#: App/Stars.php:98
 msgid "Additional Information"
 msgstr "追加情報"
 
-#: App/Stars.php:108
+#: App/Stars.php:105
 msgid "Total likes"
 msgstr "総いいね数"
 
@@ -103,11 +99,32 @@ msgstr "トピックを閉じる"
 msgid "Open this topic"
 msgstr "トピックを開く"
 
-#: snow-monkey-bbpress-support.php:91
+#: customizer/design/section/bbpress-archive/controls/layout.php:13
+#: customizer/design/section/bbpress-single/controls/layout.php:13
+msgid "Default"
+msgstr "デフォルト"
+
+#: customizer/design/section/bbpress-archive/controls/layout.php:22
+msgid "bbPress archive page layout"
+msgstr "bbPress アーカイブページレイアウト"
+
+#: customizer/design/section/bbpress-archive/section.php:18
+msgid "bbPress archive page settings"
+msgstr "bbPress アーカイブページ設定"
+
+#: customizer/design/section/bbpress-single/controls/layout.php:22
+msgid "bbPress single page layout"
+msgstr "bbPress 個別ページレイアウト"
+
+#: customizer/design/section/bbpress-single/section.php:18
+msgid "bbPress single page settings"
+msgstr "bbPress 個別ページ設定"
+
+#: snow-monkey-bbpress-support.php:99
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:106
+#: snow-monkey-bbpress-support.php:114
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
@@ -120,6 +137,9 @@ msgid ""
 "This plugin makes Snow Monkey beautifully display bbPress and adds some "
 "features."
 msgstr "Snow MonkeyでbbPress を美しく表示し、いくつかの機能を追加します。"
+
+#~ msgid "Like"
+#~ msgstr "いいね"
 
 #~ msgid "Add stars"
 #~ msgstr "スターを追加する"

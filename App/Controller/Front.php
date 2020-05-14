@@ -7,11 +7,14 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport\App\Controller;
 
+use Snow_Monkey\Plugin\bbPressSupport\App\Helper;
+
 class Front {
 
 	public function __construct() {
 		add_action( 'login_form', [ $this, '_add_gianism_login' ] );
 		add_filter( 'snow_monkey_google_adsense', [ $this, '_snow_monkey_google_adsense' ] );
+		add_filter( 'snow_monkey_layout', [ $this, '_snow_monkey_layout' ] );
 	}
 
 	/**
@@ -37,5 +40,27 @@ class Front {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Set layout
+	 *
+	 * @param string $layout
+	 * @param string
+	 */
+	public function _snow_monkey_layout( $layout ) {
+		if ( Helper::is_bbpress_single() ) {
+			$bbpress_single_layout = get_theme_mod( 'snow-monkey-bbpress-support-single-layout' );
+			if ( $bbpress_single_layout ) {
+				return $bbpress_single_layout;
+			}
+		} elseif ( Helper::is_bbpress_archive() ) {
+			$bbpress_archive_page_layout = get_theme_mod( 'snow-monkey-bbpress-support-archive-page-layout' );
+			if ( $bbpress_archive_page_layout ) {
+				return $bbpress_archive_page_layout;
+			}
+		}
+
+		return $layout;
 	}
 }
