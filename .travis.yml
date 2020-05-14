@@ -36,6 +36,7 @@ script:
 - composer test
 before_deploy:
 - npm run build
+- npm rebuild node-sass
 - npm run zip
 - ls -la snow-monkey-bbpress-support.zip
 - export RELEASE_FILE=$(ls snow-monkey-bbpress-support.zip)
