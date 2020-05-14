@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.8.1
+ * Version: 0.9.0
  * Tested up to: 5.4
  * Requires at least: 5.4
  * Requires PHP: 5.6
