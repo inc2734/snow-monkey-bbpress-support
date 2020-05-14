@@ -26,7 +26,7 @@ cache:
   - vendor
   - "$HOME/.composer/cache"
 install:
-- nvm install 8
+- nvm install 12
 - npm install
 - composer install
 before_script:
@@ -35,8 +35,8 @@ before_script:
 script:
 - composer test
 before_deploy:
-- npm run build
 - npm rebuild node-sass
+- npm run build
 - npm run zip
 - ls -la snow-monkey-bbpress-support.zip
 - export RELEASE_FILE=$(ls snow-monkey-bbpress-support.zip)
