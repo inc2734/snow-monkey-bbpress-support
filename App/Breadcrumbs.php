@@ -136,15 +136,14 @@ class Breadcrumbs {
 	 * @return [array]
 	 */
 	protected function _topic_tag( $breadcrumbs ) {
-		$breadcrumbs[] = [
-			'title' => bbp_get_forum_archive_title(),
-			'link'  => bbp_get_forums_url(),
+		$adding_items = [
+			[
+				'title' => bbp_get_forum_archive_title(),
+				'link'  => bbp_get_forums_url(),
+			],
 		];
 
-		$breadcrumbs[] = [
-			'title' => bbp_get_topic_tag_name(),
-			'link'  => '',
-		];
+		array_splice( $breadcrumbs, -1, 0, $adding_items );
 
 		return $breadcrumbs;
 	}
