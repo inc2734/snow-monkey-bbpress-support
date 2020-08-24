@@ -43,6 +43,7 @@ class Bootstrap {
 			return;
 		}
 
+		new App\Author();
 		new App\Avatar();
 		new App\Assets();
 		new App\Sidebar();
