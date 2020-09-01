@@ -4,7 +4,8 @@
   }
 
   li {
-    color: _lighter($_color-text);
+    color: _lighter($_color-text); // For IE11
+    color: _var-lighter-color-text();
     @include _font-size-line-height($_base-font-size-px - 4);
 
     .bbp-reply-topic-title {
@@ -14,7 +15,8 @@
     }
 
     .bbp-author-name {
-      color: _lighter($_color-text);
+      color: _lighter($_color-text); // For IE11
+      color: _var-lighter-color-text();
     }
 
     > div {

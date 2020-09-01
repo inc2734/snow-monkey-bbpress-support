@@ -61,7 +61,8 @@
       overflow: hidden;
 
       > a {
-        color: $_color-text;
+        color: $_color-text; // For IE11
+        color: _var-color-text();
         text-decoration: underline;
       }
     }

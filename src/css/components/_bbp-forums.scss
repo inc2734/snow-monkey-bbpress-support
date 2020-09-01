@@ -50,7 +50,9 @@
       @include _padding-bottom(.25);
 
       &:not(:first-child) {
-        border-top: 1px solid _lighter($_color-gray);
+        border-top: 1px solid transparent;
+        border-top-color: _lighter($_color-gray); // For IE11
+        border-top-color: _var-lighter-color-gray();
       }
 
       .bbp-forum-title {
@@ -80,7 +82,8 @@
 
       .bbp-forum-freshness {
         a {
-          color: $_color-text;
+          color: $_color-text; // For IE11
+          color: _var-color-text();
           text-decoration: none;
 
           @include _hover() {

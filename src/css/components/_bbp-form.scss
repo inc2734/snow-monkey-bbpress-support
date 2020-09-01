@@ -4,7 +4,9 @@
   border: none;
   min-width: 0;
   max-width: 100%;
-  border: 1px solid _lighter($_color-gray);
+  border: 1px solid transparent;
+  border-color: _lighter($_color-gray); // For IE11
+  border-color: _var-lighter-color-gray();
   @include _padding(.5);
 
   @include _media-min(md) {
