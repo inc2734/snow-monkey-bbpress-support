@@ -32,6 +32,8 @@ class Breadcrumbs {
 	public function _snow_monkey_breadcrumbs( $breadcrumbs ) {
 		if ( bbp_is_single_topic() ) {
 			$breadcrumbs = $this->_single_topic( $breadcrumbs );
+		} elseif ( bbp_is_topic_edit() ) {
+			$breadcrumbs = $this->_topic_edit( $breadcrumbs );
 		} elseif ( bbp_is_search() ) {
 			$breadcrumbs = $this->_search( $breadcrumbs );
 		} elseif ( bbp_is_single_user() ) {
@@ -44,6 +46,8 @@ class Breadcrumbs {
 			$breadcrumbs = $this->_topic_archive( $breadcrumbs );
 		} elseif ( bbp_is_single_reply() ) {
 			$breadcrumbs = $this->_single_reply( $breadcrumbs );
+		} elseif ( bbp_is_reply_edit() ) {
+			$breadcrumbs = $this->_reply_edit( $breadcrumbs );
 		} elseif ( 'no-replies' === bbp_get_view_id() ) {
 			$breadcrumbs = $this->_no_replies( $breadcrumbs );
 		} elseif ( 'popular' === bbp_get_view_id() ) {
@@ -81,6 +85,22 @@ class Breadcrumbs {
 				array_splice( $breadcrumbs, $key, 0, $adding_items );
 			}
 		}
+
+		return $breadcrumbs;
+	}
+
+	/**
+	 * Update breadcrumbs for topic edit
+	 *
+	 * @param  [array] $breadcrumbs
+	 * @return [array]
+	 */
+	protected function _topic_edit( $breadcrumbs ) {
+		$breadcrumbs = $this->_single_topic( $breadcrumbs );
+		$breadcrumbs[] = [
+			'title' => __( 'Edit this topic', 'snow-monkey-bbpress-support' ),
+			'link'  => bbp_get_topic_edit_url( get_the_ID() ),
+		];
 
 		return $breadcrumbs;
 	}
@@ -200,6 +220,17 @@ class Breadcrumbs {
 			'link'  => '',
 		];
 
+		return $breadcrumbs;
+	}
+
+	/**
+	 * Update breadcrumbs for reply edit
+	 *
+	 * @param  [array] $breadcrumbs
+	 * @return [array]
+	 */
+	protected function _reply_edit( $breadcrumbs ) {
+		$breadcrumbs = $this->_single_reply( $breadcrumbs );
 		return $breadcrumbs;
 	}
 

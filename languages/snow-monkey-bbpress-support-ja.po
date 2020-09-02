@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2020-05-14 14:34+0900\n"
-"PO-Revision-Date: 2020-05-14 14:34+0900\n"
+"POT-Creation-Date: 2020-09-02 09:07+0900\n"
+"PO-Revision-Date: 2020-09-02 09:07+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -32,16 +32,20 @@ msgstr "ログアウト"
 msgid "Account"
 msgstr "アカウント"
 
-#: App/Breadcrumbs.php:103
+#: App/Breadcrumbs.php:101
+msgid "Edit this topic"
+msgstr "トピックを編集"
+
+#: App/Breadcrumbs.php:123
 #, php-format
 msgid "Search results of \"%1$s\""
 msgstr "「%1$s」の検索結果"
 
-#: App/Breadcrumbs.php:220
+#: App/Breadcrumbs.php:250
 msgid "Topics with no replies"
 msgstr "返信がないトピック"
 
-#: App/Breadcrumbs.php:240
+#: App/Breadcrumbs.php:270
 msgid "Popular Topics"
 msgstr "人気のトピック"
 
@@ -83,11 +87,11 @@ msgstr "bbPress サイドバー"
 msgid "This widgets are displayed in the sidebar of bbPress."
 msgstr "このウィジェットは bbPress のサイドバーに表示されます。"
 
-#: App/Stars.php:98
+#: App/Stars.php:94
 msgid "Additional Information"
 msgstr "追加情報"
 
-#: App/Stars.php:105
+#: App/Stars.php:100
 msgid "Total likes"
 msgstr "総いいね数"
 
@@ -120,11 +124,11 @@ msgstr "bbPress 個別ページレイアウト"
 msgid "bbPress single page settings"
 msgstr "bbPress 個別ページ設定"
 
-#: snow-monkey-bbpress-support.php:99
+#: snow-monkey-bbpress-support.php:101
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:114
+#: snow-monkey-bbpress-support.php:116
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
