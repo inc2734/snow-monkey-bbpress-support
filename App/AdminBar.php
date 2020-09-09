@@ -11,6 +11,7 @@ class AdminBar {
 
 	public function __construct() {
 		add_action( 'admin_bar_menu', [ $this, '_admin_bar_menu' ], 9999 );
+		add_action( 'admin_bar_menu', [ $this, '_remove_edit' ], 9999 );
 		add_action( 'wp_before_admin_bar_render', [ $this, '_wp_before_admin_bar_render' ] );
 	}
 
@@ -31,6 +32,21 @@ class AdminBar {
 
 		$wp_admin_bar->remove_menu( 'my-account' );
 		$wp_admin_bar->remove_menu( 'site-name' );
+	}
+
+	/**
+	 * Remove edit button of adminbar
+	 */
+	public function _remove_edit( $wp_admin_bar ) {
+		if ( ! is_bbpress() ) {
+			return;
+		}
+
+		if ( current_user_can( 'moderate' ) ) {
+			return;
+		}
+
+		$wp_admin_bar->remove_menu( 'edit' );
 	}
 
 	/**
