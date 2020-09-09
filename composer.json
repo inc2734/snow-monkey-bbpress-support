@@ -23,6 +23,7 @@
     "test": [
       "vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility,vendor/phpcompatibility/phpcompatibility-paragonie,vendor/phpcompatibility/phpcompatibility-wp,vendor/wp-coding-standards/wpcs",
       "vendor/bin/phpcs -p -s -v -n . --standard=./.phpcs.xml.dist --extensions=php",
+      "rm -rf ./.themes/master.zip ./.themes/snow-monkey && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev",
       "bash bin/phpunit.sh"
     ],
     "phpcbf": "vendor/bin/phpcbf -p -s -v -n . --standard=./phpcs.ruleset.xml --extensions=php",
