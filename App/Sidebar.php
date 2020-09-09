@@ -7,6 +7,8 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
+use Framework\Helper;
+
 class Sidebar {
 
 	public function __construct() {
@@ -15,6 +17,7 @@ class Sidebar {
 		add_action( 'wp_head', [ $this, '_remove_sidebars' ], 11 );
 		add_action( 'snow_monkey_sidebar', [ $this, '_snow_monkey_sidebar' ] );
 		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, '_enqueue' ] );
 	}
 
 	/**
@@ -78,17 +81,28 @@ class Sidebar {
 			return;
 		}
 
-		if ( ! is_active_sidebar( 'bbpress-sidebar-widget-area' ) ) {
-			return;
+		if ( is_active_sidebar( 'bbpress-sidebar-widget-area' ) ) {
+			?>
+			<div class="l-sidebar-widget-area"
+				data-is-slim-widget-area="true"
+				data-is-content-widget-area="false"
+			>
+				<?php dynamic_sidebar( 'bbpress-sidebar-widget-area' ); ?>
+			</div>
+			<?php
 		}
-		?>
-		<div class="l-sidebar-widget-area"
-			data-is-slim-widget-area="true"
-			data-is-content-widget-area="false"
-		>
-			<?php dynamic_sidebar( 'bbpress-sidebar-widget-area' ); ?>
-		</div>
-		<?php
+
+		if ( is_active_sidebar( 'bbpress-sidebar-sticky-widget-area' ) ) {
+			?>
+			<div class="l-sidebar-sticky-widget-area"
+				data-is-slim-widget-area="true"
+				data-is-content-widget-area="false"
+				>
+
+				<?php dynamic_sidebar( 'bbpress-sidebar-sticky-widget-area' ); ?>
+			</div>
+			<?php
+		}
 	}
 
 	/**
@@ -107,6 +121,37 @@ class Sidebar {
 				'before_title'  => '<h2 class="c-widget__title"><span>',
 				'after_title'   => '</span></h2>',
 			]
+		);
+
+		register_sidebar(
+			[
+				'name'          => __( 'Sticky bbPress sidebar', 'snow-monkey-bbpress-support' ),
+				'description'   => __( 'This widgets are displayed in the sidebar of bbPress.', 'snow-monkey-bbpress-support' ),
+				'id'            => 'bbpress-sidebar-sticky-widget-area',
+				'before_widget' => '<div id="%1$s" class="c-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="c-widget__title"><span>',
+				'after_title'   => '</span></h2>',
+			]
+		);
+	}
+
+	/**
+	 * Enqueue assets
+	 *
+	 * @see https://github.com/inc2734/snow-monkey/blob/22d3c9828d5818b8ad580cd0e625db2791adbf36/app/setup/widget-area.php#L403-L411
+	 */
+	public function _enqueue() {
+		if ( ! is_active_sidebar( 'bbpress-sidebar-sticky-widget-area' ) ) {
+			return;
+		}
+
+		wp_enqueue_script(
+			Helper::get_main_script_handle() . '-sidebar-sticky-widget-area',
+			get_theme_file_uri( '/assets/js/sidebar-sticky-widget-area.min.js' ),
+			[],
+			filemtime( get_theme_file_path( '/assets/js/sidebar-sticky-widget-area.min.js' ) ),
+			true
 		);
 	}
 }
