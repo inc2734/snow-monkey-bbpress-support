@@ -78,9 +78,17 @@ class Sidebar {
 			return;
 		}
 
-		if ( is_active_sidebar( 'bbpress-sidebar-widget-area' ) ) {
-			dynamic_sidebar( 'bbpress-sidebar-widget-area' );
+		if ( ! is_active_sidebar( 'bbpress-sidebar-widget-area' ) ) {
+			return;
 		}
+		?>
+		<div class="l-sidebar-widget-area"
+			data-is-slim-widget-area="true"
+			data-is-content-widget-area="false"
+		>
+			<?php dynamic_sidebar( 'bbpress-sidebar-widget-area' ); ?>
+		</div>
+		<?php
 	}
 
 	/**
