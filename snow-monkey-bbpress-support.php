@@ -34,7 +34,18 @@ class Bootstrap {
 
 		$theme = wp_get_theme( get_template() );
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_no_snow_monkey' ] );
+			add_action(
+				'admin_notices',
+				function() {
+					?>
+					<div class="notice notice-warning is-dismissible">
+						<p>
+							<?php esc_html_e( '[Snow Monkey bbPress Support] Needs the Snow Monkey.', 'snow-monkey-bbpress-support' ); ?>
+						</p>
+					</div>
+					<?php
+				}
+			);
 			return;
 		}
 
@@ -88,21 +99,6 @@ class Bootstrap {
 				'homepage' => 'https://snow-monkey.2inc.org',
 			]
 		);
-	}
-
-	/**
-	 * Admin notice for no Snow Monkey
-	 *
-	 * @return void
-	 */
-	public function _admin_notice_no_snow_monkey() {
-		?>
-		<div class="notice notice-warning is-dismissible">
-			<p>
-				<?php esc_html_e( '[Snow Monkey bbPress Support] Needs the Snow Monkey.', 'snow-monkey-bbpress-support' ); ?>
-			</p>
-		</div>
-		<?php
 	}
 
 	/**
