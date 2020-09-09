@@ -5,6 +5,7 @@ node_modules/
 assets/
 vendor/
 *.sql
+/sql/
 release/
 snow-monkey-bbpress-support
 snow-monkey-bbpress-support.zip
@@ -12,3 +13,4 @@ snow-monkey-bbpress-support.zip
 .plugins
 yarn-error.log
 /.themes/
+.wp-env.override.json

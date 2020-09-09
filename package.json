@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "@wordpress/browserslist-config": "^2.7.0",
+    "@wordpress/env": "^2.0.0",
     "@wordpress/scripts": "12.1.1",
     "autoprefixer": "^9.8.6",
     "cpy-cli": "^3.1.1",
@@ -17,6 +18,11 @@
     "run-sequence": "^2.2.1"
   },
   "scripts": {
+    "wp-env": "wp-env",
+    "start": "wp-env start && open http://localhost:8888",
+    "stop": "npm run wp db export sql/local.sql && wp-env stop",
+    "cli": "wp-env run cli",
+    "wp": "wp-env run cli wp",
     "clean:css": "rimraf assets/css && mkdir -p assets/css",
     "clean:js": "rimraf assets/js && mkdir -p assets/js",
     "clean:zip": "rimraf snow-monkey-bbpress-support.zip",
@@ -25,7 +31,7 @@
     "js:app": "wp-scripts build src/js/app.js --output-path=assets/js",
     "js": "npm run clean:js && npm-run-all -p js:*",
     "build": "npm-run-all -p css js",
-    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && cd snow-monkey-bbpress-support && composer install --no-dev",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/sql' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && cd snow-monkey-bbpress-support && composer install --no-dev",
     "zip:archive": "zip -9 -qmr snow-monkey-bbpress-support.zip snow-monkey-bbpress-support",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   }
