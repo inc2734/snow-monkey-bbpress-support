@@ -18,6 +18,7 @@ class Post {
 
 	public function _sanitize( $data ) {
 		// Remove blank lines before and after the content.
+		$data['post_content'] = preg_replace( '/[\n(&nbsp;)]*$/', '', $data['post_content'] );
 		$data['post_content'] = trim( $data['post_content'] );
 
 		// Code block
