@@ -64,4 +64,53 @@
       border-top-right-radius: 0;
     }
   }
+
+  .user-pass1-wrap {
+    .button {
+      @include snow-monkey-bbpress-support-btn();
+
+      & + .button {
+        @include _margin-left(.25);
+      }
+    }
+  }
+
+  .password-input-wrapper + .password-button-wrapper {
+    @include _margin-top(.25);
+    display: block;
+  }
+
+  #pass-strength-result {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    color: #23282d;
+    margin: -1px 1px 5px;
+    padding: 3px 5px;
+    text-align: center;
+    box-sizing: border-box;
+
+    &.strong {
+      background-color: #c1e1b9;
+      border-color: #83c373;
+    }
+
+    &.short {
+      background-color: #f1adad;
+     border-color: #e35b5b;
+    }
+
+    &.bad {
+      background-color: #fbc5a9;
+      border-color: #f78b53;
+    }
+
+    &.good {
+      background-color: #ffe399;
+      border-color: #ffc733;
+    }
+  }
+
+  .password-button-wrapper + #pass-strength-result {
+    @include _margin-top(.25);
+  }
 }
