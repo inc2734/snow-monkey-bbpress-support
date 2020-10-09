@@ -7,6 +7,8 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
+use Snow_Monkey\Plugin\bbPressSupport\App\Helper;
+
 class AdminBar {
 
 	/**
@@ -24,7 +26,7 @@ class AdminBar {
 	 * @param WP_Admin_Bar $wp_admin_bar instance, passed by reference.
 	 */
 	public function _admin_bar_menu( $wp_admin_bar ) {
-		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
+		if ( ! Helper::is_prevent_admin_access() ) {
 			return;
 		}
 
@@ -59,7 +61,7 @@ class AdminBar {
 	 * @return void
 	 */
 	public function _wp_before_admin_bar_render() {
-		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
+		if ( ! Helper::is_prevent_admin_access() ) {
 			return;
 		}
 

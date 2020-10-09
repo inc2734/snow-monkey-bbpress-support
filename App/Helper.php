@@ -47,4 +47,17 @@ class Helper {
 			|| bbp_is_search()
 			|| bbp_is_search_results();
 	}
+
+	/**
+	 * Return true when the user can access dashboard.
+	 *
+	 * @return boolean
+	 */
+	public static function is_prevent_admin_access() {
+		$is_prevent_admin_access = ! current_user_can( 'edit_posts' );
+		return apply_filters(
+			'snow_monkey_bbpress_support_prevent_admin_access',
+			$is_prevent_admin_access
+		);
+	}
 }

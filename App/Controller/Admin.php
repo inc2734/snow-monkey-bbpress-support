@@ -7,6 +7,8 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport\App\Controller;
 
+use Snow_Monkey\Plugin\bbPressSupport\App\Helper;
+
 class Admin {
 
 	/**
@@ -23,7 +25,7 @@ class Admin {
 	 * @return void
 	 */
 	public function _redirect() {
-		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
+		if ( ! Helper::is_prevent_admin_access() ) {
 			return;
 		}
 
