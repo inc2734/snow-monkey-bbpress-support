@@ -9,6 +9,9 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Post {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_filter( 'bbp_new_topic_pre_insert', [ $this, '_sanitize' ] );
 		add_filter( 'bbp_new_reply_pre_insert', [ $this, '_sanitize' ] );
@@ -16,6 +19,12 @@ class Post {
 		add_filter( 'bbp_edit_topic_pre_insert', [ $this, '_sanitize' ] );
 	}
 
+	/**
+	 * Sanitize data.
+	 *
+	 * @param array $data The post data.
+	 * @return array
+	 */
 	public function _sanitize( $data ) {
 		// Remove blank lines before and after the content.
 		$data['post_content'] = preg_replace( '/[\n(&nbsp;)]*$/', '', $data['post_content'] );

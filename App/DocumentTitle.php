@@ -9,15 +9,18 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class DocumentTitle {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_filter( 'document_title_parts', [ $this, '_document_title_parts' ] );
 	}
 
 	/**
-	 * Update document title in bbPress
+	 * Update document title in bbPress.
 	 *
-	 * @param  [string] $title
-	 * @return [string]
+	 * @param string $title Document title.
+	 * @return string
 	 */
 	public function _document_title_parts( $title ) {
 		if ( ! is_bbpress() ) {

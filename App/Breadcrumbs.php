@@ -9,25 +9,25 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Breadcrumbs {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_filter( 'bbp_get_breadcrumb', [ $this, '_remove_bbpress_breadcrumbs' ] );
 		add_filter( 'snow_monkey_breadcrumbs', [ $this, '_snow_monkey_breadcrumbs' ] );
 	}
 
 	/**
-	 * Remove breadcrumbs of bbpress
-	 *
-	 * @param string $trail
-	 * @return string
+	 * Remove breadcrumbs of bbpress.
 	 */
-	public function _remove_bbpress_breadcrumbs( $trail ) {
+	public function _remove_bbpress_breadcrumbs() {
 	}
 
 	/**
-	 * Update breadcrumbs in bbPress
+	 * Update breadcrumbs in bbPress.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	public function _snow_monkey_breadcrumbs( $breadcrumbs ) {
 		if ( bbp_is_single_topic() ) {
@@ -58,10 +58,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for single topic
+	 * Update breadcrumbs for single topic.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _single_topic( $breadcrumbs ) {
 		$adding_items = [];
@@ -90,13 +90,13 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for topic edit
+	 * Update breadcrumbs for topic edit.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _topic_edit( $breadcrumbs ) {
-		$breadcrumbs = $this->_single_topic( $breadcrumbs );
+		$breadcrumbs   = $this->_single_topic( $breadcrumbs );
 		$breadcrumbs[] = [
 			'title' => __( 'Edit this topic', 'snow-monkey-bbpress-support' ),
 			'link'  => bbp_get_topic_edit_url( get_the_ID() ),
@@ -106,10 +106,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for search
+	 * Update breadcrumbs for search.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _search( $breadcrumbs ) {
 		$breadcrumbs[] = [
@@ -123,17 +123,17 @@ class Breadcrumbs {
 				__( 'Search results of "%1$s"', 'snow-monkey-bbpress-support' ),
 				bbp_get_search_terms()
 			),
-			'link' => '',
+			'link'  => '',
 		];
 
 		return $breadcrumbs;
 	}
 
 	/**
-	 * Update breadcrumbs for single user
+	 * Update breadcrumbs for single user.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _single_user( $breadcrumbs ) {
 		$breadcrumbs[] = [
@@ -150,10 +150,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for topic tag
+	 * Update breadcrumbs for topic tag.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _topic_tag( $breadcrumbs ) {
 		$adding_items = [
@@ -169,10 +169,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for topic archive
+	 * Update breadcrumbs for topic archive.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _topic_archive( $breadcrumbs ) {
 		$adding_items = [
@@ -188,10 +188,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for single reply
+	 * Update breadcrumbs for single reply.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _single_reply( $breadcrumbs ) {
 		array_splice( $breadcrumbs, -1, 1 );
@@ -224,10 +224,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for reply edit
+	 * Update breadcrumbs for reply edit.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _reply_edit( $breadcrumbs ) {
 		$breadcrumbs = $this->_single_reply( $breadcrumbs );
@@ -235,10 +235,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for no-replies
+	 * Update breadcrumbs for no-replies.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _no_replies( $breadcrumbs ) {
 		$breadcrumbs[] = [
@@ -255,10 +255,10 @@ class Breadcrumbs {
 	}
 
 	/**
-	 * Update breadcrumbs for popular
+	 * Update breadcrumbs for popular.
 	 *
-	 * @param  [array] $breadcrumbs
-	 * @return [array]
+	 * @param array $breadcrumbs Array of breadcrumbs item.
+	 * @return array
 	 */
 	protected function _popular( $breadcrumbs ) {
 		$breadcrumbs[] = [

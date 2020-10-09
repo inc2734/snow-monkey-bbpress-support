@@ -9,10 +9,16 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Rest {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'bbp_register_post_types', [ $this, '_support_rest' ], 11 );
 	}
 
+	/**
+	 * Add show_in_rest: true to bbPress's post types.
+	 */
 	public function _support_rest() {
 		$post_types = [
 			bbp_get_reply_post_type(),
@@ -21,10 +27,10 @@ class Rest {
 		];
 
 		foreach ( $post_types as $post_type ) {
-			$object = get_post_type_object( $post_type );
-			$object->show_in_rest = true;
+			$object                        = get_post_type_object( $post_type );
+			$object->show_in_rest          = true;
 			$object->rest_controller_class = 'WP_REST_Posts_Controller';
-			$object->labels = (array) $object->labels;
+			$object->labels                = (array) $object->labels;
 			register_post_type( $post_type, (array) $object );
 		}
 	}

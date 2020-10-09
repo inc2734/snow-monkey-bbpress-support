@@ -9,6 +9,9 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class TopicCloseLink {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'bbp_template_before_replies_loop', [ $this, '_display_topic_close_link' ] );
 	}
@@ -41,13 +44,13 @@ class TopicCloseLink {
 		);
 
 		$display = bbp_is_topic_open( $topic->ID ) ? $args['close_text'] : $args['open_text'];
-		$uri = add_query_arg(
+		$uri     = add_query_arg(
 			[
 				'action'   => 'bbp_toggle_topic_close',
 				'topic_id' => $topic->ID,
 			]
 		);
-		$uri = wp_nonce_url( $uri, 'close-topic_' . $topic->ID );
+		$uri     = wp_nonce_url( $uri, 'close-topic_' . $topic->ID );
 		?>
 		<div class="snow-monkey-bbpress-support-my-topic-close-link">
 			<a href="<?php echo esc_url( $uri ); ?>" class="button"><?php echo esc_html( $display ); ?></a>

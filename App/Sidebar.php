@@ -11,6 +11,9 @@ use Framework\Helper;
 
 class Sidebar {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_filter( 'snow_monkey_use_post_type_widget_area', [ $this, '_snow_monkey_use_post_type_widget_area' ] );
 		add_filter( 'is_active_sidebar', [ $this, '_is_active_sidebar' ], 10, 2 );
@@ -21,10 +24,10 @@ class Sidebar {
 	}
 
 	/**
-	 * Return false snow_monkey_use_post_type_widget_area hook in bbbPress
+	 * Return false snow_monkey_use_post_type_widget_area hook in bbbPress.
 	 *
-	 * @param  [boolean]  $boolean
-	 * @return [boolean]
+	 * @param boolean $boolean Use post type widget area.
+	 * @return boolean
 	 */
 	public function _snow_monkey_use_post_type_widget_area( $boolean ) {
 		if ( ! is_bbpress() ) {
@@ -35,11 +38,12 @@ class Sidebar {
 	}
 
 	/**
-	 * Update is_active_sidebar() in bbPress
+	 * Update is_active_sidebar() in bbPress.
 	 *
-	 * @param  [boolean]  $is_active
-	 * @param  [string]   $sidebar_id
-	 * @return [boolean]
+	 * @param boolean $is_active  Whether or not the sidebar should be considered "active".
+	 *                            In other words, whether the sidebar contains any widgets.
+	 * @param string  $sidebar_id Index, name, or ID of the dynamic sidebar.
+	 * @return boolean
 	 */
 	public function _is_active_sidebar( $is_active, $sidebar_id ) {
 		if ( ! is_bbpress() ) {
@@ -54,9 +58,9 @@ class Sidebar {
 	}
 
 	/**
-	 * Remove sidebars in bbPress
+	 * Remove sidebars in bbPress.
 	 *
-	 * @return [void]
+	 * @return void
 	 */
 	public function _remove_sidebars() {
 		if ( ! is_bbpress() ) {
@@ -72,11 +76,11 @@ class Sidebar {
 	}
 
 	/**
-	 * Add sidebar for bbPress
+	 * Add sidebar for bbPress.
 	 *
-	 * @return [void]
+	 * @return void
 	 */
-	public function _snow_monkey_sidebar( $index ) {
+	public function _snow_monkey_sidebar() {
 		if ( ! is_bbpress() ) {
 			return;
 		}
@@ -106,9 +110,9 @@ class Sidebar {
 	}
 
 	/**
-	 * Register bbPress sidebar
+	 * Register bbPress sidebar.
 	 *
-	 * @return [void]
+	 * @return void
 	 */
 	public function _widgets_init() {
 		register_sidebar(
@@ -137,7 +141,7 @@ class Sidebar {
 	}
 
 	/**
-	 * Enqueue assets
+	 * Enqueue assets.
 	 *
 	 * @see https://github.com/inc2734/snow-monkey/blob/22d3c9828d5818b8ad580cd0e625db2791adbf36/app/setup/widget-area.php#L403-L411
 	 */

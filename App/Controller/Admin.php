@@ -9,6 +9,9 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App\Controller;
 
 class Admin {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, '_redirect' ] );
 	}
@@ -17,7 +20,7 @@ class Admin {
 	 * General users do not log in to the management screen and redirect.
 	 * But the profile page is permitted.
 	 *
-	 * @return [void]
+	 * @return void
 	 */
 	public function _redirect() {
 		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {

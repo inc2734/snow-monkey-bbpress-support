@@ -9,18 +9,21 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Notice {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'wp_insert_post', [ $this, '_send_new_topic' ], 10, 3 );
-		add_action( 'wpg_connect', [ $this, '_send_new_user' ], 10, 4 );
+		add_action( 'wpg_connect', [ $this, '_send_new_user' ], 10, 3 );
 	}
 
 	/**
-	 * Send mail when adding new topic
+	 * Send mail when adding new topic.
 	 *
-	 * @param  [int]     $post_id
-	 * @param  [WP_Post] $post
-	 * @param  [boolean] $update
-	 * @return [int]
+	 * @param  int     $post_id The post ID.
+	 * @param  WP_Post $post    The post object.
+	 * @param  boolean $update  Updated or not.
+	 * @return int
 	 */
 	public function _send_new_topic( $post_id, $post, $update ) {
 		if ( $update ) {
@@ -36,7 +39,7 @@ class Notice {
 			return;
 		}
 
-		$body  = sprintf(
+		$body = sprintf(
 			/* translators: 1: Topic title */
 			__( 'Title: %1$s', 'snow-monkey-bbpress-support' ),
 			get_the_title( $post_id )
@@ -63,15 +66,13 @@ class Notice {
 	}
 
 	/**
-	 * Send mail when adding new user
+	 * Send mail when adding new user.
 	 *
-	 * @param  [int]     $user_id
-	 * @param  [mixed]   $data
-	 * @param  [string]  $service_name
-	 * @param  [boolean] $on_creation
-	 * @return [int]
+	 * @param int    $user_id      The user ID.
+	 * @param mixed  $data         Data.
+	 * @param string $service_name Service name.
 	 */
-	public function _send_new_user( $user_id, $data, $service_name, $on_creation ) {
+	public function _send_new_user( $user_id, $data, $service_name ) {
 		$first_name   = get_the_author_meta( 'first_name', $user_id );
 		$last_name    = get_the_author_meta( 'last_name', $user_id );
 		$nickname     = get_the_author_meta( 'nickname', $user_id );
@@ -85,7 +86,7 @@ class Notice {
 			$name = $display_name;
 		}
 
-		$body  = sprintf(
+		$body = sprintf(
 			/* translators: 1: User name */
 			__( 'Name: %1$s', 'snow-monkey-bbpress-support' ),
 			$name
@@ -109,6 +110,12 @@ class Notice {
 		$this->_mail( $subject, $body );
 	}
 
+	/**
+	 * Send mail.
+	 *
+	 * @param string $subject Mail subject.
+	 * @param string $body    Mail body.
+	 */
 	protected function _mail( $subject, $body ) {
 		wp_mail(
 			get_bloginfo( 'admin_email' ),

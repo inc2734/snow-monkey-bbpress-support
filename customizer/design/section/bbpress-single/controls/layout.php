@@ -21,7 +21,7 @@ Framework::control(
 	[
 		'label'   => __( 'bbPress single page layout', 'snow-monkey-bbpress-support' ),
 		'default' => '',
-		'choices'  => is_customize_preview() ? $wrapper_templates : [],
+		'choices' => is_customize_preview() ? $wrapper_templates : [],
 	]
 );
 

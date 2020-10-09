@@ -9,26 +9,21 @@
     }
   ],
   "require-dev": {
-    "squizlabs/php_codesniffer": "*",
-    "wp-coding-standards/wpcs": "*",
-    "phpunit/phpunit": "7.*",
-    "phpcompatibility/phpcompatibility-wp": "*",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3"
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.6",
+		"squizlabs/php_codesniffer": "^3.5",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"wp-coding-standards/wpcs": "^2.2",
+		"sirbrillig/phpcs-variable-analysis": "^2.8",
+    "wp-phpunit/wp-phpunit": "^5.4"
   },
   "require": {
     "php": ">=5.6",
     "inc2734/wp-github-plugin-updater": "^3.1"
   },
   "scripts" :{
-    "test": [
-      "vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility,vendor/phpcompatibility/phpcompatibility-paragonie,vendor/phpcompatibility/phpcompatibility-wp,vendor/wp-coding-standards/wpcs",
-      "vendor/bin/phpcs -p -s -v -n . --standard=./.phpcs.xml.dist --extensions=php",
-      "rm -rf ./.themes/master.zip ./.themes/snow-monkey && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev",
-      "bash bin/phpunit.sh"
-    ],
-    "phpcbf": "vendor/bin/phpcbf -p -s -v -n . --standard=./phpcs.ruleset.xml --extensions=php",
-    "wpphpunit": "bash bin/wpphpunit.sh",
-    "phpunit": "bash bin/phpunit.sh"
+    "format": "phpcbf --standard=./.phpcs.xml.dist --report-summary --report-source",
+    "lint": "phpcs --standard=./.phpcs.xml.dist",
+    "install-theme": "rm -rf ./.themes/master.zip ./.themes/snow-monkey && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev"
   },
   "autoload": {
     "psr-4": {

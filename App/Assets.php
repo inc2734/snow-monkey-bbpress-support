@@ -9,10 +9,16 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Assets {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 	}
 
+	/**
+	 * Enqueue assets.
+	 */
 	public function _wp_enqueue_scripts() {
 		wp_dequeue_style( 'bbp-default' );
 		wp_enqueue_style(

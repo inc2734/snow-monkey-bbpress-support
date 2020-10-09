@@ -9,6 +9,9 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class AdminBar {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'admin_bar_menu', [ $this, '_admin_bar_menu' ], 9999 );
 		add_action( 'admin_bar_menu', [ $this, '_remove_edit' ], 9999 );
@@ -16,10 +19,9 @@ class AdminBar {
 	}
 
 	/**
-	 * Remove default admin bar content
+	 * Remove default admin bar content.
 	 *
-	 * @param  [object] $wp_admin_bar
-	 * @return [object]
+	 * @param WP_Admin_Bar $wp_admin_bar instance, passed by reference.
 	 */
 	public function _admin_bar_menu( $wp_admin_bar ) {
 		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {
@@ -35,7 +37,9 @@ class AdminBar {
 	}
 
 	/**
-	 * Remove edit button of adminbar
+	 * Remove edit button of adminbar.
+	 *
+	 * @param WP_Admin_Bar $wp_admin_bar instance, passed by reference.
 	 */
 	public function _remove_edit( $wp_admin_bar ) {
 		if ( ! is_bbpress() ) {
@@ -50,9 +54,9 @@ class AdminBar {
 	}
 
 	/**
-	 * Add admin bar content
+	 * Add admin bar content.
 	 *
-	 * @return [void]
+	 * @return void
 	 */
 	public function _wp_before_admin_bar_render() {
 		if ( ! apply_filters( 'snow_monkey_bbpress_support_prevent_admin_access', true ) ) {

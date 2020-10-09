@@ -23,10 +23,16 @@ define( 'SNOW_MONKEY_BBPRESS_SUPPORT_PATH', plugin_dir_path( __FILE__ ) );
 
 class Bootstrap {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
 	}
 
+	/**
+	 * Bootstrap.
+	 */
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-bbpress-support', false, basename( __DIR__ ) . '/languages' );
 
@@ -88,7 +94,7 @@ class Bootstrap {
 	/**
 	 * Activate auto update using GitHub
 	 *
-	 * @return [void]
+	 * @return void
 	 */
 	public function _activate_autoupdate() {
 		new Updater(

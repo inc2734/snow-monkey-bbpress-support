@@ -9,6 +9,11 @@ namespace Snow_Monkey\Plugin\bbPressSupport\App;
 
 class Helper {
 
+	/**
+	 * bbPress is single or not.
+	 *
+	 * @return boolean
+	 */
 	public static function is_bbpress_single() {
 		return bbp_is_topic_tag()
 			|| bbp_is_topic_tag_edit()
@@ -30,6 +35,11 @@ class Helper {
 			|| bbp_is_subscriptions();
 	}
 
+	/**
+	 * bbPress is archive or not.
+	 *
+	 * @return boolean
+	 */
 	public static function is_bbpress_archive() {
 		return bbp_is_forum_archive()
 			|| bbp_is_topic_archive()
