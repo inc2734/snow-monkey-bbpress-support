@@ -44,7 +44,7 @@ function _manually_load_plugin() {
 	search_theme_directories();
 
 	require dirname( dirname( __FILE__ ) ) . '/snow-monkey-bbpress-support.php';
-	require dirname( dirname( __FILE__ ) ) . '/.plugins/bbpress/bbpress.php';
+	require dirname( dirname( __FILE__ ) ) . '/../bbpress/bbpress.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
