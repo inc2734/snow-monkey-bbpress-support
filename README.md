@@ -1,5 +1,7 @@
 # Snow Monkey bbPress Support
 
+![CI](https://github.com/inc2734/snow-monkey-bbpress-support/workflows/CI/badge.svg)
+
 This plugin makes Snow Monkey beautifully display bbPress and adds some features.
 
 ## Features
