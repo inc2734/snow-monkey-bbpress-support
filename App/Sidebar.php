@@ -152,9 +152,9 @@ class Sidebar {
 
 		wp_enqueue_script(
 			Helper::get_main_script_handle() . '-sidebar-sticky-widget-area',
-			get_theme_file_uri( '/assets/js/sidebar-sticky-widget-area.min.js' ),
+			get_theme_file_uri( '/assets/js/sidebar-sticky-widget-area.js' ),
 			[],
-			filemtime( get_theme_file_path( '/assets/js/sidebar-sticky-widget-area.min.js' ) ),
+			filemtime( get_theme_file_path( '/assets/js/sidebar-sticky-widget-area.js' ) ),
 			true
 		);
 	}
