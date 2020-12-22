@@ -25,9 +25,18 @@ class Rest {
 			bbp_get_topic_post_type(),
 			bbp_get_forum_post_type(),
 		];
+		$post_types = array_filter( $post_types );
 
 		foreach ( $post_types as $post_type ) {
-			$object                        = get_post_type_object( $post_type );
+			if ( ! $post_type ) {
+				continue;
+			}
+
+			$object = get_post_type_object( $post_type );
+			if ( ! $object ) {
+				continue;
+			}
+
 			$object->show_in_rest          = true;
 			$object->rest_controller_class = 'WP_REST_Posts_Controller';
 			$object->labels                = (array) $object->labels;
