@@ -18,7 +18,7 @@ $(() => {
     const btn = $(e.currentTarget);
     const replyId = parseInt(btn.attr('data-reply-id'));
     const authorId = parseInt(btn.attr('data-reply-author'));
-
+    const starsUsers = $(btn).next('.smbbpress-stars-users');
     $.post(
       SNOW_MONKEY_BBPRESS_SUPPORT.endpoint,
       {
@@ -30,6 +30,8 @@ $(() => {
       (response) => {
         const counter = btn.find('.smbbpress-stars__count');
         counter.text(response.stars);
+        const names = starsUsers.find('.smbbpress-stars-users__names');
+        names.html(response.users);
       }
     );
   });
