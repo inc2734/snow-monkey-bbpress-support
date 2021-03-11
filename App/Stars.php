@@ -53,8 +53,8 @@ class Stars {
 					<?php if ( 0 === $stars || empty( $stars_users ) ) { ?>
 						<span><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
 					<?php } else { ?>
-						<?php foreach ( $stars_users as $stars_user ) { ?>
-							<span><?php echo esc_html( $stars_user ); ?></span>
+						<?php foreach ( $stars_users as $id => $name ) { ?>
+							<a href="<?php bbp_user_profile_url( $id ); ?>"><?php echo esc_html( $name ); ?></a>
 						<?php } ?>
 					<?php } ?>
 				</p>
@@ -110,8 +110,8 @@ class Stars {
 		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$new_stars_users = '';
 
-		foreach ( $stars_users as $stars_user ) {
-			$new_stars_users .= '<span>' . esc_html( $stars_user ) . '</span>';
+		foreach ( $stars_users as $id => $name ) {
+			$new_stars_users .= '<a href="' . bbp_user_profile_url( $id ) . '">' . esc_html( $name ) . '</a>';
 		}
 
 		header( 'Content-Type: application/json; charset=utf-8' );
@@ -219,7 +219,7 @@ class Stars {
 		$names = [];
 		foreach ( $ids as $id ) {
 			$userdata = get_userdata( $id );
-			$names[] = $userdata->display_name;
+			$names[ $id ] = $userdata->display_name;
 		}
 		return $names;
 	}
