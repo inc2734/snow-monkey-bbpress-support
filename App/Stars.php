@@ -54,7 +54,7 @@ class Stars {
 						<span><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
 					<?php } else { ?>
 						<?php foreach ( $stars_users as $id => $name ) { ?>
-							<a href="<?php bbp_user_profile_url( $id ); ?>"><?php echo esc_html( $name ); ?></a>
+							<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $id ) ) ); ?>"><?php echo esc_html( $name ); ?></a>
 						<?php } ?>
 					<?php } ?>
 				</p>
@@ -111,7 +111,7 @@ class Stars {
 		$new_stars_users = '';
 
 		foreach ( $stars_users as $id => $name ) {
-			$new_stars_users .= '<a href="' . bbp_user_profile_url( $id ) . '">' . esc_html( $name ) . '</a>';
+			$new_stars_users .= '<a href="' . esc_attr( esc_url( bbp_get_user_profile_url( $id ) ) ) . '">' . esc_html( $name ) . '</a>';
 		}
 
 		header( 'Content-Type: application/json; charset=utf-8' );
