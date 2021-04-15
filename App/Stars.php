@@ -34,6 +34,8 @@ class Stars {
 		$author_id    = get_the_author_meta( 'ID' );
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ? 'button' : 'span';
 		$stars        = $this->_get_post_stars( get_the_ID() );
+		$stars_users  = $this->_get_post_stars_users( get_the_ID() );
+		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$icon         = $this->_get_icon();
 		?>
 		<div class="u-text-right">
@@ -45,6 +47,19 @@ class Stars {
 					<?php echo esc_html( $stars ); ?>
 				</span>
 			</<?php echo esc_html( $button_tag ); ?>>
+			<div class="smbbpress-stars-users">
+				<span class="smbbpress-stars-users__title"><?php esc_html_e( 'Who liked:', 'snow-monkey-bbpress-support' ); ?></span>
+				<p class="smbbpress-stars-users__names">
+					<?php if ( 0 === $stars || empty( $stars_users ) ) { ?>
+						<span><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
+					<?php } else { ?>
+						<?php foreach ( $stars_users as $id => $name ) { ?>
+							<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $id ) ) ); ?>"><?php echo esc_html( $name ); ?></a>
+						<?php } ?>
+					<?php } ?>
+				</p>
+			</div>
+
 		</div>
 		<?php
 	}
@@ -79,6 +94,11 @@ class Stars {
 			$new_stars = $stars + 1;
 			update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
 
+			$users     = $this->_get_post_stars_users( $reply_id );
+			$users[]   = $current_user->ID;
+			$new_users = array_unique( $users );
+			update_post_meta( $reply_id, 'smbbpress-support-stars-users', $new_users );
+
 			$stars     = $this->_get_user_stars( $author_id );
 			$new_stars = $stars + 1;
 			update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
@@ -86,10 +106,19 @@ class Stars {
 
 		$new_stars = $this->_get_post_stars( $reply_id );
 
+		$stars_users     = $this->_get_post_stars_users( $reply_id );
+		$stars_users     = $this->_user_ids_to_names( $stars_users );
+		$new_stars_users = '';
+
+		foreach ( $stars_users as $id => $name ) {
+			$new_stars_users .= '<a href="' . esc_attr( esc_url( bbp_get_user_profile_url( $id ) ) ) . '">' . esc_html( $name ) . '</a>';
+		}
+
 		header( 'Content-Type: application/json; charset=utf-8' );
 		echo json_encode(
 			[
 				'stars' => $new_stars,
+				'users' => $new_stars_users,
 			]
 		);
 		die();
@@ -166,6 +195,33 @@ class Stars {
 		$stars = get_post_meta( $post_id, 'smbbpress-support-stars', true );
 		$stars = $stars ? $stars : 0;
 		return $stars;
+	}
+
+	/**
+	 * Return stars users of the post.
+	 *
+	 * @param int $post_id The post ID.
+	 * @return array
+	 */
+	protected function _get_post_stars_users( $post_id ) {
+		$users = get_post_meta( $post_id, 'smbbpress-support-stars-users', true );
+		$users = $users ? $users : [];
+		return $users;
+	}
+
+	/**
+	 * Return user display names.
+	 *
+	 * @param array $ids Array of user ID.
+	 * @return array $names
+	 */
+	protected function _user_ids_to_names( $user_ids ) {
+		$names = [];
+		foreach ( $user_ids as $user_id ) {
+			$userdata          = get_userdata( $user_id );
+			$names[ $user_id ] = $userdata->display_name;
+		}
+		return $names;
 	}
 
 	/**
