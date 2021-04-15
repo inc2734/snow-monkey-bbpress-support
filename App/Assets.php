@@ -31,7 +31,7 @@ class Assets {
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
 			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.js',
-			['jquery'],
+			[ 'jquery' ],
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.js' ),
 			true
 		);
