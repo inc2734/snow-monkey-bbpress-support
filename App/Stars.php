@@ -47,17 +47,23 @@ class Stars {
 					<?php echo esc_html( $stars ); ?>
 				</span>
 			</<?php echo esc_html( $button_tag ); ?>>
+
 			<div class="smbbpress-stars-users">
-				<span class="smbbpress-stars-users__title"><?php esc_html_e( 'Who liked:', 'snow-monkey-bbpress-support' ); ?></span>
-				<p class="smbbpress-stars-users__names">
-					<?php if ( 0 === $stars || empty( $stars_users ) ) { ?>
-						<span><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
-					<?php } else { ?>
-						<?php foreach ( $stars_users as $id => $name ) { ?>
-							<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $id ) ) ); ?>"><?php echo esc_html( $name ); ?></a>
-						<?php } ?>
-					<?php } ?>
-				</p>
+				<span class="smbbpress-stars-users__label"><?php esc_html_e( 'Who liked:', 'snow-monkey-bbpress-support' ); ?></span>
+				<span class="smbbpress-stars-users__users">
+					<?php if ( 0 === $stars || empty( $stars_users ) ) : ?>
+						<span class="smbbpress-stars-users__no-user-label"><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
+					<?php else : ?>
+						<?php foreach ( $stars_users as $user_id => $name ) : ?>
+							<div class="smbbpress-stars-users__user">
+								<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $user_id ) ) ); ?>" title="<?php echo esc_attr( $name ); ?>">
+									<?php //echo esc_html( $name ); ?>
+									<?php echo get_avatar( $user_id, 96, '', $name ); ?>
+								</a>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</span>
 			</div>
 
 		</div>
