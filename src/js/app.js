@@ -1,9 +1,6 @@
-'use strict';
-
 import $ from 'jquery';
 
 $(() => {
-
   /**
    * Add close mark
    */
@@ -36,4 +33,50 @@ $(() => {
     );
   });
 
+  /**
+   * @link https://github.com/WordPress/wordpress.org/blob/72e581d7e397451260771be596c0463fcc26b9b1/wordpress.org/public_html/wp-content/themes/pub/wporg-support/js/forums.js#L26-L50
+   */
+  $('#wp-bbp_reply_content-wrap').on('paste', (e) => {
+    const textarea = $(e.target);
+    const val      = $(e.target).val();
+    const paste    = (e.originalEvent.clipboardData || window.clipboardData).getData('text').trimEnd();
+
+    // If no pasted text, skip.
+    if (! paste.length) {
+      return;
+    }
+
+    // Start with non-byte characters, skip.
+    if (! paste.match(/^[A-Za-z\t\s_/]/)) {
+      return;
+    }
+
+    if (
+      paste.length < 500 &&        // Super long pastes get code wrapped
+      paste.split("\n").length < 3 // in addition to many-lines pastes.
+    ) {
+      return;
+    }
+
+    // See if the author is pasting into a code block already
+    if ('`' === val.substr(textarea.prop('selectionStart') - 1, 1)) {
+      return;
+    }
+
+    // If the code being pasted is already wrapped in backticks (well, starts with OR ends with), skip.
+    if (
+      '`' === paste.substr(0, 1) ||
+      '`' === paste.substr(-1, 1)
+    ) {
+      return;
+    }
+
+    $(e.target).val(
+      val.substr(0, textarea.prop('selectionStart')) +      // Text before cusor/selection
+      "`" + paste + "`" +                                   // The pasted text, wrapping with `
+      val.substr(textarea.prop('selectionEnd'), val.length) // Text after cursor position/selection
+    );
+
+    e.preventDefault();
+  });
 });

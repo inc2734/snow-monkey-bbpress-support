@@ -28,11 +28,10 @@ class Assets {
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/css/bbpress.min.css' )
 		);
 
-		$asset = include( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.asset.php' );
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
 			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.js',
-			$asset['dependencies'],
+			['jquery'],
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.js' ),
 			true
 		);
