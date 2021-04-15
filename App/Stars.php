@@ -106,8 +106,8 @@ class Stars {
 
 		$new_stars = $this->_get_post_stars( $reply_id );
 
-		$stars_users = $this->_get_post_stars_users( $reply_id );
-		$stars_users  = $this->_user_ids_to_names( $stars_users );
+		$stars_users     = $this->_get_post_stars_users( $reply_id );
+		$stars_users     = $this->_user_ids_to_names( $stars_users );
 		$new_stars_users = '';
 
 		foreach ( $stars_users as $id => $name ) {
@@ -212,14 +212,14 @@ class Stars {
 	/**
 	 * Return user display names.
 	 *
-	 * @param array $ids
+	 * @param array $ids Array of user ID.
 	 * @return array $names
 	 */
-	protected function _user_ids_to_names( $ids ) {
+	protected function _user_ids_to_names( $user_ids ) {
 		$names = [];
-		foreach ( $ids as $id ) {
-			$userdata = get_userdata( $id );
-			$names[ $id ] = $userdata->display_name;
+		foreach ( $user_ids as $user_id ) {
+			$userdata          = get_userdata( $user_id );
+			$names[ $user_id ] = $userdata->display_name;
 		}
 		return $names;
 	}
