@@ -212,7 +212,7 @@ class Stars {
 	/**
 	 * Return user display names.
 	 *
-	 * @param array $ids Array of user ID.
+	 * @param array $user_ids Array of user ID.
 	 * @return array $names
 	 */
 	protected function _user_ids_to_names( $user_ids ) {
