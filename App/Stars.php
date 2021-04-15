@@ -57,7 +57,6 @@ class Stars {
 						<?php foreach ( $stars_users as $user_id => $name ) : ?>
 							<div class="smbbpress-stars-users__user">
 								<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $user_id ) ) ); ?>" title="<?php echo esc_attr( $name ); ?>">
-									<?php //echo esc_html( $name ); ?>
 									<?php echo get_avatar( $user_id, 96, '', $name ); ?>
 								</a>
 							</div>
