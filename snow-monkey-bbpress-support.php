@@ -1,13 +1,16 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.12.4
- * Tested up to: 5.6
+ * Version: 0.13.0
+ * Tested up to: 5.7
  * Requires at least: 5.5
  * Requires PHP: 5.6
  * Description: This plugin makes Snow Monkey beautifully display bbPress and adds some features.
+ * Author: inc2734
+ * Author URI: https://2inc.org
+ * License: GPL2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: snow-monkey-bbpress-support
- * Domain Path: /languages/
  *
  * @package snow-monkey-bbpress-support
  * @author inc2734
