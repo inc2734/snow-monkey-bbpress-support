@@ -33,38 +33,42 @@ class Stars {
 		$current_user = wp_get_current_user();
 		$author_id    = get_the_author_meta( 'ID' );
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ? 'button' : 'span';
-		$stars        = $this->_get_post_stars( get_the_ID() );
-		$stars_users  = $this->_get_post_stars_users( get_the_ID() );
+		$stars        = $this->_get_reply_stars( get_the_ID() );
+		$stars_users  = $this->_get_reply_stars_users( get_the_ID() );
 		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$icon         = $this->_get_icon();
 		?>
 		<div class="u-text-right">
-			<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>">
-				<span class="smbbpress-stars__stars">
-					<?php echo wp_kses_post( $icon ); ?>
-				</span>
-				<span class="smbbpress-stars__count">
-					<?php echo esc_html( $stars ); ?>
-				</span>
-			</<?php echo esc_html( $button_tag ); ?>>
-
-			<div class="smbbpress-stars-users">
-				<span class="smbbpress-stars-users__label"><?php esc_html_e( 'Who liked:', 'snow-monkey-bbpress-support' ); ?></span>
-				<span class="smbbpress-stars-users__users">
-					<?php if ( 0 === $stars || empty( $stars_users ) ) : ?>
-						<span class="smbbpress-stars-users__no-user-label"><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
-					<?php else : ?>
-						<?php foreach ( $stars_users as $user_id => $name ) : ?>
-							<div class="smbbpress-stars-users__user">
-								<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $user_id ) ) ); ?>" title="<?php echo esc_attr( $name ); ?>">
-									<?php echo get_avatar( $user_id, 96, '', $name ); ?>
-								</a>
-							</div>
-						<?php endforeach; ?>
-					<?php endif; ?>
-				</span>
+			<div class="smbbpress-stars-wrapper">
+				<div class="smbbpress-stars-wrapper__button">
+					<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-replies-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this reply', 'snow-monkey-bbpress-support' ); ?>">
+						<span class="smbbpress-stars__stars">
+							<?php echo wp_kses_post( $icon ); ?>
+						</span>
+						<span class="smbbpress-stars__count">
+							<?php echo esc_html( $stars ); ?>
+						</span>
+					</<?php echo esc_html( $button_tag ); ?>>
+				</div>
+				<div class="smbbpress-stars-wrapper__users">
+					<div class="smbbpress-stars-users">
+						<span class="smbbpress-stars-users__label"><?php esc_html_e( 'Who liked:', 'snow-monkey-bbpress-support' ); ?></span>
+						<span class="smbbpress-stars-users__users">
+							<?php if ( 0 === $stars || empty( $stars_users ) ) : ?>
+								<span class="smbbpress-stars-users__no-user-label"><?php esc_html_e( 'No user', 'snow-monkey-bbpress-support' ); ?></span>
+							<?php else : ?>
+								<?php foreach ( $stars_users as $user_id => $name ) : ?>
+									<div class="smbbpress-stars-users__user">
+										<a href="<?php echo esc_attr( esc_url( bbp_get_user_profile_url( $user_id ) ) ); ?>" title="<?php echo esc_attr( $name ); ?>">
+											<?php echo get_avatar( $user_id, 96, '', $name ); ?>
+										</a>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</span>
+					</div>
+				</div>
 			</div>
-
 		</div>
 		<?php
 	}
@@ -75,11 +79,11 @@ class Stars {
 	public function _wp_enqueue_scripts() {
 		wp_localize_script(
 			'snow-monkey-bbpress-support',
-			'SNOW_MONKEY_BBPRESS_SUPPORT',
+			'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS',
 			[
 				'endpoint' => admin_url( 'admin-ajax.php' ),
 				'action'   => 'snow_monkey_bbpress_support_star',
-				'secure'   => wp_create_nonce( 'SNOW_MONKEY_BBPRESS_SUPPORT' ),
+				'secure'   => wp_create_nonce( 'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS' ),
 			]
 		);
 	}
@@ -88,18 +92,18 @@ class Stars {
 	 * Update stars.
 	 */
 	public function _update_stars() {
-		check_ajax_referer( 'SNOW_MONKEY_BBPRESS_SUPPORT', 'secure' );
+		check_ajax_referer( 'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS', 'secure' );
 
 		$reply_id     = $_POST['replyId'];
 		$author_id    = $_POST['authorId'];
 		$current_user = wp_get_current_user();
 
 		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {
-			$stars     = $this->_get_post_stars( $reply_id );
+			$stars     = $this->_get_reply_stars( $reply_id );
 			$new_stars = $stars + 1;
 			update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
 
-			$users     = $this->_get_post_stars_users( $reply_id );
+			$users     = $this->_get_reply_stars_users( $reply_id );
 			$users[]   = $current_user->ID;
 			$new_users = array_unique( $users );
 			update_post_meta( $reply_id, 'smbbpress-support-stars-users', $new_users );
@@ -109,9 +113,9 @@ class Stars {
 			update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
 		}
 
-		$new_stars = $this->_get_post_stars( $reply_id );
+		$new_stars = $this->_get_reply_stars( $reply_id );
 
-		$stars_users     = $this->_get_post_stars_users( $reply_id );
+		$stars_users     = $this->_get_reply_stars_users( $reply_id );
 		$stars_users     = $this->_user_ids_to_names( $stars_users );
 		$new_stars_users = '';
 
@@ -134,18 +138,13 @@ class Stars {
 	 */
 	public function _bbp_template_after_user_profile() {
 		?>
-		<div class="bbp-user-section">
-			<span></span>
-			<hr>
-			<h3><?php esc_html_e( 'Additional Information', 'snow-monkey-bbpress-support' ); ?></h3>
-			<p>
-				<?php
-				$user  = bbpress()->displayed_user;
-				$stars = $this->_get_user_stars( $user->ID );
-				?>
-				<?php esc_html_e( 'Total likes', 'snow-monkey-bbpress-support' ); ?>: <?php echo esc_html( $stars ); ?>
-			</p>
-		</div>
+		<p>
+			<?php
+			$user  = bbpress()->displayed_user;
+			$stars = $this->_get_user_stars( $user->ID );
+			?>
+			<?php esc_html_e( 'Total likes (Replies)', 'snow-monkey-bbpress-support' ); ?>: <?php echo esc_html( $stars ); ?>
+		</p>
 		<?php
 	}
 
@@ -180,10 +179,14 @@ class Stars {
 
 		ob_start();
 		?>
-		<span class="smbbpress-stars">
-			<span class="smbbpress-stars__stars"><?php echo wp_kses_post( $this->_get_icon() ); ?></span>
-			<span class="smbbpress-stars__count"><?php echo wp_kses_post( $this->_get_user_stars( $author_id ) ); ?></span>
-		</span>
+		<div class="smbbpress-stars-wrapper">
+			<div class="smbbpress-stars-wrapper__button">
+				<div class="smbbpress-stars">
+					<span class="smbbpress-stars__stars"><?php echo wp_kses_post( $this->_get_icon() ); ?></span>
+					<span class="smbbpress-stars__count"><?php echo wp_kses_post( $this->_get_user_stars( $author_id ) ); ?></span>
+				</div>
+			</div>
+		</div>
 		<?php
 		$user_stars = ob_get_clean();
 
@@ -191,25 +194,25 @@ class Stars {
 	}
 
 	/**
-	 * Return stars count of the post.
+	 * Return stars count of the reply.
 	 *
-	 * @param int $post_id The post ID.
+	 * @param int $reply_id The reply ID.
 	 * @return int
 	 */
-	protected function _get_post_stars( $post_id ) {
-		$stars = get_post_meta( $post_id, 'smbbpress-support-stars', true );
+	protected function _get_reply_stars( $reply_id ) {
+		$stars = get_post_meta( $reply_id, 'smbbpress-support-stars', true );
 		$stars = $stars ? $stars : 0;
 		return $stars;
 	}
 
 	/**
-	 * Return stars users of the post.
+	 * Return stars users of the reply.
 	 *
-	 * @param int $post_id The post ID.
+	 * @param int $reply_id The reply ID.
 	 * @return array
 	 */
-	protected function _get_post_stars_users( $post_id ) {
-		$users = get_post_meta( $post_id, 'smbbpress-support-stars-users', true );
+	protected function _get_reply_stars_users( $reply_id ) {
+		$users = get_post_meta( $reply_id, 'smbbpress-support-stars-users', true );
 		$users = $users ? $users : [];
 		return $users;
 	}

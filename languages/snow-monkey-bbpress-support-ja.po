@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey bbPress Support\n"
-"POT-Creation-Date: 2021-03-10 23:34+0900\n"
-"PO-Revision-Date: 2021-03-10 23:34+0900\n"
+"POT-Creation-Date: 2021-04-16 10:10+0900\n"
+"PO-Revision-Date: 2021-04-16 10:10+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: inc2734 <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -98,29 +98,37 @@ msgstr "このウィジェットは bbPress のサイドバーに表示されま
 msgid "Sticky bbPress sidebar"
 msgstr "固定 bbPress サイドバー"
 
-#: App/Stars.php:51
+#: App/Stars.php:44
+msgid "Like this reply"
+msgstr "この返信へのいいね"
+
+#: App/Stars.php:55 App/TopicStars.php:61
 msgid "Who liked:"
 msgstr "いいねをした人:"
 
-#: App/Stars.php:54
+#: App/Stars.php:58 App/TopicStars.php:64
 msgid "No user"
 msgstr "居ません"
 
-#: App/Stars.php:135
-msgid "Additional Information"
-msgstr "追加情報"
+#: App/Stars.php:146
+msgid "Total likes (Replies)"
+msgstr "総いいね数（返信）"
 
-#: App/Stars.php:141
-msgid "Total likes"
-msgstr "総いいね数"
-
-#: App/TopicCloseLink.php:40
+#: App/TopicCloseLink.php:51
 msgid "Close this topic"
 msgstr "トピックを閉じる"
 
-#: App/TopicCloseLink.php:41
+#: App/TopicCloseLink.php:52
 msgid "Open this topic"
 msgstr "トピックを開く"
+
+#: App/TopicStars.php:50
+msgid "Like this topic"
+msgstr "このトピックへのいいね"
+
+#: App/TopicStars.php:153
+msgid "Total likes (Topics)"
+msgstr "総いいね数（トピック）"
 
 #: customizer/design/section/bbpress-archive/controls/layout.php:13
 #: customizer/design/section/bbpress-single/controls/layout.php:13
@@ -147,7 +155,7 @@ msgstr "bbPress 個別ページ設定"
 msgid "[Snow Monkey bbPress Support] Needs the Snow Monkey."
 msgstr "[Snow Monkey bbPress Support] Snow Monkeyが必要です。"
 
-#: snow-monkey-bbpress-support.php:119
+#: snow-monkey-bbpress-support.php:123
 msgid "[Snow Monkey bbPress Support] Needs the bbPress."
 msgstr "[Snow Monkey bbPress Support] bbPress が必要です。"
 
@@ -160,6 +168,9 @@ msgid ""
 "This plugin makes Snow Monkey beautifully display bbPress and adds some "
 "features."
 msgstr "Snow MonkeyでbbPress を美しく表示し、いくつかの機能を追加します。"
+
+#~ msgid "Additional Information"
+#~ msgstr "追加情報"
 
 #~ msgid "Like"
 #~ msgstr "いいね"

@@ -9,19 +9,46 @@ $(() => {
   );
 
   /**
-   * Add stars
+   * Add replies stars
    */
-  $('button.smbbpress-stars').on('click', (e) => {
+  $('button.smbbpress-replies-stars').on('click', (e) => {
     const btn = $(e.currentTarget);
     const replyId = parseInt(btn.attr('data-reply-id'));
     const authorId = parseInt(btn.attr('data-reply-author'));
     const starsUsers = $(btn).next('.smbbpress-stars-users');
+
     $.post(
-      SNOW_MONKEY_BBPRESS_SUPPORT.endpoint,
+      SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.endpoint,
       {
-        action: SNOW_MONKEY_BBPRESS_SUPPORT.action,
-        secure: SNOW_MONKEY_BBPRESS_SUPPORT.secure,
+        action: SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.action,
+        secure: SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.secure,
         replyId: replyId,
+        authorId: authorId,
+      },
+      (response) => {
+        const counter = btn.find('.smbbpress-stars__count');
+        counter.text(response.stars);
+        const names = starsUsers.find('.smbbpress-stars-users__names');
+        names.html(response.users);
+      }
+    );
+  });
+
+  /**
+   * Add topic stars
+   */
+  $('button.smbbpress-topic-stars').on('click', (e) => {
+    const btn = $(e.currentTarget);
+    const topicId = parseInt(btn.attr('data-topic-id'));
+    const authorId = parseInt(btn.attr('data-topic-author'));
+    const starsUsers = $(btn).next('.smbbpress-stars-users');
+
+    $.post(
+      SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.endpoint,
+      {
+        action: SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.action,
+        secure: SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.secure,
+        topicId: topicId,
         authorId: authorId,
       },
       (response) => {

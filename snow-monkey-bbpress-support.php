@@ -82,6 +82,10 @@ class Bootstrap {
 			new App\Stars();
 		}
 
+		if ( apply_filters( 'snow_monkey_bbpress_support_activate_topic_stars_feature', '__return_true' ) ) {
+			new App\TopicStars();
+		}
+
 		if ( apply_filters( 'snow_monkey_bbpress_support_activate_topic_close_link_feature', '__return_true' ) ) {
 			new App\TopicCloseLink();
 		}
