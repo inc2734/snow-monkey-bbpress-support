@@ -18,6 +18,7 @@ class TopicStars {
 		add_action( 'wp_ajax_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
 		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
 		add_action( 'bbp_template_after_user_profile', [ $this, '_bbp_template_after_user_profile' ] );
+		add_action( 'bbp_theme_after_topic_title', [ $this, '_bbp_theme_after_topic_title' ] );
 	}
 
 	/**
@@ -152,6 +153,22 @@ class TopicStars {
 			?>
 			<?php esc_html_e( 'Total likes (Topics)', 'snow-monkey-bbpress-support' ); ?>: <?php echo esc_html( $stars ); ?>
 		</p>
+		<?php
+	}
+
+	/**
+	 * Display the topic stars to topic loop.
+	 */
+	public function _bbp_theme_after_topic_title() {
+		?>
+		<div class="smbbpress-stars-wrapper">
+			<div class="smbbpress-stars-wrapper__button">
+				<div class="smbbpress-stars">
+					<span class="smbbpress-stars__stars"><?php echo wp_kses_post( $this->_get_icon() ); ?></span>
+					<span class="smbbpress-stars__count"><?php echo wp_kses_post( $this->_get_topic_stars( get_the_ID() ) ); ?></span>
+				</div>
+			</div>
+		</div>
 		<?php
 	}
 
