@@ -6,5 +6,8 @@
   ],
   "config": {
     "WP_DEBUG": true
+  },
+  "mappings": {
+    ".export": "./.export"
   }
 }

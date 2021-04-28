@@ -44,4 +44,5 @@
   <exclude-pattern>*/assets/*</exclude-pattern>
   <exclude-pattern>*/.plugins/*</exclude-pattern>
   <exclude-pattern>*/.themes/*</exclude-pattern>
+	<exclude-pattern>/.export/*</exclude-pattern>
 </ruleset>

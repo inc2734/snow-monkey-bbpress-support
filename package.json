@@ -19,9 +19,14 @@
     "run-sequence": "^2.2.1"
   },
   "scripts": {
+    "export:wp-content:themes": "npm run cli 'cp -r wp-content/themes .export/wp-content'",
+    "export:wp-content:uploads": "npm run cli 'cp -r wp-content/uploads .export/wp-content'",
+    "export:wp-content": "npm run cli 'rm -rf .export/wp-content' && mkdir -p .export/wp-content/uploads && run-p export:wp-content:*",
+    "export:db": "mkdir -p .export/sql && npm run wp 'db export .export/sql/local.sql'",
+    "export": "run-p export:*",
     "wp-env": "wp-env",
     "start": "wp-env start && open http://localhost:8888",
-    "stop": "npm run wp db export sql/local.sql && wp-env stop",
+    "stop": "npm run export && wp-env stop",
     "cli": "wp-env run cli",
     "wp": "wp-env run cli wp",
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
@@ -38,7 +43,7 @@
     "js:app": "wp-scripts build src/js/app.js --output-path=assets/js",
     "js": "npm run clean:js && npm-run-all -p js:*",
     "build": "npm-run-all -p css js",
-    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/sql' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && cd snow-monkey-bbpress-support && composer install --no-dev",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && cd snow-monkey-bbpress-support && composer install --no-dev",
     "zip:archive": "zip -9 -qmr snow-monkey-bbpress-support.zip snow-monkey-bbpress-support",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   }
