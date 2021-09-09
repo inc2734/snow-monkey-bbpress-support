@@ -7,7 +7,7 @@
 
 namespace Snow_Monkey\Plugin\bbPressSupport\App\Controller;
 
-use Snow_Monkey\Plugin\bbPressSupport\App\Helper;
+use Framework\Helper;
 
 class Front {
 
@@ -52,15 +52,34 @@ class Front {
 	 * @return string
 	 */
 	public function _snow_monkey_layout( $layout ) {
-		if ( Helper::is_bbpress_single() ) {
-			$bbpress_single_layout = get_theme_mod( 'snow-monkey-bbpress-support-single-layout' );
-			if ( $bbpress_single_layout ) {
-				return $bbpress_single_layout;
+		if ( Helper::is_bbpress_mypage() || Helper::is_bbpress_single() || Helper::is_bbpress_archive() ) {
+			$old_layout = false;
+			$new_layout = false;
+
+			if ( Helper::is_bbpress_mypage() || Helper::is_bbpress_archive() ) {
+				$old_layout = get_theme_mod( 'snow-monkey-bbpress-support-archive-page-layout' );
+				if ( is_customize_preview() ) {
+					$new_layout = get_theme_mod( 'bbpress-archive-page-layout' );
+				} else {
+					$mods       = get_theme_mods();
+					$new_layout = isset( $mods['bbpress-archive-page-layout'] ) ? $mods['bbpress-archive-page-layout'] : false;
+				}
+			} elseif ( Helper::is_bbpress_single() ) {
+				$old_layout = get_theme_mod( 'snow-monkey-bbpress-support-single-layout' );
+
+				if ( is_customize_preview() ) {
+					$new_layout = get_theme_mod( 'bbpress-single-layout' );
+				} else {
+					$mods       = get_theme_mods();
+					$new_layout = isset( $mods['bbpress-single-layout'] ) ? $mods['bbpress-single-layout'] : false;
+				}
 			}
-		} elseif ( Helper::is_bbpress_archive() ) {
-			$bbpress_archive_page_layout = get_theme_mod( 'snow-monkey-bbpress-support-archive-page-layout' );
-			if ( $bbpress_archive_page_layout ) {
-				return $bbpress_archive_page_layout;
+
+			if ( $old_layout && false === $new_layout ) {
+				return $old_layout;
+			}
+			if ( $new_layout ) {
+				return $new_layout;
 			}
 		}
 

@@ -95,7 +95,6 @@ class Bootstrap {
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
-		new App\Controller\Customizer();
 	}
 
 	/**
