@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey bbPress Support
- * Version: 0.13.2
+ * Version: 0.13.3
  * Tested up to: 5.7
  * Requires at least: 5.5
  * Requires PHP: 5.6
@@ -95,6 +95,7 @@ class Bootstrap {
 
 		new App\Controller\Admin();
 		new App\Controller\Front();
+		new App\Controller\Customizer();
 	}
 
 	/**

@@ -6,7 +6,7 @@
  */
 
 use Inc2734\WP_Customizer_Framework\Framework;
-use Snow_Monkey\Plugin\bbPressSupport\App\Helper;
+use Framework\Helper;
 
 if ( ! is_customize_preview() ) {
 	return;
