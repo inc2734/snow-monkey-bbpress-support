@@ -13,12 +13,27 @@ class TopicStars {
 	 * Constructor.
 	 */
 	public function __construct() {
+		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', [ $this, '_expand_get_template_part' ], 11, 2 );
 		add_action( 'snow_monkey_template_part_render_template-parts/content/entry/header/header', [ $this, '_display_topic_star' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
 		add_action( 'wp_ajax_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
 		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
 		add_action( 'bbp_template_after_user_profile', [ $this, '_bbp_template_after_user_profile' ] );
 		add_action( 'bbp_theme_after_topic_title', [ $this, '_bbp_theme_after_topic_title' ] );
+	}
+
+	/**
+	 * Expand get_template_part().
+	 *
+	 * @param boolean $expand If true, expand get_template_part().
+	 * @param array   $args   The template part args.
+	 * @return boolean
+	 */
+	public function _expand_get_template_part( $expand, $args ) {
+		if ( 'template-parts/content/entry/header/header' === $args['slug'] ) {
+			return true;
+		}
+		return $expand;
 	}
 
 	/**
