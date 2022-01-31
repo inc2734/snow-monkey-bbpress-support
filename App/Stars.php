@@ -26,22 +26,22 @@ class Stars {
 	 * Display stars to after reply content.
 	 */
 	public function _bbp_theme_after_reply_content() {
-		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_replies_stars', '__return_true', get_the_ID() ) ) {
+		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_replies_stars', '__return_true', bbp_get_reply_id() ) ) {
 			return;
 		}
 
 		$current_user = wp_get_current_user();
 		$author_id    = get_the_author_meta( 'ID' );
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ? 'button' : 'span';
-		$stars        = $this->_get_reply_stars( get_the_ID() );
-		$stars_users  = $this->_get_reply_stars_users( get_the_ID() );
+		$stars        = $this->_get_reply_stars( bbp_get_reply_id() );
+		$stars_users  = $this->_get_reply_stars_users( bbp_get_reply_id() );
 		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$icon         = $this->_get_icon();
 		?>
 		<div class="u-text-right">
 			<div class="smbbpress-stars-wrapper">
 				<div class="smbbpress-stars-wrapper__button">
-					<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-replies-stars" data-reply-id="<?php the_ID(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this reply', 'snow-monkey-bbpress-support' ); ?>">
+					<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-replies-stars" data-reply-id="<?php bbp_reply_id(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this reply', 'snow-monkey-bbpress-support' ); ?>">
 						<span class="smbbpress-stars__stars">
 							<?php echo wp_kses_post( $icon ); ?>
 						</span>
