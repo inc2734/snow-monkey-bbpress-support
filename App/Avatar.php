@@ -36,6 +36,10 @@ class Avatar {
 			return $img;
 		}
 
+		if ( ! defined( 'GIANISM_DOMAIN' ) ) {
+			return $img;
+		}
+
 		if ( ! is_int( $id_or_email ) ) {
 			$user = get_user_by( 'email', $id_or_email );
 			if ( ! $user ) {
