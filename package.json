@@ -37,7 +37,7 @@
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
     "test:lint:php": "wp-env start && wp-env run composer run-script lint",
     "test:lint": "run-s test:lint:*",
-    "test:unit:php": "wp-env start && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/snow-monkey-bbpress-support/.phpunit.xml.dist --verbose'",
+    "test:unit:php": "wp-env run composer run-script install-theme && wp-env run composer run-script install-plugin && wp-env start && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/snow-monkey-bbpress-support/.phpunit.xml.dist --verbose'",
     "test:unit": "run-s test:unit:*",
     "test": "run-s test:*",
     "clean:css": "rimraf assets/css && mkdir -p assets/css",
