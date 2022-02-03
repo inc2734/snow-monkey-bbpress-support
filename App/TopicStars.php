@@ -52,7 +52,7 @@ class TopicStars {
 		}
 
 		$current_user = wp_get_current_user();
-		$author_id    = get_the_author_meta( 'ID' );
+		$author_id    = bbp_get_topic_author_id();
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ? 'button' : 'span';
 		$stars        = $this->_get_topic_stars( bbp_get_topic_id() );
 		$stars_users  = $this->_get_topic_stars_users( bbp_get_topic_id() );
