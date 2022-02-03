@@ -47,15 +47,15 @@ class TopicStars {
 			return $html;
 		}
 
-		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_topic_stars', '__return_true', get_the_ID() ) ) {
+		if ( ! apply_filters( 'snow_monkey_bbpress_support_display_topic_stars', '__return_true', bbp_get_topic_id() ) ) {
 			return;
 		}
 
 		$current_user = wp_get_current_user();
 		$author_id    = get_the_author_meta( 'ID' );
 		$button_tag   = 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ? 'button' : 'span';
-		$stars        = $this->_get_topic_stars( get_the_ID() );
-		$stars_users  = $this->_get_topic_stars_users( get_the_ID() );
+		$stars        = $this->_get_topic_stars( bbp_get_topic_id() );
+		$stars_users  = $this->_get_topic_stars_users( bbp_get_topic_id() );
 		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$icon         = $this->_get_icon();
 
@@ -63,7 +63,7 @@ class TopicStars {
 		?>
 		<div class="smbbpress-stars-wrapper">
 			<div class="smbbpress-stars-wrapper__button">
-				<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-topic-stars" data-topic-id="<?php the_ID(); ?>" data-topic-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this topic', 'snow-monkey-bbpress-support' ); ?>">
+				<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-topic-stars" data-topic-id="<?php bbp_topic_id(); ?>" data-topic-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this topic', 'snow-monkey-bbpress-support' ); ?>">
 					<span class="smbbpress-stars__stars">
 						<?php echo wp_kses_post( $icon ); ?>
 					</span>
@@ -180,7 +180,7 @@ class TopicStars {
 			<div class="smbbpress-stars-wrapper__button">
 				<div class="smbbpress-stars">
 					<span class="smbbpress-stars__stars"><?php echo wp_kses_post( $this->_get_icon() ); ?></span>
-					<span class="smbbpress-stars__count"><?php echo wp_kses_post( $this->_get_topic_stars( get_the_ID() ) ); ?></span>
+					<span class="smbbpress-stars__count"><?php echo wp_kses_post( $this->_get_topic_stars( bbp_get_topic_id() ) ); ?></span>
 				</div>
 			</div>
 		</div>
