@@ -33,4 +33,16 @@
       */
     }
   }
+
+  .bbp-body {
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .bbp-threaded-replies {
+      border-left: 1px solid _var-lighter-color-gray();
+      @include _margin-left(1, false);
+    }
+  }
 }

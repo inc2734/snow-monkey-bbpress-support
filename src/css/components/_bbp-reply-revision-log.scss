@@ -3,7 +3,6 @@
   @include _font-size-line-height($_base-font-size-px - 4);
 
   a {
-    color: $_color-text; // For IE11
     color: _var-color-text();
     text-decoration: none;
 

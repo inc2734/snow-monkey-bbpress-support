@@ -2,19 +2,19 @@
   "author": "inc2734",
   "license": "GPL-2.0+",
   "dependencies": {
-    "postcss": "^8.3.6",
-    "sass-basis": "^15.0.2"
+    "postcss": "^8.4.6",
+    "sass-basis": "^16.0.4"
   },
   "devDependencies": {
     "@wordpress/browserslist-config": "^4.1.0",
-    "@wordpress/env": "^4.1.1",
-    "@wordpress/scripts": "18.0.1",
-    "autoprefixer": "^10.3.4",
+    "@wordpress/env": "^4.2.0",
+    "@wordpress/scripts": "20.0.2",
+    "autoprefixer": "^10.4.2",
     "cpy-cli": "^3.1.1",
-    "cssnano": "^5.0.8",
-    "node-sass": "^6.0.1",
+    "cssnano": "^5.0.16",
+    "node-sass": "^7.0.1",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": "^8.3.1",
+    "postcss-cli": "^9.1.0",
     "rimraf": "^3.0.2",
     "run-sequence": "^2.2.1"
   },
@@ -35,9 +35,9 @@
     "cli": "wp-env run cli",
     "wp": "wp-env run cli wp",
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
-    "test:lint:php": "wp-env run composer run-script lint",
+    "test:lint:php": "wp-env start && wp-env run composer run-script lint",
     "test:lint": "run-s test:lint:*",
-    "test:unit:php": "wp-env run composer run-script install-theme && wp-env run composer run-script install-plugin && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/snow-monkey-bbpress-support/.phpunit.xml.dist --verbose'",
+    "test:unit:php": "wp-env start && wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/snow-monkey-bbpress-support/.phpunit.xml.dist --verbose'",
     "test:unit": "run-s test:unit:*",
     "test": "run-s test:*",
     "clean:css": "rimraf assets/css && mkdir -p assets/css",
@@ -48,7 +48,7 @@
     "js:app": "wp-scripts build src/js/app.js --output-path=assets/js",
     "js": "npm run clean:js && npm-run-all -p js:*",
     "build": "npm-run-all -p css js",
-    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && cd snow-monkey-bbpress-support && composer install --no-dev",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-bbpress-support'",
     "zip:archive": "zip -9 -qmr snow-monkey-bbpress-support.zip snow-monkey-bbpress-support",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   }

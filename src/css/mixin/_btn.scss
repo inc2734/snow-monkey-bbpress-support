@@ -2,9 +2,7 @@
   @include _btn();
   @include _form-control-base-border();
   @include _form-control-base-padding();
-  background-color: $_color-white; // For IE11
   background-color: _var-color-white();
-  color: $_color-text; // For IE11
   color: _var-color-text();
   text-decoration: none;
 }

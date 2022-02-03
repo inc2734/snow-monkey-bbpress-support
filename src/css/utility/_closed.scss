@@ -1,6 +1,5 @@
 .status-closed {
   .bbp-topic-title > a {
-    color: $_color-text; // For IE11
     color: _var-color-text();
   }
 

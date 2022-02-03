@@ -14,10 +14,7 @@
 }
 
 button.smbbpress-stars {
-  border: 1px solid transparent;
-  border-color: _lighter($_color-gray); // For IE11
-  border-color: _var-lighter-color-gray();
-  background-color: _lightest($_color-gray); // For IE11
+  border: 1px solid _var-lighter-color-gray();
   background-color: _var-lightest-color-gray();
   border-radius: $_border-radius;
   cursor: pointer;

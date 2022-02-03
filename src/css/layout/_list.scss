@@ -3,12 +3,8 @@
 .bbp-replies,
 .bbp-search-results {
   @include _list-unstyled();
-  border-right: 1px solid transparent;
-  border-right-color: _lighter($_color-gray); // For IE11
-  border-right-color: _var-lighter-color-gray();
-  border-left: 1px solid transparent;
-  border-left-color: _lighter($_color-gray); // For IE11
-  border-left-color: _var-lighter-color-gray();
+  border-right: 1px solid _var-lighter-color-gray();
+  border-left: 1px solid  _var-lighter-color-gray();
 }
 
 .bbp-header,
@@ -16,14 +12,9 @@
   @include _list-unstyled();
   @include _row();
   align-items: center;
-  background-color: _lightest($_color-gray); // For IE11
   background-color: _var-lightest-color-gray();
-  border-top: 1px solid transparent;
-  border-top-color: _lighter($_color-gray); // For IE11
-  border-top-color: _var-lighter-color-gray();
-  border-bottom: 1px solid transparent;
-  border-bottom-color: _lighter($_color-gray); // For IE11
-  border-bottom-color: _var-lighter-color-gray();
+  border-top: 1px solid _var-lighter-color-gray();
+  border-bottom: 1px solid _var-lighter-color-gray();
   @include _font-size-line-height($_base-font-size-px - 4);
 
   @include _media-min(md) {

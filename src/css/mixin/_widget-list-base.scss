@@ -13,7 +13,6 @@
  * Text link base style
  */
 @mixin snow-monkey-bbpress-support-widget-link-base() {
-  color: $_color-text; // For IE11
   color: _var-color-text();
   text-decoration: none;
 

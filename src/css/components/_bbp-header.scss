@@ -2,14 +2,9 @@
 .bbp-topic-header,
 .bbp-reply-header {
   margin-bottom: -1px;
-  background-color: _lightest($_color-gray); // For IE11
   background-color: _var-lightest-color-gray();
-  border-top: 1px solid transparent;
-  border-top-color: _lighter($_color-gray); // For IE11
-  border-top-color: _var-lighter-color-gray();
-  border-bottom: 1px solid transparent;
-  border-bottom-color: _lighter($_color-gray); // For IE11
-  border-bottom-color: _var-lighter-color-gray();
+  border-top: 1px solid _var-lighter-color-gray();
+  border-bottom: 1px solid _var-lighter-color-gray();
   @include _padding(.25, .5);
 
   .bbp-meta {
@@ -17,12 +12,10 @@
     @include _font-size-line-height($_base-font-size-px - 2);
 
     a {
-      color: _light($_color-gray); // For IE11
       color: _var-light-color-gray();
       text-decoration: none;
 
       @include _hover(lg) {
-        color: $_color-text; // For IE11
         color: _var-color-text();
         text-decoration: underline;
       }
@@ -38,7 +31,6 @@
 
     .bbp-admin-links {
       float: right;
-      color: _light($_color-gray); // For IE11
       color: _var-light-color-gray();
       @include _font-size-line-height($_base-font-size-px - 4);
 
