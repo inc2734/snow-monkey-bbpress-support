@@ -19,4 +19,8 @@ button.smbbpress-stars {
   border-radius: $_border-radius;
   cursor: pointer;
   @include _padding(.25);
+
+  &--starred{
+    background-color: rgba(230,69,85,0.15);
+  }
 }

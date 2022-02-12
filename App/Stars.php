@@ -37,11 +37,12 @@ class Stars {
 		$stars_users  = $this->_get_reply_stars_users( bbp_get_reply_id() );
 		$stars_users  = $this->_user_ids_to_names( $stars_users );
 		$icon         = $this->_get_icon();
+		$starred      = in_array( $current_user->ID, $this->_get_reply_stars_users( bbp_get_reply_id() ), true );
 		?>
 		<div class="u-text-right">
 			<div class="smbbpress-stars-wrapper">
 				<div class="smbbpress-stars-wrapper__button">
-					<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars smbbpress-replies-stars" data-reply-id="<?php bbp_reply_id(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this reply', 'snow-monkey-bbpress-support' ); ?>">
+					<<?php echo esc_html( $button_tag ); ?> class="smbbpress-stars <?php echo $starred ? 'smbbpress-stars--starred' : ''; ?> smbbpress-replies-stars" data-reply-id="<?php bbp_reply_id(); ?>" data-reply-author="<?php echo esc_attr( $author_id ); ?>" title="<?php echo esc_attr_e( 'Like this reply', 'snow-monkey-bbpress-support' ); ?>">
 						<span class="smbbpress-stars__stars">
 							<?php echo wp_kses_post( $icon ); ?>
 						</span>
@@ -98,19 +99,34 @@ class Stars {
 		$author_id    = $_POST['authorId'];
 		$current_user = wp_get_current_user();
 
-		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id && ! in_array( $current_user->ID, $this->_get_reply_stars_users( $reply_id ), true ) ) {
-			$stars     = $this->_get_reply_stars( $reply_id );
-			$new_stars = $stars + 1;
-			update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
+		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {
+            if ( ! in_array( $current_user->ID, $this->_get_reply_stars_users( $reply_id ), true ) ){
+                $stars     = $this->_get_reply_stars( $reply_id );
+                $new_stars = $stars + 1;
+                update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
 
-			$users     = $this->_get_reply_stars_users( $reply_id );
-			$users[]   = $current_user->ID;
-			$new_users = array_unique( $users );
-			update_post_meta( $reply_id, 'smbbpress-support-stars-users', $new_users );
+                $users     = $this->_get_reply_stars_users( $reply_id );
+                $users[]   = $current_user->ID;
+                $new_users = array_unique( $users );
+                update_post_meta( $reply_id, 'smbbpress-support-stars-users', $new_users );
 
-			$stars     = $this->_get_user_stars( $author_id );
-			$new_stars = $stars + 1;
-			update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
+                $stars     = $this->_get_user_stars( $author_id );
+                $new_stars = $stars + 1;
+                update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
+            } else {
+                $stars     = $this->_get_reply_stars( $reply_id );
+                $new_stars = $stars - 1;
+                update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
+
+                $users     = $this->_get_reply_stars_users( $reply_id );
+                $new_users = array_diff( $users, $current_user->ID );
+                $new_users = array_values( $new_users );
+                update_post_meta( $reply_id, 'smbbpress-support-stars-users', $new_users );
+
+                $stars     = $this->_get_user_stars( $author_id );
+                $new_stars = $stars - 1;
+                update_user_meta( $author_id, 'smbbpress-support-stars', $new_stars );
+            }
 		}
 
 		$new_stars = $this->_get_reply_stars( $reply_id );

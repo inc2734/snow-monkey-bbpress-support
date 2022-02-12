@@ -30,6 +30,7 @@ $(() => {
         counter.text(response.stars);
         const names = starsUsers.find('.smbbpress-stars-users__names');
         names.html(response.users);
+        btn.toggleClass('smbbpress-stars--starred');
       }
     );
   });
@@ -56,6 +57,7 @@ $(() => {
         counter.text(response.stars);
         const names = starsUsers.find('.smbbpress-stars-users__names');
         names.html(response.users);
+        btn.toggleClass('smbbpress-stars--starred');
       }
     );
   });
