@@ -121,7 +121,7 @@ class TopicStars {
 		$author_id    = $_POST['authorId'];
 		$current_user = wp_get_current_user();
 
-		if ( 0 < $topic_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {
+        if ( 0 < $topic_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id && ! in_array( $current_user->ID, $this->_get_topic_stars_users( $topic_id ), true ) ) {
 			$stars     = $this->_get_topic_stars( $topic_id );
 			$new_stars = $stars + 1;
 			update_post_meta( $topic_id, 'smbbpress-support-topic-stars', $new_stars );

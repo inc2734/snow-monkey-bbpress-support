@@ -98,7 +98,7 @@ class Stars {
 		$author_id    = $_POST['authorId'];
 		$current_user = wp_get_current_user();
 
-		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {
+		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id && ! in_array( $current_user->ID, $this->_get_reply_stars_users( $reply_id ), true ) ) {
 			$stars     = $this->_get_reply_stars( $reply_id );
 			$new_stars = $stars + 1;
 			update_post_meta( $reply_id, 'smbbpress-support-stars', $new_stars );
