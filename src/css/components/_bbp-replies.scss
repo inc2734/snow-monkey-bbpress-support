@@ -34,15 +34,30 @@
     }
   }
 
-  .bbp-body {
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+  .bbp-body > ul {
+    list-style: none;
+    padding-left: 0;
+  }
 
-    .bbp-threaded-replies {
-      border-left: 1px solid _var-lighter-color-gray();
-      @include _margin-left(1, false);
+  .bbp-threaded-replies {
+    @include _margin-left(1, false);
+    border-left: 1px solid _var-lighter-color-gray();
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .bbp-reply-content > :where(ul) {
+    list-style: disc;
+  }
+
+  .bbp-topic-revision-log,
+  .bbp-reply-revision-log {
+    list-style: none;
+    padding-left: 0;
+    color: _var-lighter-color-text();
+
+    a {
+      color: inherit;
     }
   }
 }
