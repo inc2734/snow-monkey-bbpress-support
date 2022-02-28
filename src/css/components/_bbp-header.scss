@@ -15,7 +15,7 @@
       color: _var-light-color-gray();
       text-decoration: none;
 
-      @include _hover(lg) {
+      @include _hover() {
         color: _var-color-text();
         text-decoration: underline;
       }
