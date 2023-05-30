@@ -13,8 +13,8 @@ class SubscribeLink {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'bbp_get_topic_subscribe_link', [ $this, '_remove_side_border' ] );
-		add_filter( 'bbp_get_user_subscribe_link', [ $this, '_remove_side_border' ] );
+		add_filter( 'bbp_get_topic_subscribe_link', array( $this, '_remove_side_border' ) );
+		add_filter( 'bbp_get_user_subscribe_link', array( $this, '_remove_side_border' ) );
 	}
 
 	/**

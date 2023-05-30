@@ -13,8 +13,8 @@ class TopicCloseLink {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'bbp_template_before_replies_loop', [ $this, '_display_to_before_replies_loop' ] );
-		add_action( 'bbp_theme_after_reply_form_submit_button', [ $this, '_display_to_after_reply_form_submit_button' ] );
+		add_action( 'bbp_template_before_replies_loop', array( $this, '_display_to_before_replies_loop' ) );
+		add_action( 'bbp_theme_after_reply_form_submit_button', array( $this, '_display_to_after_reply_form_submit_button' ) );
 	}
 
 	/**
@@ -46,20 +46,20 @@ class TopicCloseLink {
 		}
 
 		$args = bbp_parse_args(
-			[],
-			[
+			array(),
+			array(
 				'close_text' => __( 'Close this topic', 'snow-monkey-bbpress-support' ),
 				'open_text'  => __( 'Open this topic', 'snow-monkey-bbpress-support' ),
-			],
+			),
 			'get_topic_close_link'
 		);
 
 		$display = bbp_is_topic_open( $topic->ID ) ? $args['close_text'] : $args['open_text'];
 		$uri     = add_query_arg(
-			[
+			array(
 				'action'   => 'bbp_toggle_topic_close',
 				'topic_id' => $topic->ID,
-			]
+			)
 		);
 		$uri     = wp_nonce_url( $uri, 'close-topic_' . $topic->ID );
 

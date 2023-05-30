@@ -1,22 +1,22 @@
 .smbbpress-stars {
-  outline: 0;
-  border: none;
-  background-color: transparent;
-  padding: 0;
-  color: #e64555;
-  line-height: 1;
+	outline: 0;
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	color: #e64555;
+	line-height: 1;
 
-  &__stars {
-  }
+	&__stars {
+	}
 
-  &__count {
-  }
+	&__count {
+	}
 }
 
 button.smbbpress-stars {
-  border: 1px solid _var-lighter-color-gray();
-  background-color: _var-lightest-color-gray();
-  border-radius: $_border-radius;
-  cursor: pointer;
-  @include _padding(.25);
+	border: 1px solid var(--wp--preset--color--sm-light-gray);
+	background-color: var(--wp--preset--color--sm-lightest-gray);
+	border-radius: var(--_global--border-radius);
+	cursor: pointer;
+	padding: var(--_padding-2);
 }

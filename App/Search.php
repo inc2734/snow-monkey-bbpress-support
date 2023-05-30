@@ -13,7 +13,7 @@ class Search {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'bbp_get_search_terms', [ $this, '_bbp_get_search_terms' ] );
+		add_action( 'bbp_get_search_terms', array( $this, '_bbp_get_search_terms' ) );
 	}
 
 	/**

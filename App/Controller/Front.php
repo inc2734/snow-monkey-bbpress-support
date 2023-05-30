@@ -15,9 +15,9 @@ class Front {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'login_form', [ $this, '_add_gianism_login' ] );
-		add_filter( 'snow_monkey_google_adsense', [ $this, '_snow_monkey_google_adsense' ] );
-		add_filter( 'snow_monkey_layout', [ $this, '_snow_monkey_layout' ] );
+		add_action( 'login_form', array( $this, '_add_gianism_login' ) );
+		add_filter( 'snow_monkey_google_adsense', array( $this, '_snow_monkey_google_adsense' ) );
+		add_filter( 'snow_monkey_layout', array( $this, '_snow_monkey_layout' ) );
 	}
 
 	/**

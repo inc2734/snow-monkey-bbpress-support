@@ -2,9 +2,9 @@
 /**
  * Plugin name: Snow Monkey bbPress Support
  * Version: 0.15.4
- * Tested up to: 5.9
+ * Tested up to: 6.2
  * Requires at least: 5.5
- * Requires PHP: 5.6
+ * Requires PHP: 7.4
  * Description: This plugin makes Snow Monkey beautifully display bbPress and adds some features.
  * Author: inc2734
  * Author URI: https://2inc.org
@@ -30,7 +30,7 @@ class Bootstrap {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+		add_action( 'plugins_loaded', array( $this, '_bootstrap' ) );
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Bootstrap {
 	public function _bootstrap() {
 		load_plugin_textdomain( 'snow-monkey-bbpress-support', false, basename( __DIR__ ) . '/languages' );
 
-		add_action( 'init', [ $this, '_activate_autoupdate' ] );
+		add_action( 'init', array( $this, '_activate_autoupdate' ) );
 
 		$theme = wp_get_theme( get_template() );
 		if ( 'snow-monkey' !== $theme->template && 'snow-monkey/resources' !== $theme->template ) {
@@ -59,7 +59,7 @@ class Bootstrap {
 		}
 
 		if ( ! class_exists( 'bbPress' ) ) {
-			add_action( 'admin_notices', [ $this, '_admin_notice_no_bbpress' ] );
+			add_action( 'admin_notices', array( $this, '_admin_notice_no_bbpress' ) );
 			return;
 		}
 
@@ -111,9 +111,9 @@ class Bootstrap {
 			plugin_basename( __FILE__ ),
 			'inc2734',
 			'snow-monkey-bbpress-support',
-			[
+			array(
 				'homepage' => 'https://snow-monkey.2inc.org',
-			]
+			)
 		);
 	}
 

@@ -1,16 +1,16 @@
 .widget_display_stats {
-  dl {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+	dl {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
 
-    > * {
-      flex: 1 1 50%;
-      max-width: 50%;
-    }
+		> * {
+			flex: 1 1 50%;
+			max-width: 50%;
+		}
 
-    > dd {
-      text-align: right;
-    }
-  }
+		> dd {
+			text-align: right;
+		}
+	}
 }

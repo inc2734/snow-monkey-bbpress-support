@@ -14,7 +14,7 @@ if ( ! is_customize_preview() ) {
 
 Framework::section(
 	'snow-monkey-bbpress-support-design-single',
-	[
+	array(
 		'title'           => __( 'bbPress single page settings', 'snow-monkey-bbpress-support' ),
 		'priority'        => 130,
 		'active_callback' => function() {
@@ -24,5 +24,5 @@ Framework::section(
 
 			return Helper::is_bbpress_single();
 		},
-	]
+	)
 );

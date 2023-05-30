@@ -1,34 +1,34 @@
 .widget_display_topics {
-  ul {
-    @include snow-monkey-bbpress-support-widget-list-base();
-  }
+	ul {
+		@include snow-monkey-bbpress-support-widget-list-base();
+	}
 
-  li {
-    color: _var-lighter-color-text();
-    @include _font-size-line-height($_base-font-size-px - 4);
+	li {
+		color: var(--wp--preset--color--sm-text);
+		@include _set-font-size-level(-2);
 
-    .bbp-forum-title {
-      @include snow-monkey-bbpress-support-widget-link-base();
-      display: block;
-      @include _font-size-line-height($_base-font-size-px - 2);
-    }
+		.bbp-forum-title {
+			@include snow-monkey-bbpress-support-widget-link-base();
+			display: block;
+			@include _set-font-size-level(-1);
+		}
 
-    .bbp-author-link {
-      color: _var-lighter-color-text();
-      text-decoration: none;
+		.bbp-author-link {
+			color: var(--wp--preset--color--sm-text);
+			text-decoration: none;
 
-      @include _hover() {
-        text-decoration: underline;
-      }
-    }
+			@include _hover() {
+				text-decoration: underline;
+			}
+		}
 
-    .bbp-author-name {
-      color: _var-lighter-color-text();
-    }
+		.bbp-author-name {
+			color: var(--wp--preset--color--sm-text);
+		}
 
-    > div {
-      margin-left: .5em;
-      display: inline-block;
-    }
-  }
+		> div {
+			margin-left: .5em;
+			display: inline-block;
+		}
+	}
 }

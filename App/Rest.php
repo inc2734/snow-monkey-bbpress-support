@@ -13,18 +13,18 @@ class Rest {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'bbp_register_post_types', [ $this, '_support_rest' ], 11 );
+		add_action( 'bbp_register_post_types', array( $this, '_support_rest' ), 11 );
 	}
 
 	/**
 	 * Add show_in_rest: true to bbPress's post types.
 	 */
 	public function _support_rest() {
-		$post_types = [
+		$post_types = array(
 			bbp_get_reply_post_type(),
 			bbp_get_topic_post_type(),
 			bbp_get_forum_post_type(),
-		];
+		);
 		$post_types = array_filter( $post_types );
 
 		foreach ( $post_types as $post_type ) {

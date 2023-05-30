@@ -15,9 +15,9 @@ class AdminBar {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_bar_menu', [ $this, '_admin_bar_menu' ], 9999 );
-		add_action( 'admin_bar_menu', [ $this, '_remove_edit' ], 9999 );
-		add_action( 'wp_before_admin_bar_render', [ $this, '_wp_before_admin_bar_render' ] );
+		add_action( 'admin_bar_menu', array( $this, '_admin_bar_menu' ), 9999 );
+		add_action( 'admin_bar_menu', array( $this, '_remove_edit' ), 9999 );
+		add_action( 'wp_before_admin_bar_render', array( $this, '_wp_before_admin_bar_render' ) );
 	}
 
 	/**
@@ -72,19 +72,19 @@ class AdminBar {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->add_menu(
-			[
+			array(
 				'id'    => 'snow-monkey-bbpress-support-logout',
 				'title' => __( 'Logout', 'snow-monkey-bbpress-support' ),
 				'href'  => wp_logout_url( home_url() ),
-			]
+			)
 		);
 
 		$wp_admin_bar->add_menu(
-			[
+			array(
 				'id'    => 'snow-monkey-bbpress-support-account',
 				'title' => __( 'Account', 'snow-monkey-bbpress-support' ),
 				'href'  => bbp_get_user_profile_url( bbp_get_current_user_id() ),
-			]
+			)
 		);
 	}
 }

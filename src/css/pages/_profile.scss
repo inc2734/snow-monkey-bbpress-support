@@ -1,75 +1,83 @@
 [id="bbp-user-wrapper"] {
-  > [id="bbp-user-body"] {
-    @include _margin-top(1.5);
-  }
+	> [id="bbp-user-body"] {
+		margin-top: var(--_margin2);
+	}
 }
 
 [id="bbp-single-user-details"] {
-  @include _row();
-  @include _row--margin(1);
-  flex-wrap: nowrap;
+	--_gap: var(--_margin1);
+	--_item-width: 100%;
 
-  > * {
-    @include _row__col();
-    @include _row__col--margin(1);
-  }
+	@include _row();
+	flex-wrap: nowrap;
+	margin-right: calc(var(--_gap) * .5 * -1);
+	margin-left: calc(var(--_gap) * .5 * -1);
+	margin-bottom: calc(var(--_gap) * -1);
 
-  > [id="bbp-user-avatar"] {
-    @include _row__col--width(150px);
-    min-width: 150px;
-  }
+	> * {
+		padding-right: calc(var(--_gap) * .5);
+		padding-left: calc(var(--_gap) * .5);
+		margin-bottom: var(--_gap);
+		flex: 1 1 var(--_item-width);
+		max-width: var(--_item-width);
+	}
 
-  > [id="bbp-user-navigation"] {
-    @include _row__col--width(auto);
-    align-self: flex-end;
-  }
+	> [id="bbp-user-avatar"] {
+		--_item-width: 150px;
+	}
+
+	> [id="bbp-user-navigation"] {
+		--_item-width: auto;
+
+		align-self: flex-end;
+	}
 }
 
 [id="bbp-user-navigation"] {
-  > ul {
-    @include _list-unstyled();
-    @include _clearfix();
+	> ul {
+		@include _list-unstyled();
+		@include _clearfix();
 
-    > li {
-      margin-right: 5px;
-      margin-top: 5px;
-      float: left;
-      display: inline-block;
+		> li {
+			margin-right: 5px;
+			margin-top: 5px;
+			float: left;
+			display: inline-block;
 
-      &.current {
-        a{
-          font-weight: bold;
-        }
-      }
+			&.current {
+				a{
+					font-weight: bold;
+				}
+			}
 
-      a {
-        @include snow-monkey-bbpress-support-btn();
-      }
-    }
-  }
+			a {
+				@include snow-monkey-bbpress-support-btn();
+			}
+		}
+	}
 }
 
 [id="bbp-user-body"] {
-  .entry-title {
-    @include _margin-bottom(.5);
+	.entry-title {
+		margin-bottom: var(--_margin-1);
 
-    &:not(:first-child) {
-      @include _margin-top(1);
-    }
-  }
+		&:not(:first-child) {
+			margin-top: var(--_margin1);
+		}
+	}
 }
 
 .bbp-user-section {
-  @include _content();
+	@include _set-content-level(1);
 
-  .bbp-user-topic-count,
-  .bbp-user-reply-count {
-    margin-top: 0;
-  }
+	.bbp-user-topic-count,
+	.bbp-user-reply-count {
+		margin-top: 0;
+	}
 }
 
 .bbp-user-replies-created .bbp-meta .bbp-header {
-  border-top: none;
-  @include _margin-bottom(.25);
-  @include _padding-bottom(.25);
+	border-top: none;
+	margin-bottom: var(--_margin-2);
+	padding-bottom: var(--_padding-2);
 }

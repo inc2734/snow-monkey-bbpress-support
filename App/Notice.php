@@ -13,8 +13,8 @@ class Notice {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'wp_insert_post', [ $this, '_send_new_topic' ], 10, 3 );
-		add_action( 'wpg_connect', [ $this, '_send_new_user' ], 10, 3 );
+		add_action( 'wp_insert_post', array( $this, '_send_new_topic' ), 10, 3 );
+		add_action( 'wpg_connect', array( $this, '_send_new_user' ), 10, 3 );
 	}
 
 	/**

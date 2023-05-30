@@ -13,7 +13,7 @@ class Avatar {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'get_avatar', [ $this, '_get_avatar' ], 10, 5 );
+		add_action( 'get_avatar', array( $this, '_get_avatar' ), 10, 5 );
 	}
 
 	/**

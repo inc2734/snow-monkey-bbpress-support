@@ -2,21 +2,21 @@
  * Unstyled list base style
  */
 @mixin snow-monkey-bbpress-support-widget-list-base() {
-  @include _list-unstyled();
+	@include _list-unstyled();
 
-  > li + li {
-    @include _margin(.25, 0, 0);
-  }
+	> li + li {
+		margin-top: var(--_margin-2);
+	}
 }
 
 /**
  * Text link base style
  */
 @mixin snow-monkey-bbpress-support-widget-link-base() {
-  color: _var-color-text();
-  text-decoration: none;
+	color: var(--wp--preset--color--sm-text);
+	text-decoration: none;
 
-  @include _hover() {
-    text-decoration: underline;
-  }
+	@include _hover() {
+		text-decoration: underline;
+	}
 }

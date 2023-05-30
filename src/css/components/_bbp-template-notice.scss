@@ -1,49 +1,49 @@
 .bbp-template-notice {
-  display: block;
-  border: 1px solid _dark(#ffffe0);
-  border-radius: $_border-radius;
-  background-color: #ffffe0;
-  @include _font-size-line-height($_base-font-size-px - 2);
-  @include _padding(.25, .5);
+	display: block;
+	border: 1px solid _dark(#ffffe0);
+	border-radius: var(--_global--border-radius);
+	background-color: #ffffe0;
+	@include _set-font-size-level(-1);
+	padding: var(--_padding-2) var(--_padding-1);
 
-  a {
-    color: darken(#ffffe0, 70%);
-    text-decoration: none;
+	a {
+		color: darken(#ffffe0, 70%);
+		text-decoration: none;
 
-    @include _hover() {
-      text-decoration: underline;
-    }
-  }
+		@include _hover() {
+			text-decoration: underline;
+		}
+	}
 
-  &.info {
-    border-color: _dark(#f0f8ff);
-    background-color: #f0f8ff;
+	&.info {
+		border-color: _dark(#f0f8ff);
+		background-color: #f0f8ff;
 
-    a {
-      color: darken(#f0f8ff, 70%);
-    }
-  }
+		a {
+			color: darken(#f0f8ff, 70%);
+		}
+	}
 
-  &.important {
-    border-color: _dark(#fffbcc);
-    background-color: #fffbcc;
+	&.important {
+		border-color: _dark(#fffbcc);
+		background-color: #fffbcc;
 
-    a {
-      color: darken(#fffbcc, 70%);
-    }
-  }
+		a {
+			color: darken(#fffbcc, 70%);
+		}
+	}
 
-  &.error,
-  &.warning {
-    border-color: _dark(#ffebe8);
-    background-color: #ffebe8;
+	&.error,
+	&.warning {
+		border-color: _dark(#ffebe8);
+		background-color: #ffebe8;
 
-    a {
-      color: darken(#ffebe8, 70%);
-    }
-  }
+		a {
+			color: darken(#ffebe8, 70%);
+		}
+	}
 
-  ul {
-    @include _list-unstyled();
-  }
+	ul {
+		@include _list-unstyled();
+	}
 }

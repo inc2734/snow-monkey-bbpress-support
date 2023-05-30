@@ -1,9 +1,9 @@
 .snow-monkey-bbpress-support-my-topic-close-link {
-  @include _margin-bottom(.5);
-  text-align: right;
+	margin-bottom: var(--_margin-1);
+	text-align: right;
 
-  .button {
-    @include snow-monkey-bbpress-support-btn();
-    @include _font-size($_base-font-size-px - 2);
-  }
+	.button {
+		@include snow-monkey-bbpress-support-btn();
+		@include _set-font-size-level(-1);
+	}
 }

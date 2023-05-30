@@ -1,13 +1,13 @@
 .bbp-reply-revision-log {
-  @include _list-unstyled();
-  @include _font-size-line-height($_base-font-size-px - 4);
+	@include _list-unstyled();
+	@include _set-font-size-level(-2);
 
-  a {
-    color: _var-color-text();
-    text-decoration: none;
+	a {
+		color: var(--wp--preset--color--sm-text);
+		text-decoration: none;
 
-    @include _hover() {
-      text-decoration: underline;
-    }
-  }
+		@include _hover() {
+			text-decoration: underline;
+		}
+	}
 }

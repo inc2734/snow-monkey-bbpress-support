@@ -13,7 +13,7 @@ class Author {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'bbp_get_author_ip', [ $this, '_bbp_get_author_ip' ] );
+		add_action( 'bbp_get_author_ip', array( $this, '_bbp_get_author_ip' ) );
 	}
 
 	/**

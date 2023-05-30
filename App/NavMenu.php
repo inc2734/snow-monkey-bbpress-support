@@ -13,7 +13,7 @@ class NavMenu {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'nav_menu_css_class', [ $this, '_nav_menu_css_class' ], 10, 2 );
+		add_filter( 'nav_menu_css_class', array( $this, '_nav_menu_css_class' ), 10, 2 );
 	}
 
 	/**

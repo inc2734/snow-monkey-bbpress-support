@@ -1,9 +1,9 @@
 .status-closed {
-  .bbp-topic-title > a {
-    color: _var-color-text();
-  }
+	.bbp-topic-title > a {
+		color: var(--wp--preset--color--sm-text);
+	}
 
-  .#{$_prefix}c-entry__title > .fa-check {
-    margin-right: 4px;
-  }
+	.#{ $_prefix }c-entry__title > .fa-check {
+		margin-right: 4px;
+	}
 }

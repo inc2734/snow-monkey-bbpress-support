@@ -1,23 +1,34 @@
 .bbp-search-results {
-  .bbp-search-author,
-  .bbp-forum-author,
-  .bbp-topic-author,
-  .bbp-reply-author,
-  .bbp-forum-content,
-  .bbp-search-content,
-  .bbp-topic-content,
-  .bbp-reply-content {
-    @include _padding(.25, .5);
-  }
+	.bbp-search-author,
+	.bbp-forum-author,
+	.bbp-topic-author,
+	.bbp-reply-author,
+	.bbp-forum-content,
+	.bbp-search-content,
+	.bbp-topic-content,
+	.bbp-reply-content {
+		padding: var(--_padding-2) var(--_padding-1);
+	}
 
-  .bbp-reply-title,
-  .bbp-topic-title {
-    > h3 {
-      @include _font-size-line-height($_base-font-size-px + 2);
-    }
+	.bbp-search-author,
+	.bbp-forum-author,
+	.bbp-topic-author,
+	.bbp-reply-author {
+		@include _media-min(md) {
+			// @include _row__col--width(20%);
+			flex: 0 0 20%;
+			max-width: 20%;
+		}
+	}
 
-    .bbp-topic-title-meta {
-      @include _font-size-line-height($_base-font-size-px - 2);
-    }
-  }
+	.bbp-reply-title,
+	.bbp-topic-title {
+		> h3 {
+			@include _set-font-size-level(2);
+		}
+
+		.bbp-topic-title-meta {
+			@include _set-font-size-level(-1);
+		}
+	}
 }

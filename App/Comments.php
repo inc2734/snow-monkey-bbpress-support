@@ -13,9 +13,9 @@ class Comments {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'comments_open', [ $this, '_comments_open' ], 10 );
-		add_filter( 'pings_open', [ $this, '_comments_open' ], 10 );
-		add_action( 'init', [ $this, '_remove_wp_make_content_images_responsive' ] );
+		add_filter( 'comments_open', array( $this, '_comments_open' ), 10 );
+		add_filter( 'pings_open', array( $this, '_comments_open' ), 10 );
+		add_action( 'init', array( $this, '_remove_wp_make_content_images_responsive' ) );
 	}
 
 	/**

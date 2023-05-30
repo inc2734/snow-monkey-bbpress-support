@@ -1,7 +1,7 @@
 .widget_display_search {
-  form {
-    > div {
-      @include snow-monkey-bbpress-support-input-group();
-    }
-  }
+	form {
+		> div {
+			@include snow-monkey-bbpress-support-input-group();
+		}
+	}
 }

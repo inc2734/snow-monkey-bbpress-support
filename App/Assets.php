@@ -13,7 +13,7 @@ class Assets {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
 	}
 
 	/**
@@ -24,14 +24,14 @@ class Assets {
 		wp_enqueue_style(
 			'snow-monkey-bbpress-support',
 			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/css/bbpress.min.css',
-			[ get_template() ],
+			array( get_template() ),
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/css/bbpress.min.css' )
 		);
 
 		wp_enqueue_script(
 			'snow-monkey-bbpress-support',
 			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/js/app.js',
-			[ 'jquery' ],
+			array( 'jquery' ),
 			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/js/app.js' ),
 			true
 		);

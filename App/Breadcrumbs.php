@@ -13,8 +13,8 @@ class Breadcrumbs {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'bbp_get_breadcrumb', [ $this, '_remove_bbpress_breadcrumbs' ] );
-		add_filter( 'snow_monkey_breadcrumbs', [ $this, '_snow_monkey_breadcrumbs' ] );
+		add_filter( 'bbp_get_breadcrumb', array( $this, '_remove_bbpress_breadcrumbs' ) );
+		add_filter( 'snow_monkey_breadcrumbs', array( $this, '_snow_monkey_breadcrumbs' ) );
 	}
 
 	/**
@@ -64,21 +64,21 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _single_topic( $breadcrumbs ) {
-		$adding_items = [];
+		$adding_items = array();
 
 		foreach ( $breadcrumbs as $key => $item ) {
 			if ( isset( $item['link'] ) && bbp_get_topics_url() === $item['link'] ) {
-				$adding_items[] = [
+				$adding_items[] = array(
 					'title' => bbp_get_forum_archive_title(),
 					'link'  => bbp_get_forums_url(),
-				];
+				);
 
 				$ancestors = array_reverse( (array) get_post_ancestors( get_the_ID() ) );
 				foreach ( $ancestors as $post_id ) {
-					$adding_items[] = [
+					$adding_items[] = array(
 						'title' => bbp_get_forum_title( $post_id ),
 						'link'  => bbp_get_forum_permalink( $post_id ),
-					];
+					);
 				}
 
 				unset( $breadcrumbs[ $key ] );
@@ -97,10 +97,10 @@ class Breadcrumbs {
 	 */
 	protected function _topic_edit( $breadcrumbs ) {
 		$breadcrumbs   = $this->_single_topic( $breadcrumbs );
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => __( 'Edit this topic', 'snow-monkey-bbpress-support' ),
 			'link'  => bbp_get_topic_edit_url( get_the_ID() ),
-		];
+		);
 
 		return $breadcrumbs;
 	}
@@ -112,19 +112,19 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _search( $breadcrumbs ) {
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
-		];
+		);
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => sprintf(
 				/* translators: 1: Search terms */
 				__( 'Search results of "%1$s"', 'snow-monkey-bbpress-support' ),
 				bbp_get_search_terms()
 			),
 			'link'  => '',
-		];
+		);
 
 		return $breadcrumbs;
 	}
@@ -136,15 +136,15 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _single_user( $breadcrumbs ) {
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
-		];
+		);
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => get_userdata( bbp_get_user_id() )->display_name,
 			'link'  => '',
-		];
+		);
 
 		return $breadcrumbs;
 	}
@@ -156,12 +156,12 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _topic_tag( $breadcrumbs ) {
-		$adding_items = [
-			[
+		$adding_items = array(
+			array(
 				'title' => bbp_get_forum_archive_title(),
 				'link'  => bbp_get_forums_url(),
-			],
-		];
+			),
+		);
 
 		array_splice( $breadcrumbs, -1, 0, $adding_items );
 
@@ -175,12 +175,12 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _topic_archive( $breadcrumbs ) {
-		$adding_items = [
-			[
+		$adding_items = array(
+			array(
 				'title' => bbp_get_forum_archive_title(),
 				'link'  => bbp_get_forums_url(),
-			],
-		];
+			),
+		);
 
 		array_splice( $breadcrumbs, -1, 0, $adding_items );
 
@@ -196,29 +196,29 @@ class Breadcrumbs {
 	protected function _single_reply( $breadcrumbs ) {
 		array_splice( $breadcrumbs, -1, 1 );
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
-		];
+		);
 
 		$ancestors = array_reverse( (array) get_post_ancestors( get_the_ID() ) );
 		foreach ( $ancestors as $post_id ) {
-			$breadcrumbs[] = [
+			$breadcrumbs[] = array(
 				'title' => bbp_get_forum_title( $post_id ),
 				'link'  => bbp_get_forum_permalink( $post_id ),
-			];
+			);
 			break;
 		}
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_topic_title(),
 			'link'  => bbp_get_topic_permalink(),
-		];
+		);
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_reply_title(),
 			'link'  => '',
-		];
+		);
 
 		return $breadcrumbs;
 	}
@@ -241,15 +241,15 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _no_replies( $breadcrumbs ) {
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
-		];
+		);
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => __( 'Topics with no replies', 'snow-monkey-bbpress-support' ),
 			'link'  => bbp_get_view_url( 'no-replies' ),
-		];
+		);
 
 		return $breadcrumbs;
 	}
@@ -261,15 +261,15 @@ class Breadcrumbs {
 	 * @return array
 	 */
 	protected function _popular( $breadcrumbs ) {
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => bbp_get_forum_archive_title(),
 			'link'  => bbp_get_forums_url(),
-		];
+		);
 
-		$breadcrumbs[] = [
+		$breadcrumbs[] = array(
 			'title' => __( 'Popular Topics', 'snow-monkey-bbpress-support' ),
 			'link'  => bbp_get_view_url( 'popular' ),
-		];
+		);
 
 		return $breadcrumbs;
 	}

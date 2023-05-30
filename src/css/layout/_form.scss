@@ -1,4 +1,4 @@
 .bbp-topic-form,
 .bbp-reply-form {
-  @include _margin-top(1);
+	margin-top: var(--_margin1);
 }

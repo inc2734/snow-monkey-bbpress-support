@@ -13,13 +13,13 @@ class TopicStars {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', [ $this, '_expand_get_template_part' ], 11, 2 );
-		add_action( 'snow_monkey_template_part_render_template-parts/content/entry/header/header', [ $this, '_display_topic_star' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
-		add_action( 'wp_ajax_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
-		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_topic_star', [ $this, '_update_stars' ] );
-		add_action( 'bbp_template_after_user_profile', [ $this, '_bbp_template_after_user_profile' ] );
-		add_action( 'bbp_theme_after_topic_title', [ $this, '_bbp_theme_after_topic_title' ] );
+		add_filter( 'inc2734_wp_view_controller_expand_get_template_part', array( $this, '_expand_get_template_part' ), 11, 2 );
+		add_action( 'snow_monkey_template_part_render_template-parts/content/entry/header/header', array( $this, '_display_topic_star' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
+		add_action( 'wp_ajax_snow_monkey_bbpress_support_topic_star', array( $this, '_update_stars' ) );
+		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_topic_star', array( $this, '_update_stars' ) );
+		add_action( 'bbp_template_after_user_profile', array( $this, '_bbp_template_after_user_profile' ) );
+		add_action( 'bbp_theme_after_topic_title', array( $this, '_bbp_theme_after_topic_title' ) );
 	}
 
 	/**
@@ -103,11 +103,11 @@ class TopicStars {
 		wp_localize_script(
 			'snow-monkey-bbpress-support',
 			'SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS',
-			[
+			array(
 				'endpoint' => admin_url( 'admin-ajax.php' ),
 				'action'   => 'snow_monkey_bbpress_support_topic_star',
 				'secure'   => wp_create_nonce( 'SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS' ),
-			]
+			)
 		);
 	}
 
@@ -148,10 +148,10 @@ class TopicStars {
 
 		header( 'Content-Type: application/json; charset=utf-8' );
 		echo json_encode(
-			[
+			array(
 				'stars' => $new_stars,
 				'users' => $new_stars_users,
-			]
+			)
 		);
 		die();
 	}
@@ -207,7 +207,7 @@ class TopicStars {
 	 */
 	protected function _get_topic_stars_users( $topic_id ) {
 		$users = get_post_meta( $topic_id, 'smbbpress-support-topic-stars-users', true );
-		$users = $users ? $users : [];
+		$users = $users ? $users : array();
 		return $users;
 	}
 
@@ -218,7 +218,7 @@ class TopicStars {
 	 * @return array $names
 	 */
 	protected function _user_ids_to_names( $user_ids ) {
-		$names = [];
+		$names = array();
 		foreach ( $user_ids as $user_id ) {
 			$userdata          = get_userdata( $user_id );
 			$names[ $user_id ] = $userdata->display_name;

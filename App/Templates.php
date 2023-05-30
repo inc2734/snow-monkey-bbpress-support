@@ -13,7 +13,7 @@ class Templates {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'bbp_get_bbpress_template', [ $this, '_bbp_get_bbpress_template' ] );
+		add_filter( 'bbp_get_bbpress_template', array( $this, '_bbp_get_bbpress_template' ) );
 	}
 
 	/**
@@ -28,7 +28,7 @@ class Templates {
 		}
 
 		$position = array_search( 'index.php', $templates, true );
-		array_splice( $templates, $position, 0, [ 'singular.php' ] );
+		array_splice( $templates, $position, 0, array( 'singular.php' ) );
 
 		return $templates;
 	}

@@ -1,38 +1,38 @@
 .smbbpress-stars-users {
-  &__label,
-  &__no-user-label {
-    display: none;
-  }
+	&__label,
+	&__no-user-label {
+		display: none;
+	}
 
-  &__users {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
+	&__users {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
 
-    .smbbpress-stars-users__user {
-      margin-right: .125rem;
-      margin-left: .125rem;
-    }
-  }
+		.smbbpress-stars-users__user {
+			margin-right: .125rem;
+			margin-left: .125rem;
+		}
+	}
 
-  &__user {
-    display: inline-block;
-    border-radius: 100%;
-    height: 24px;
-    width: 24px;
-    line-height: 1;
-    overflow: hidden;
+	&__user {
+		display: inline-block;
+		border-radius: 100%;
+		height: 24px;
+		width: 24px;
+		line-height: 1;
+		overflow: hidden;
 
-    > a {
-      display: block;
-    }
+		> a {
+			display: block;
+		}
 
-    img {
-      display: block;
-      object-fit: cover;
-      object-position: 50% 50%;
-      height: 100%;
-      width: 100%;
-    }
-  }
+		img {
+			display: block;
+			object-fit: cover;
+			object-position: 50% 50%;
+			height: 100%;
+			width: 100%;
+		}
+	}
 }

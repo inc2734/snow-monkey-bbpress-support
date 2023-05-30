@@ -14,3 +14,4 @@ yarn-error.log
 /.themes/
 .wp-env.override.json
 /.export/*
+.phpunit.result.cache

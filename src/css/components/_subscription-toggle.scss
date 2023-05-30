@@ -1,16 +1,16 @@
 .subscription-toggle {
-  // float: right; // in single forum
-  @include snow-monkey-bbpress-support-btn();
+	// float: right; // in single forum
+	@include snow-monkey-bbpress-support-btn();
 
-  // Profile subscription topics
-  .bbp-topic-title & {
-    // float: none;
-    @include _margin-right(.25);
-    margin-top: -3px;
-    padding: 2px 6px;
-  }
+	// Profile subscription topics
+	.bbp-topic-title & {
+		// float: none;
+		margin-right: var(--_margin-2);
+		margin-top: -3px;
+		padding: 2px 6px;
+	}
 }
 
 [id="subscription-toggle"] {
-  @include _clearfix();
+	@include _clearfix();
 }

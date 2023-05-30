@@ -13,10 +13,10 @@ class Post {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'bbp_new_topic_pre_insert', [ $this, '_sanitize' ] );
-		add_filter( 'bbp_new_reply_pre_insert', [ $this, '_sanitize' ] );
-		add_filter( 'bbp_edit_reply_pre_insert', [ $this, '_sanitize' ] );
-		add_filter( 'bbp_edit_topic_pre_insert', [ $this, '_sanitize' ] );
+		add_filter( 'bbp_new_topic_pre_insert', array( $this, '_sanitize' ) );
+		add_filter( 'bbp_new_reply_pre_insert', array( $this, '_sanitize' ) );
+		add_filter( 'bbp_edit_reply_pre_insert', array( $this, '_sanitize' ) );
+		add_filter( 'bbp_edit_topic_pre_insert', array( $this, '_sanitize' ) );
 	}
 
 	/**

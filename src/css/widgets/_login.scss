@@ -1,69 +1,69 @@
 .bbp_widget_login {
-  fieldset {
-    border: none;
-    padding: 0;
-  }
+	fieldset {
+		border: none;
+		padding: 0;
+	}
 
-  .bbp-login-form {
-    position: relative;
+	.bbp-login-form {
+		position: relative;
 
-    label {
-      width: auto;
-    }
+		label {
+			width: auto;
+		}
 
-    legend {
-      display: none;
-    }
+		legend {
+			display: none;
+		}
 
-    .bbp-submit-wrapper {
-      overflow: hidden;
-    }
+		.bbp-submit-wrapper {
+			overflow: hidden;
+		}
 
-    .bbp-submit-wrapper {
-      float: none;
-    }
+		.bbp-submit-wrapper {
+			float: none;
+		}
 
-    .bbp-login-links {
-      clear: both;
-    }
+		.bbp-login-links {
+			clear: both;
+		}
 
-    #wpg-login {
-      float: left;
-      margin: 0;
-    }
+		#wpg-login {
+			float: left;
+			margin: 0;
+		}
 
-    .bbp-username,
-    .bbp-email,
-    .bbp-password {
-      input {
-        @include _form-control();
-        width: 100%;
-      }
-    }
-  }
+		.bbp-username,
+		.bbp-email,
+		.bbp-password {
+			input {
+				@include _form-control();
+				width: 100%;
+			}
+		}
+	}
 
-  .button {
-    float: right;
-    @include snow-monkey-bbpress-support-btn();
-  }
+	.button {
+		float: right;
+		@include snow-monkey-bbpress-support-btn();
+	}
 
-  .bbp-logged-in {
-    overflow: hidden;
+	.bbp-logged-in {
+		overflow: hidden;
 
-    .user-submit {
-      display: block;
-      float: left;
-      margin-right: 1em;
-    }
+		.user-submit {
+			display: block;
+			float: left;
+			margin-right: 1em;
+		}
 
-    h4 {
-      @include _padding-bottom(.25);
-      overflow: hidden;
+		h4 {
+			padding-bottom: var(--_padding-2);
+			overflow: hidden;
 
-      > a {
-        color: _var-color-text();
-        text-decoration: underline;
-      }
-    }
-  }
+			> a {
+				color: var(--wp--preset--color--sm-text);
+				text-decoration: underline;
+			}
+		}
+	}
 }

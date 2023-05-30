@@ -1,27 +1,27 @@
 @mixin snow-monkey-bbpress-support-input-group() {
-  display: flex;
-  flex-wrap: nowrap;
-  border-radius: $_border-radius;
+	display: flex;
+	flex-wrap: nowrap;
+	border-radius: var(--_global--border-radius);
 
-  > input[type="text"] {
-    position: relative;
-    z-index: 1;
-    flex: 1;
-    @include _form-control();
-    border-radius: $_border-radius 0 0 $_border-radius;
-  }
+	> input[type="text"] {
+		position: relative;
+		z-index: 1;
+		flex: 1;
+		@include _form-control();
+		border-radius: var(--_global--border-radius) 0 0 var(--_global--border-radius);
+	}
 
-  > .button {
-    position: relative;
-    z-index: 0;
-    left: -1px;
-    flex: none;
-    @include snow-monkey-bbpress-support-btn();
-    border-radius: 0 $_border-radius $_border-radius 0;
-    overflow: visible;
+	> .button {
+		position: relative;
+		z-index: 0;
+		left: -1px;
+		flex: none;
+		@include snow-monkey-bbpress-support-btn();
+		border-radius: 0 var(--_global--border-radius) var(--_global--border-radius) 0;
+		overflow: visible;
 
-    &:hover, &:active, &:focus {
-      z-index: 1;
-    }
-  }
+		&:hover, &:active, &:focus {
+			z-index: 1;
+		}
+	}
 }

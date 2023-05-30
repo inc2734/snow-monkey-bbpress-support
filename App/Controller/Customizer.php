@@ -15,7 +15,7 @@ class Customizer {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'snow_monkey_post_load_customizer', [ $this, '_load_customizer' ] );
+		add_action( 'snow_monkey_post_load_customizer', array( $this, '_load_customizer' ) );
 	}
 
 	/**

@@ -13,7 +13,7 @@ class DocumentTitle {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'document_title_parts', [ $this, '_document_title_parts' ] );
+		add_filter( 'document_title_parts', array( $this, '_document_title_parts' ) );
 	}
 
 	/**

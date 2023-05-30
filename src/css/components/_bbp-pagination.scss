@@ -1,7 +1,7 @@
 .bbp-pagination {
-  @include _font-size-line-height($_base-font-size-px - 2);
+	@include _set-font-size-level(-1);
 
-  .bbp-pagination-links {
-    @include _margin-top(.25);
-  }
+	.bbp-pagination-links {
+		margin-top: var(--_margin-2);
+	}
 }

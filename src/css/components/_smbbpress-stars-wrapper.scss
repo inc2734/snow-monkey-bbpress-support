@@ -1,13 +1,13 @@
 .smbbpress-stars-wrapper {
-  &__button {
-    line-height: 1;
-  }
+	&__button {
+		line-height: 1;
+	}
 
-  &__users {
-    @include _margin-top(.25);
-  }
+	&__users {
+		margin-top: var(--_margin-2);
+	}
 }
 
 .c-entry__header .smbbpress-stars-wrapper {
-  @include _margin-bottom(-.5);
+	margin-bottom: calc(var(--_margin-1) * -1);
 }

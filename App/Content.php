@@ -13,7 +13,7 @@ class Content {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', [ $this, '_after_setup_theme' ] );
+		add_action( 'after_setup_theme', array( $this, '_after_setup_theme' ) );
 	}
 
 	/**
@@ -25,8 +25,8 @@ class Content {
 		remove_filter( 'bbp_get_reply_content', 'bbp_make_clickable', 40 ); // v2.6.0〜
 		remove_filter( 'bbp_get_topic_content', 'bbp_make_clickable', 40 ); // v2.6.0〜
 
-		add_filter( 'bbp_get_reply_content', [ $this, '_wp_oembed_blog_card_sanitize' ], 100 );
-		add_filter( 'bbp_get_topic_content', [ $this, '_wp_oembed_blog_card_sanitize' ], 100 );
+		add_filter( 'bbp_get_reply_content', array( $this, '_wp_oembed_blog_card_sanitize' ), 100 );
+		add_filter( 'bbp_get_topic_content', array( $this, '_wp_oembed_blog_card_sanitize' ), 100 );
 	}
 
 	/**

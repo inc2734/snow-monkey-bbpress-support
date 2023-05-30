@@ -13,13 +13,13 @@ class Stars {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'bbp_theme_after_reply_content', [ $this, '_bbp_theme_after_reply_content' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
-		add_action( 'wp_ajax_snow_monkey_bbpress_support_star', [ $this, '_update_stars' ] );
-		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_star', [ $this, '_update_stars' ] );
-		add_action( 'bbp_template_after_user_profile', [ $this, '_bbp_template_after_user_profile' ] );
-		add_action( 'bbp_theme_before_reply_author_details', [ $this, '_add_user_stars_to_replies' ] );
-		add_action( 'bbp_theme_after_reply_author_details', [ $this, '_stop_add_user_stars_to_replies' ] );
+		add_action( 'bbp_theme_after_reply_content', array( $this, '_bbp_theme_after_reply_content' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
+		add_action( 'wp_ajax_snow_monkey_bbpress_support_star', array( $this, '_update_stars' ) );
+		add_action( 'wp_ajax_nopriv_snow_monkey_bbpress_support_star', array( $this, '_update_stars' ) );
+		add_action( 'bbp_template_after_user_profile', array( $this, '_bbp_template_after_user_profile' ) );
+		add_action( 'bbp_theme_before_reply_author_details', array( $this, '_add_user_stars_to_replies' ) );
+		add_action( 'bbp_theme_after_reply_author_details', array( $this, '_stop_add_user_stars_to_replies' ) );
 	}
 
 	/**
@@ -80,11 +80,11 @@ class Stars {
 		wp_localize_script(
 			'snow-monkey-bbpress-support',
 			'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS',
-			[
+			array(
 				'endpoint' => admin_url( 'admin-ajax.php' ),
 				'action'   => 'snow_monkey_bbpress_support_star',
 				'secure'   => wp_create_nonce( 'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS' ),
-			]
+			)
 		);
 	}
 
@@ -125,10 +125,10 @@ class Stars {
 
 		header( 'Content-Type: application/json; charset=utf-8' );
 		echo json_encode(
-			[
+			array(
 				'stars' => $new_stars,
 				'users' => $new_stars_users,
-			]
+			)
 		);
 		die();
 	}
@@ -152,14 +152,14 @@ class Stars {
 	 * Add bbp_get_reply_author_link callback.
 	 */
 	public function _add_user_stars_to_replies() {
-		add_filter( 'bbp_get_reply_author_link', [ $this, '_add_user_stars_for_replies_user' ], 10, 2 );
+		add_filter( 'bbp_get_reply_author_link', array( $this, '_add_user_stars_for_replies_user' ), 10, 2 );
 	}
 
 	/**
 	 * Remove bbp_get_reply_author_link callback.
 	 */
 	public function _stop_add_user_stars_to_replies() {
-		remove_filter( 'bbp_get_reply_author_link', [ $this, '_add_user_stars_for_replies_user' ], 10, 2 );
+		remove_filter( 'bbp_get_reply_author_link', array( $this, '_add_user_stars_for_replies_user' ), 10, 2 );
 	}
 
 	/**
@@ -213,7 +213,7 @@ class Stars {
 	 */
 	protected function _get_reply_stars_users( $reply_id ) {
 		$users = get_post_meta( $reply_id, 'smbbpress-support-stars-users', true );
-		$users = $users ? $users : [];
+		$users = $users ? $users : array();
 		return $users;
 	}
 
@@ -224,7 +224,7 @@ class Stars {
 	 * @return array $names
 	 */
 	protected function _user_ids_to_names( $user_ids ) {
-		$names = [];
+		$names = array();
 		foreach ( $user_ids as $user_id ) {
 			$userdata          = get_userdata( $user_id );
 			$names[ $user_id ] = $userdata->display_name;

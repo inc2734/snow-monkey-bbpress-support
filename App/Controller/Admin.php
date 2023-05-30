@@ -15,7 +15,7 @@ class Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', [ $this, '_redirect' ] );
+		add_action( 'admin_menu', array( $this, '_redirect' ) );
 	}
 
 	/**

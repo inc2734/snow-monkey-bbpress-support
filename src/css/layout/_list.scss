@@ -2,40 +2,38 @@
 .bbp-forums,
 .bbp-replies,
 .bbp-search-results {
-  @include _list-unstyled();
-  border-right: 1px solid _var-lighter-color-gray();
-  border-left: 1px solid  _var-lighter-color-gray();
+	@include _list-unstyled();
+	border-right: 1px solid var(--wp--preset--color--sm-lighter-gray);
+	border-left: 1px solid var(--wp--preset--color--sm-lighter-gray);
 }
 
 .bbp-header,
 .bbp-footer {
-  @include _list-unstyled();
-  @include _row();
-  align-items: center;
-  background-color: _var-lightest-color-gray();
-  border-top: 1px solid _var-lighter-color-gray();
-  border-bottom: 1px solid _var-lighter-color-gray();
-  @include _font-size-line-height($_base-font-size-px - 4);
+	@include _list-unstyled();
+	@include _row();
+	align-items: center;
+	background-color: var(--wp--preset--color--sm-lightest-gray);
+	border-top: 1px solid var(--wp--preset--color--sm-lighter-gray);
+	border-bottom: 1px solid var(--wp--preset--color--sm-lighter-gray);
+	@include _set-font-size-level(-2);
 
-  @include _media-min(md) {
-    @include _font-size-line-height($_base-font-size-px - 2);
-  }
+	> :not(.forum-titles) {
+		flex: 1 1 0%;
+		max-width: 100%;
+	}
 
-  > :not(.forum-titles) {
-    @include _row__col();
-  }
-
-  .forum-titles {
-    flex: 1 1 auto;
-  }
+	.forum-titles {
+		flex: 1 1 auto;
+	}
 }
 
 .forum-titles {
-  @include _list-unstyled();
-  @include _row();
-  align-items: center;
+	@include _list-unstyled();
+	@include _row();
+	align-items: center;
 
-  > * {
-    @include _row__col();
-  }
+	> * {
+		flex: 1 1 0%;
+		max-width: 100%;
+	}
 }

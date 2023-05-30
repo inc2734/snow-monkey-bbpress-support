@@ -1,114 +1,114 @@
 .bbp-form {
-  @include _content(.5);
-  display: block;
-  border: none;
-  min-width: 0;
-  max-width: 100%;
-  border: 1px solid _var-lighter-color-gray();
-  @include _padding(.5);
+	@include _set-content-level(-1);
+	display: block;
+	border: none;
+	min-width: 0;
+	max-width: 100%;
+	border: 1px solid var(--wp--preset--color--sm-lighter-gray);
+	padding: var(--_padding-1);
 
-  @include _media-min(md) {
-    @include _padding(1);
-  }
+	@include _media-min(md) {
+		padding: var(--_padding1);
+	}
 
-  .bbp-form {
-    border: none;
-    padding: 0;
-  }
+	.bbp-form {
+		border: none;
+		padding: 0;
+	}
 
-  > legend {
-    margin-bottom: -1em;
-    @include _font-size-line-height($_base-font-size-px + 2);
-    font-weight: bold;
-  }
+	> legend {
+		margin-bottom: -1em;
+		@include _set-font-size-level(2);
+		font-weight: bold;
+	}
 
-  > div {
-    @include _content(.5);
+	> div {
+		@include _set-content-level(-1);
 
-    > label + * {
-      margin-top: 0 !important;
-    }
-  }
+		> label + * {
+			margin-top: 0 !important;
+		}
+	}
 
-  label {
-    font-weight: bold;
-  }
+	label {
+		font-weight: bold;
+	}
 
-  input[type="text"],
-  input[type="password"],
-  [id="description"] {
-    @include _form-control();
-    width: 100%;
-  }
+	input[type="text"],
+	input[type="password"],
+	[id="description"] {
+		@include _form-control();
+		width: 100%;
+	}
 
-  .bbp-submit-wrapper {
-    .button {
-      @include snow-monkey-bbpress-support-btn();
-    }
-  }
+	.bbp-submit-wrapper {
+		.button {
+			@include snow-monkey-bbpress-support-btn();
+		}
+	}
 
-  .bbp-the-content-wrapper {
-    .bbp-the-content {
-      @include _form-control();
-      @include _font-size-line-height($_base-font-size-px - 2);
-      width: calc(100% + 2px) !important;
-    }
-  }
+	.bbp-the-content-wrapper {
+		.bbp-the-content {
+			@include _form-control();
+			@include _set-font-size-level(-1);
+			width: calc(100% + 2px) !important;
+		}
+	}
 
-  .wp-editor-container {
-    .bbp-the-content {
-      margin: 0 -1px -1px !important;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
+	.wp-editor-container {
+		.bbp-the-content {
+			margin: 0 -1px -1px !important;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+	}
 
-  .user-pass1-wrap {
-    .button {
-      @include snow-monkey-bbpress-support-btn();
+	.user-pass1-wrap {
+		.button {
+			@include snow-monkey-bbpress-support-btn();
 
-      & + .button {
-        @include _margin-left(.25);
-      }
-    }
-  }
+			& + .button {
+				margin-left: var(--_margin-2);
+			}
+		}
+	}
 
-  .password-input-wrapper + .password-button-wrapper {
-    @include _margin-top(.25);
-    display: block;
-  }
+	.password-input-wrapper + .password-button-wrapper {
+		margin-top: var(--_margin-2);
+		display: block;
+	}
 
-  #pass-strength-result {
-    background-color: #eee;
-    border: 1px solid #ddd;
-    color: #23282d;
-    margin: -1px 1px 5px;
-    padding: 3px 5px;
-    text-align: center;
-    box-sizing: border-box;
+	#pass-strength-result {
+		background-color: #eee;
+		border: 1px solid #ddd;
+		color: #23282d;
+		margin: -1px 1px 5px;
+		padding: 3px 5px;
+		text-align: center;
+		box-sizing: border-box;
 
-    &.strong {
-      background-color: #c1e1b9;
-      border-color: #83c373;
-    }
+		&.strong {
+			background-color: #c1e1b9;
+			border-color: #83c373;
+		}
 
-    &.short {
-      background-color: #f1adad;
-     border-color: #e35b5b;
-    }
+		&.short {
+			background-color: #f1adad;
+		border-color: #e35b5b;
+		}
 
-    &.bad {
-      background-color: #fbc5a9;
-      border-color: #f78b53;
-    }
+		&.bad {
+			background-color: #fbc5a9;
+			border-color: #f78b53;
+		}
 
-    &.good {
-      background-color: #ffe399;
-      border-color: #ffc733;
-    }
-  }
+		&.good {
+			background-color: #ffe399;
+			border-color: #ffc733;
+		}
+	}
 
-  .password-button-wrapper + #pass-strength-result {
-    @include _margin-top(.25);
-  }
+	.password-button-wrapper + #pass-strength-result {
+		margin-top: var(--_margin-2);
+	}
 }

@@ -1,63 +1,66 @@
 .bbp-replies {
-  .bbp-header,
-  .bbp-footer {
-    .bbp-reply-author,
-    .bbp-reply-content {
-      @include _padding(.25, .5);
-    }
+	.bbp-header,
+	.bbp-footer {
+		.bbp-reply-author,
+		.bbp-reply-content {
+			padding: var(--_padding-2) var(--_padding-1);
+		}
 
-    .bbp-reply-author {
-      @include _row__col--width(20%);
-    }
+		.bbp-reply-author {
+			// @include _row__col--width(20%);
+			flex: 0 0 20%;
+			max-width: 20%;
+		}
 
-    .bbp-reply-content {
-      @include _row__col--width(auto);
-      @include _row();
-      align-items: center;
+		.bbp-reply-content {
+			// @include _row__col--width(auto);
+			flex: 1 1 auto;
+			@include _row();
+			align-items: center;
 
-      /*
-      #subscription-toggle,
-      #favorite-toggle {
-        @include _row__col();
-        flex: 0 1 auto;
-        margin-left: auto;
-      }
+			/*
+			#subscription-toggle,
+			#favorite-toggle {
+				@include _row__col();
+				flex: 0 0 auto;
+				margin-left: auto;
+			}
 
-      #subscription-toggle {
-        @include _clearfix();
+			#subscription-toggle {
+				@include _clearfix();
 
-        & + #favorite-toggle {
-          margin-left: .25rem;
-        }
-      }
-      */
-    }
-  }
+				& + #favorite-toggle {
+					margin-left: .25rem;
+				}
+			}
+			*/
+		}
+	}
 
-  .bbp-body > ul {
-    list-style: none;
-    padding-left: 0;
-  }
+	.bbp-body > ul {
+		list-style: none;
+		padding-left: 0;
+	}
 
-  .bbp-threaded-replies {
-    @include _margin-left(1, false);
-    border-left: 1px solid _var-lighter-color-gray();
-    list-style: none;
-    padding-left: 0;
-  }
+	.bbp-threaded-replies {
+		margin-left: var(--_padding1);
+		border-left: 1px solid var(--wp--preset--color--sm-lighter-gray);
+		list-style: none;
+		padding-left: 0;
+	}
 
-  .bbp-reply-content > :where(ul) {
-    list-style: disc;
-  }
+	.bbp-reply-content > :where(ul) {
+		list-style: disc;
+	}
 
-  .bbp-topic-revision-log,
-  .bbp-reply-revision-log {
-    list-style: none;
-    padding-left: 0;
-    color: _var-lighter-color-text();
+	.bbp-topic-revision-log,
+	.bbp-reply-revision-log {
+		list-style: none;
+		padding-left: 0;
+		color: var(--wp--preset--color--sm-text);
 
-    a {
-      color: inherit;
-    }
-  }
+		a {
+			color: inherit;
+		}
+	}
 }

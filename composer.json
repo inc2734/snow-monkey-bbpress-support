@@ -10,20 +10,16 @@
   ],
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
-    "squizlabs/php_codesniffer": "^3.6",
-    "phpcompatibility/php-compatibility": "^9.3",
     "wp-coding-standards/wpcs": "^2.3",
-    "sirbrillig/phpcs-variable-analysis": "^2.11",
-    "wp-phpunit/wp-phpunit": "^5.8",
     "yoast/phpunit-polyfills": "^1.0"
   },
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.4",
     "inc2734/wp-github-plugin-updater": "^3.1"
   },
   "scripts" :{
-		"format": "phpcbf --standard=./.phpcs.xml.dist --report-summary --report-source",
-		"lint": "phpcs --standard=./.phpcs.xml.dist",
+    "lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+    "format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
     "install-theme": "rm -rf ./.themes && mkdir ./.themes && wget -P ./.themes https://github.com/inc2734/snow-monkey/archive/master.zip && unzip -o -qq ./.themes/master.zip -d ./.themes && mv ./.themes/snow-monkey-master ./.themes/snow-monkey && cd .themes/snow-monkey && composer install --no-dev",
     "install-plugin": "rm -rf ./.plugins && mkdir ./.plugins && wget -P ./.plugins https://downloads.wordpress.org/plugin/bbpress.zip && unzip -o -qq ./.plugins/bbpress -d ./.plugins"
   },

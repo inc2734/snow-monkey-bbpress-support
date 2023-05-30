@@ -15,12 +15,12 @@ class Sidebar {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'snow_monkey_use_post_type_widget_area', [ $this, '_snow_monkey_use_post_type_widget_area' ] );
-		add_filter( 'is_active_sidebar', [ $this, '_is_active_sidebar' ], 10, 2 );
-		add_action( 'wp_head', [ $this, '_remove_sidebars' ], 11 );
-		add_action( 'snow_monkey_sidebar', [ $this, '_snow_monkey_sidebar' ] );
-		add_action( 'widgets_init', [ $this, '_widgets_init' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, '_enqueue' ] );
+		add_filter( 'snow_monkey_use_post_type_widget_area', array( $this, '_snow_monkey_use_post_type_widget_area' ) );
+		add_filter( 'is_active_sidebar', array( $this, '_is_active_sidebar' ), 10, 2 );
+		add_action( 'wp_head', array( $this, '_remove_sidebars' ), 11 );
+		add_action( 'snow_monkey_sidebar', array( $this, '_snow_monkey_sidebar' ) );
+		add_action( 'widgets_init', array( $this, '_widgets_init' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, '_enqueue' ) );
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Sidebar {
 	 */
 	public function _widgets_init() {
 		register_sidebar(
-			[
+			array(
 				'name'          => __( 'bbPress sidebar', 'snow-monkey-bbpress-support' ),
 				'description'   => __( 'This widgets are displayed in the sidebar of bbPress.', 'snow-monkey-bbpress-support' ),
 				'id'            => 'bbpress-sidebar-widget-area',
@@ -124,11 +124,11 @@ class Sidebar {
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="c-widget__title"><span>',
 				'after_title'   => '</span></h2>',
-			]
+			)
 		);
 
 		register_sidebar(
-			[
+			array(
 				'name'          => __( 'Sticky bbPress sidebar', 'snow-monkey-bbpress-support' ),
 				'description'   => __( 'This widgets are displayed in the sidebar of bbPress.', 'snow-monkey-bbpress-support' ),
 				'id'            => 'bbpress-sidebar-sticky-widget-area',
@@ -136,7 +136,7 @@ class Sidebar {
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="c-widget__title"><span>',
 				'after_title'   => '</span></h2>',
-			]
+			)
 		);
 	}
 
@@ -153,7 +153,7 @@ class Sidebar {
 		wp_enqueue_script(
 			Helper::get_main_script_handle() . '-sidebar-sticky-widget-area',
 			get_theme_file_uri( '/assets/js/sidebar-sticky-widget-area.js' ),
-			[],
+			array(),
 			filemtime( get_theme_file_path( '/assets/js/sidebar-sticky-widget-area.js' ) ),
 			true
 		);

@@ -1,106 +1,110 @@
 .bbp-topics {
-  .bbp-topic-title,
-  .bbp-topic-voice-count,
-  .bbp-topic-reply-count,
-  .bbp-topic-freshness {
-    @include _padding(.25, .15);
+	.bbp-topic-title,
+	.bbp-topic-voice-count,
+	.bbp-topic-reply-count,
+	.bbp-topic-freshness {
+		padding: var(--_padding-2) calc(var(--_padding-2) / 2);
 
-    @include _media-min(md) {
-      @include _padding(.25, .5);
-    }
-  }
+		@include _media-min(md) {
+			padding: var(--_padding-2) var(--_padding-1);
+		}
+	}
 
-  .bbp-topic-title {
-    @include _row__col--width(41%);
+	.bbp-topic-title {
+		// @include _row__col--width(41%);
+		flex: 0 0 41%;
+		max-width: 41%;
 
-    @include _media-min(md) {
-      @include _row__col--width(50%);
-    }
+		@include _media-min(md) {
+			// @include _row__col--width(50%);
+			flex: 0 0 50%;
+			max-width: 50%;
+		}
 
-    > .bbp-row-actions {
-      display: none;
-    }
-  }
+		> .bbp-row-actions {
+			display: none;
+		}
+	}
 
-  .bbp-author-avatar {
-    margin-right: 3px;
-  }
+	.bbp-author-avatar {
+		margin-right: 3px;
+	}
 
-  .bbp-topic-voice-count,
-  .bbp-topic-reply-count {
-    text-align: center;
-    @include _row__col--width(17%);
+	.bbp-topic-voice-count,
+	.bbp-topic-reply-count {
+		text-align: center;
+		// @include _row__col--width(17%);
+		flex: 0 0 17%;
+		max-width: 17%;
 
-    @include _media-min(md) {
-      @include _row__col--width(15%);
-    }
-  }
+		@include _media-min(md) {
+			// @include _row__col--width(15%);
+			flex: 0 0 15%;
+			max-width: 15%;
+		}
+	}
 
-  .bbp-topic-freshness {
-    @include _row__col--width(25%);
+	.bbp-topic-freshness {
+		// @include _row__col--width(25%);
+		flex: 0 0 25%;
+		max-width: 25%;
 
-    @include _media-min(md) {
-      @include _row__col--width(20%);
-    }
-  }
+		@include _media-min(md) {
+			// @include _row__col--width(20%);
+			flex: 0 0 20%;
+			max-width: 20%;
+		}
+	}
 
-  .bbp-body {
-    > .#{$_prefix}c-entry {
-      @include _padding-top(.25);
-      @include _padding-bottom(.25);
+	.bbp-body {
+		> .#{ $_prefix }c-entry {
+			padding-top: var(--_padding-2);
+			padding-bottom: var(--_padding-2);
 
-      &:not(:first-child) {
-        border-top: 1px solid _var-lighter-color-gray();
-      }
-    }
+			&:not(:first-child) {
+				border-top: 1px solid var(--wp--preset--color--sm-lighter-gray);
+			}
+		}
 
-    .bbp-topic-permalink {
-      font-weight: bold;
-    }
+		.bbp-topic-permalink {
+			font-weight: bold;
+		}
 
-    .bbp-topic-content {
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
-    }
+		.bbp-topic-content {
+			@include _set-font-size-level(-2);
+		}
 
-    .smbbpress-stars-wrapper,
-    .bbp-topic-voice-count,
-    .bbp-topic-reply-count,
-    .bbp-topic-freshness {
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
+		.smbbpress-stars-wrapper,
+		.bbp-topic-voice-count,
+		.bbp-topic-reply-count,
+		.bbp-topic-freshness {
+			@include _set-font-size-level(-2);
+		}
 
-      @include _media-min(md) {
-        @include _font-size($_base-font-size-px - 2);
-        @include _line-height($_base-font-size-px + 6);
-      }
-    }
+		.bbp-topic-freshness {
+			a {
+				color: var(--wp--preset--color--sm-text);
+				text-decoration: none;
 
-    .bbp-topic-freshness {
-      a {
-        color: _var-color-text();
-        text-decoration: none;
+				@include _hover() {
+					text-decoration: underline;
+				}
+			}
+		}
 
-        @include _hover() {
-          text-decoration: underline;
-        }
-      }
-    }
+		.bbp-topic-started-by,
+		.bbp-topic-started-in {
+			@include _set-font-size-level(-2);
+			display: block;
 
-    .bbp-topic-started-by,
-    .bbp-topic-started-in {
-      @include _font-size($_base-font-size-px - 4);
-      @include _line-height($_base-font-size-px + 4);
-      display: block;
+			a {
+				color: var(--wp--preset--color--sm-text);
+				text-decoration: none;
 
-      a {
-        color: _var-color-text();
-        text-decoration: none;
-
-        @include _hover() {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
+				@include _hover() {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 }
