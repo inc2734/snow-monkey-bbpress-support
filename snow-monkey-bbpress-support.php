@@ -68,7 +68,6 @@ class Bootstrap {
 		new App\Assets();
 		new App\Sidebar();
 		new App\AdminBar();
-		new App\Notice();
 		new App\NavMenu();
 		new App\Breadcrumbs();
 		new App\DocumentTitle();
@@ -80,6 +79,10 @@ class Bootstrap {
 		new App\Rest();
 		new App\Search();
 		new App\Post();
+
+		if ( apply_filters( 'snow_monkey_bbpress_support_activate_notice_feature', '__return_true' ) ) {
+			new App\Notice();
+		}
 
 		if ( apply_filters( 'snow_monkey_bbpress_support_activate_replies_stars_feature', '__return_true' ) ) {
 			new App\Stars();
