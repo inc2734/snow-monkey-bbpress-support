@@ -56,6 +56,7 @@
 		"js:app": "wp-scripts build src/js/app.js --output-path=assets/js",
 		"js": "npm run clean:js && npm-run-all -p js:*",
 		"build": "npm-run-all -p css js",
+		"make-php": "npm run cli php -- wp-content/plugins/snow-monkey-bbpress-support/bin/l10n.php",
 		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && wp-env start && npm run composer install -- --no-dev -d snow-monkey-bbpress-support",
 		"zip:archive": "zip -9 -qmr snow-monkey-bbpress-support.zip snow-monkey-bbpress-support",
 		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
