@@ -37,6 +37,10 @@ class Pagination {
 	 * @return string
 	 */
 	public function _bbp_pagination_links( $pagination ) {
+		if ( ! $pagination ) {
+			return;
+		}
+
 		$pagination  = preg_replace(
 			'/^(\d+)$/',
 			'<span class="page-numbers current">$1</span>',
