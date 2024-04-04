@@ -7,33 +7,117 @@
 	border-left: 1px solid var(--wp--preset--color--sm-lighter-gray);
 }
 
+.bbp-forums,
+.bbp-topics,
+.bbp-replies,
+.bbp-search-results {
+	> .bbp-header,
+	> .bbp-footer,
+	[class*=loop-item-] {
+		padding-right: var(--_padding-1);
+		padding-left: var(--_padding-1);
+
+		@include _media-min(md) {
+			padding-right: var(--_padding1);
+			padding-left: var(--_padding1);
+		}
+	}
+
+	> .bbp-header,
+	> .bbp-footer {
+		padding-top: var(--_padding-2);
+		padding-bottom: var(--_padding-2);
+	}
+
+	[class*=loop-item-] {
+		padding-top: var(--_padding-1);
+		padding-bottom: var(--_padding-1);
+
+		@include _media-min(md) {
+			padding-top: var(--_padding1);
+			padding-bottom: var(--_padding1);
+		}
+	}
+}
+
+.bbp-forum-header,
+.bbp-topic-header,
+.bbp-reply-header {
+	padding: var(--_padding-2) var(--_padding-1);
+
+	@include _media-min(md) {
+		padding-right: var(--_padding1);
+		padding-left: var(--_padding1);
+	}
+}
+
 .bbp-header,
 .bbp-footer {
-	@include _list-unstyled();
-	@include _row();
+	display: flex;
+	gap: var(--_margin1);
+	list-style: none;
 	align-items: center;
 	background-color: var(--wp--preset--color--sm-lightest-gray);
 	border-top: 1px solid var(--wp--preset--color--sm-lighter-gray);
 	border-bottom: 1px solid var(--wp--preset--color--sm-lighter-gray);
 	@include _set-font-size-level(-2);
 
-	> :not(.forum-titles) {
-		flex: 1 1 0%;
-		max-width: 100%;
-	}
-
-	.forum-titles {
-		flex: 1 1 auto;
+	> * {
+		flex: 1;
+		min-width: 0;
 	}
 }
 
-.forum-titles {
-	@include _list-unstyled();
-	@include _row();
-	align-items: center;
+.bbp-forums,
+.bbp-topics {
+	> .bbp-header,
+	> .bbp-body,
+	> .bbp-footer {
+		> * > :first-child {
+			flex: 1 1 61%;
+		}
+
+		> * > :not(:first-child) {
+			flex: 0 0 13%;
+
+			@include _media-max(sm) {
+				display: none;
+			}
+		}
+	}
+}
+
+.bbp-replies,
+.bbp-search-results {
+	.bbp-header,
+	[class*=loop-item-],
+	.bbp-footer {
+		> :first-child:not(.bbp-topic-permalink) {
+			flex: 0 0 100px;
+		}
+
+		> :not(:first-child),
+		> .bbp-forum-content {
+			flex: 1;
+		}
+	}
+}
+
+.forum-titles,
+[class*=loop-item-] {
+	display: flex;
+	flex-direction: column;
+	gap: var(--_margin1);
+	list-style: none;
+	padding-left: 0;
+
+	@include _media-min(md) {
+		flex-direction: row;
+	}
 
 	> * {
-		flex: 1 1 0%;
-		max-width: 100%;
+		margin: 0;
+		padding: 0;
+		min-width: 0;
 	}
 }

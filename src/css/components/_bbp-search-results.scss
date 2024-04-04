@@ -1,26 +1,4 @@
 .bbp-search-results {
-	.bbp-search-author,
-	.bbp-forum-author,
-	.bbp-topic-author,
-	.bbp-reply-author,
-	.bbp-forum-content,
-	.bbp-search-content,
-	.bbp-topic-content,
-	.bbp-reply-content {
-		padding: var(--_padding-2) var(--_padding-1);
-	}
-
-	.bbp-search-author,
-	.bbp-forum-author,
-	.bbp-topic-author,
-	.bbp-reply-author {
-		@include _media-min(md) {
-			// @include _row__col--width(20%);
-			flex: 0 0 20%;
-			max-width: 20%;
-		}
-	}
-
 	.bbp-reply-title,
 	.bbp-topic-title {
 		> h3 {

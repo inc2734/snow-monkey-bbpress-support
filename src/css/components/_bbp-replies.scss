@@ -1,42 +1,4 @@
 .bbp-replies {
-	.bbp-header,
-	.bbp-footer {
-		.bbp-reply-author,
-		.bbp-reply-content {
-			padding: var(--_padding-2) var(--_padding-1);
-		}
-
-		.bbp-reply-author {
-			// @include _row__col--width(20%);
-			flex: 0 0 20%;
-			max-width: 20%;
-		}
-
-		.bbp-reply-content {
-			// @include _row__col--width(auto);
-			flex: 1 1 auto;
-			@include _row();
-			align-items: center;
-
-			/*
-			#subscription-toggle,
-			#favorite-toggle {
-				@include _row__col();
-				flex: 0 0 auto;
-				margin-left: auto;
-			}
-
-			#subscription-toggle {
-				@include _clearfix();
-
-				& + #favorite-toggle {
-					margin-left: .25rem;
-				}
-			}
-			*/
-		}
-	}
-
 	.bbp-body > ul {
 		list-style: none;
 		padding-left: 0;
