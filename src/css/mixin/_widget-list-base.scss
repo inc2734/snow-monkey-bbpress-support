@@ -1,8 +1,10 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 /**
  * Unstyled list base style
  */
 @mixin snow-monkey-bbpress-support-widget-list-base() {
-	@include _list-unstyled();
+	@include core.list-unstyled();
 
 	> li + li {
 		margin-top: var(--_margin-2);
@@ -16,7 +18,7 @@
 	color: var(--wp--preset--color--sm-text);
 	text-decoration: none;
 
-	@include _hover() {
+	@include core.hover() {
 		text-decoration: underline;
 	}
 }

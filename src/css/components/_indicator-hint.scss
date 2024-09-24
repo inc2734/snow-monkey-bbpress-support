@@ -1,8 +1,10 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 [id="bbpress-forums"] .indicator-hint {
 	display: block;
 	border: 1px solid #e6db55;
 	border-radius: var(--_global--border-radius);
 	background-color: #ffffe0;
-	@include _set-font-size-level(-2);
+	@include core.set-font-size-level(-2);
 	padding: var(--_padding-2) var(--_padding-1);
 }

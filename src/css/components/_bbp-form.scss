@@ -1,13 +1,17 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../mixin/btn' as *;
+
 .bbp-form {
-	@include _set-content-level(-1);
 	display: block;
 	border: none;
 	min-width: 0;
 	max-width: 100%;
 	border: 1px solid var(--wp--preset--color--sm-lighter-gray);
 	padding: var(--_padding-1);
+	@include core.set-font-size-level(-1);
+	@include core.set-content-level(-1);
 
-	@include _media-min(md) {
+	@include core.media-min(md) {
 		padding: var(--_padding1);
 	}
 
@@ -18,12 +22,12 @@
 
 	> legend {
 		margin-bottom: -1em;
-		@include _set-font-size-level(2);
+		@include core.set-font-size-level(2);
 		font-weight: bold;
 	}
 
 	> div {
-		@include _set-content-level(-1);
+		@include core.set-content-level(-1);
 
 		> label + * {
 			margin-top: 0 !important;
@@ -37,8 +41,11 @@
 	input[type="text"],
 	input[type="password"],
 	[id="description"] {
-		@include _form-control();
-		width: 100%;
+		@include core.form-control();
+
+		& {
+			width: 100%;
+		}
 	}
 
 	.bbp-submit-wrapper {
@@ -49,8 +56,8 @@
 
 	.bbp-the-content-wrapper {
 		.bbp-the-content {
-			@include _form-control();
-			@include _set-font-size-level(-1);
+			@include core.form-control();
+			@include core.set-font-size-level(-1);
 			width: calc(100% + 2px) !important;
 		}
 	}

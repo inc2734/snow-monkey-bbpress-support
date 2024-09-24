@@ -29,9 +29,11 @@ class Admin {
 			return;
 		}
 
-		if ( is_admin() && ! current_user_can( 'moderate' ) && ! preg_match( '/profile\.php$/', $_SERVER['REQUEST_URI'] ) ) {
+		$request_uri = wp_unslash( $_SERVER['REQUEST_URI'] ?? '' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		if ( is_admin() && ! current_user_can( 'moderate' ) && ! preg_match( '/profile\.php$/', $request_uri ) ) {
 			$redirect_to = apply_filters( 'snow_monkey_bbpress_support_unauthorized_user_redirect_to', home_url() );
-			wp_redirect( $redirect_to );
+			wp_safe_redirect( $redirect_to );
 			exit;
 		}
 	}

@@ -1,7 +1,9 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 @mixin snow-monkey-bbpress-support-btn() {
-	@include _btn();
-	@include _form-control-base-border();
-	@include _form-control-base-padding();
+	@include core.btn();
+	@include core.form-control-base-border();
+	@include core.form-control-base-padding();
 	background-color: var(--wp--preset--color--white);
 	color: var(--wp--preset--color--sm-text);
 	text-decoration: none;

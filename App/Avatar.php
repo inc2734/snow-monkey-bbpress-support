@@ -31,7 +31,7 @@ class Avatar {
 	 * @param string $alt         Alternative text to use in the avatar image tag. Default empty.
 	 * @return string
 	 */
-	public function _get_avatar( $img, $id_or_email, $size, $default, $alt ) {
+	public function _get_avatar( $img, $id_or_email, $size, $default, $alt ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound
 		if ( ! is_bbpress() ) {
 			return $img;
 		}

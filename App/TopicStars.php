@@ -117,8 +117,8 @@ class TopicStars {
 	public function _update_stars() {
 		check_ajax_referer( 'SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS', 'secure' );
 
-		$topic_id     = $_POST['topicId'];
-		$author_id    = $_POST['authorId'];
+		$topic_id     = filter_input( INPUT_POST, 'topicId' );
+		$author_id    = filter_input( INPUT_POST, 'authorId' );
 		$current_user = wp_get_current_user();
 
 		if ( 0 < $topic_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {

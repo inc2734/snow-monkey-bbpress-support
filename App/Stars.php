@@ -94,8 +94,8 @@ class Stars {
 	public function _update_stars() {
 		check_ajax_referer( 'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS', 'secure' );
 
-		$reply_id     = $_POST['replyId'];
-		$author_id    = $_POST['authorId'];
+		$reply_id     = filter_input( INPUT_POST, 'replyId' );
+		$author_id    = filter_input( INPUT_POST, 'authorId' );
 		$current_user = wp_get_current_user();
 
 		if ( 0 < $reply_id && 0 < $author_id && 0 < $current_user->ID && (int) $current_user->ID !== (int) $author_id ) {

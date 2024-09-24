@@ -1,9 +1,12 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../mixin/btn' as *;
+
 .snow-monkey-bbpress-support-my-topic-close-link {
 	margin-bottom: var(--_margin-1);
 	text-align: right;
 
 	.button {
 		@include snow-monkey-bbpress-support-btn();
-		@include _set-font-size-level(-1);
+		@include core.set-font-size-level(-1);
 	}
 }

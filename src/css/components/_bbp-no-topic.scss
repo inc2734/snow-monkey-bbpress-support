@@ -1,3 +1,5 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-no-topic {
-	@include _set-content-level(1);
+	@include core.set-content-level(1);
 }

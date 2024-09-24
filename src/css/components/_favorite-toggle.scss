@@ -1,3 +1,6 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../mixin/btn' as *;
+
 .favorite-toggle {
 	// float: right;
 	@include snow-monkey-bbpress-support-btn();
@@ -11,5 +14,5 @@
 }
 
 [id="favorite-toggle"] {
-	@include _clearfix();
+	@include core.clearfix();
 }

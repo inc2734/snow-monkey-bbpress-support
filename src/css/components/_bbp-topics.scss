@@ -1,3 +1,5 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-topics {
 	.bbp-topic-title {
 		> .bbp-row-actions {
@@ -20,14 +22,14 @@
 		}
 
 		.bbp-topic-content {
-			@include _set-font-size-level(-2);
+			@include core.set-font-size-level(-2);
 		}
 
 		.smbbpress-stars-wrapper,
 		.bbp-topic-voice-count,
 		.bbp-topic-reply-count,
 		.bbp-topic-freshness {
-			@include _set-font-size-level(-2);
+			@include core.set-font-size-level(-2);
 		}
 
 		.bbp-topic-freshness {
@@ -35,7 +37,7 @@
 				color: var(--wp--preset--color--sm-text);
 				text-decoration: none;
 
-				@include _hover() {
+				@include core.hover() {
 					text-decoration: underline;
 				}
 			}
@@ -43,14 +45,14 @@
 
 		.bbp-topic-started-by,
 		.bbp-topic-started-in {
-			@include _set-font-size-level(-2);
+			@include core.set-font-size-level(-2);
 			display: block;
 
 			a {
 				color: var(--wp--preset--color--sm-text);
 				text-decoration: none;
 
-				@include _hover() {
+				@include core.hover() {
 					text-decoration: underline;
 				}
 			}

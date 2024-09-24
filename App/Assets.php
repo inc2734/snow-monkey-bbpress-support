@@ -23,9 +23,9 @@ class Assets {
 		wp_dequeue_style( 'bbp-default' );
 		wp_enqueue_style(
 			'snow-monkey-bbpress-support',
-			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/css/bbpress.min.css',
+			SNOW_MONKEY_BBPRESS_SUPPORT_URL . '/assets/css/bbpress.css',
 			array( get_template() ),
-			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/css/bbpress.min.css' )
+			filemtime( SNOW_MONKEY_BBPRESS_SUPPORT_PATH . '/assets/css/bbpress.css' )
 		);
 
 		wp_enqueue_script(

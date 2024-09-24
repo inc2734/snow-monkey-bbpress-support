@@ -17,7 +17,7 @@ Framework::section(
 	array(
 		'title'           => __( 'bbPress single page settings', 'snow-monkey-bbpress-support' ),
 		'priority'        => 130,
-		'active_callback' => function() {
+		'active_callback' => function () {
 			if ( ! class_exists( '\bbPress' ) ) {
 				return false;
 			}

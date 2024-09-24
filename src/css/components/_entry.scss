@@ -1,14 +1,16 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-forum-author,
 .bbp-topic-author,
 .bbp-reply-author {
-	@include _set-font-size-level(-2);
+	@include core.set-font-size-level(-2);
 
 	.bbp-author-avatar {
 		display: block;
 		float: left;
 		margin-right: 1em;
 
-		@include _media-min(md) {
+		@include core.media-min(md) {
 			float: none;
 			margin: 0 0 .25em;
 		}
@@ -22,7 +24,7 @@
 .bbp-forum-content,
 .bbp-topic-content,
 .bbp-reply-content {
-	@include _set-content-level(1);
+	@include core.set-content-level(1);
 
 	> pre {
 		background-color: var(--wp--preset--color--sm-lightest-gray);

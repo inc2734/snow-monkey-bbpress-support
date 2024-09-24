@@ -1,12 +1,14 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-search-results {
 	.bbp-reply-title,
 	.bbp-topic-title {
 		> h3 {
-			@include _set-font-size-level(2);
+			@include core.set-font-size-level(2);
 		}
 
 		.bbp-topic-title-meta {
-			@include _set-font-size-level(-1);
+			@include core.set-font-size-level(-1);
 		}
 	}
 }

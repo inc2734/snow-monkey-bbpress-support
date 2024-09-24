@@ -1,3 +1,5 @@
+@use '../mixin/widget-list-base' as *;
+
 .widget_display_views {
 	ul {
 		@include snow-monkey-bbpress-support-widget-list-base();

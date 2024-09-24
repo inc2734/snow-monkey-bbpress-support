@@ -1,3 +1,6 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../mixin/btn' as *;
+
 [id="bbp-user-wrapper"] {
 	> [id="bbp-user-body"] {
 		margin-top: var(--_margin2);
@@ -8,7 +11,7 @@
 	--_gap: var(--_margin1);
 	--_item-width: 100%;
 
-	@include _row();
+	@include core.row();
 	flex-wrap: nowrap;
 	margin-right: calc(var(--_gap) * .5 * -1);
 	margin-left: calc(var(--_gap) * .5 * -1);
@@ -35,8 +38,8 @@
 
 [id="bbp-user-navigation"] {
 	> ul {
-		@include _list-unstyled();
-		@include _clearfix();
+		@include core.list-unstyled();
+		@include core.clearfix();
 
 		> li {
 			margin-right: 5px;
@@ -68,7 +71,7 @@
 }
 
 .bbp-user-section {
-	@include _set-content-level(1);
+	@include core.set-content-level(1);
 
 	.bbp-user-topic-count,
 	.bbp-user-reply-count {

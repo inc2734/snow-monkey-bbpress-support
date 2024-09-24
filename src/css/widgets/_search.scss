@@ -1,3 +1,5 @@
+@use '../mixin/input-group' as *;
+
 .widget_display_search {
 	form {
 		> div {

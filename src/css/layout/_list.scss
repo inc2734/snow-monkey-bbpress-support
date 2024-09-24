@@ -1,8 +1,10 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-topics,
 .bbp-forums,
 .bbp-replies,
 .bbp-search-results {
-	@include _list-unstyled();
+	@include core.list-unstyled();
 	border-right: 1px solid var(--wp--preset--color--sm-lighter-gray);
 	border-left: 1px solid var(--wp--preset--color--sm-lighter-gray);
 }
@@ -17,7 +19,7 @@
 		padding-right: var(--_padding-1);
 		padding-left: var(--_padding-1);
 
-		@include _media-min(md) {
+		@include core.media-min(md) {
 			padding-right: var(--_padding1);
 			padding-left: var(--_padding1);
 		}
@@ -33,7 +35,7 @@
 		padding-top: var(--_padding-1);
 		padding-bottom: var(--_padding-1);
 
-		@include _media-min(md) {
+		@include core.media-min(md) {
 			padding-top: var(--_padding1);
 			padding-bottom: var(--_padding1);
 		}
@@ -45,7 +47,7 @@
 .bbp-reply-header {
 	padding: var(--_padding-2) var(--_padding-1);
 
-	@include _media-min(md) {
+	@include core.media-min(md) {
 		padding-right: var(--_padding1);
 		padding-left: var(--_padding1);
 	}
@@ -60,7 +62,7 @@
 	background-color: var(--wp--preset--color--sm-lightest-gray);
 	border-top: 1px solid var(--wp--preset--color--sm-lighter-gray);
 	border-bottom: 1px solid var(--wp--preset--color--sm-lighter-gray);
-	@include _set-font-size-level(-2);
+	@include core.set-font-size-level(-2);
 
 	> * {
 		flex: 1;
@@ -80,7 +82,7 @@
 		> * > :not(:first-child) {
 			flex: 0 0 13%;
 
-			@include _media-max(sm) {
+			@include core.media-max(sm) {
 				display: none;
 			}
 		}
@@ -111,7 +113,7 @@
 	list-style: none;
 	padding-left: 0;
 
-	@include _media-min(md) {
+	@include core.media-min(md) {
 		flex-direction: row;
 	}
 

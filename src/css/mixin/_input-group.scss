@@ -1,3 +1,6 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use './btn' as *;
+
 @mixin snow-monkey-bbpress-support-input-group() {
 	display: flex;
 	flex-wrap: nowrap;
@@ -7,8 +10,11 @@
 		position: relative;
 		z-index: 1;
 		flex: 1;
-		@include _form-control();
-		border-radius: var(--_global--border-radius) 0 0 var(--_global--border-radius);
+		@include core.form-control();
+
+		& {
+			border-radius: var(--_global--border-radius) 0 0 var(--_global--border-radius);
+		}
 	}
 
 	> .button {

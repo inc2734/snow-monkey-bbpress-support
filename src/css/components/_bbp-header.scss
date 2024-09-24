@@ -1,3 +1,5 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-forum-header,
 .bbp-topic-header,
 .bbp-reply-header {
@@ -7,14 +9,14 @@
 	border-bottom: 1px solid var(--wp--preset--color--sm-lighter-gray);
 
 	.bbp-meta {
-		@include _clearfix();
-		@include _set-font-size-level(-1);
+		@include core.clearfix();
+		@include core.set-font-size-level(-1);
 
 		a {
 			color: var(--wp--preset--color--sm-gray);
 			text-decoration: none;
 
-			@include _hover() {
+			@include core.hover() {
 				color: var(--wp--preset--color--sm-text);
 				text-decoration: underline;
 			}
@@ -25,13 +27,13 @@
 		.bbp-reply-permalink {
 			float: right;
 			margin-left: 1em;
-			@include _set-font-size-level(-2);
+			@include core.set-font-size-level(-2);
 		}
 
 		.bbp-admin-links {
 			float: right;
 			color: var(--wp--preset--color--sm-light-gray);
-			@include _set-font-size-level(-2);
+			@include core.set-font-size-level(-2);
 
 			a {
 				margin: 0 2px;

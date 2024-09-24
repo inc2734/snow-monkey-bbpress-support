@@ -34,12 +34,12 @@ class Front {
 	/**
 	 * Remove Snow Monkey advatizement areas.
 	 *
-	 * @param boolean $bool Displayed google adsense or not.
+	 * @param boolean $is_output Displayed google adsense or not.
 	 * @return boolean
 	 */
-	public function _snow_monkey_google_adsense( $bool ) {
+	public function _snow_monkey_google_adsense( $is_output ) {
 		if ( ! is_bbpress() ) {
-			return $bool;
+			return $is_output;
 		}
 
 		return false;

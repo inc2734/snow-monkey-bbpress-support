@@ -1,3 +1,6 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../mixin/widget-list-base' as *;
+
 .widget_display_replies {
 	ul {
 		@include snow-monkey-bbpress-support-widget-list-base();
@@ -5,12 +8,12 @@
 
 	li {
 		color: var(--wp--preset--color--sm-text);
-		@include _set-font-size-level(-2);
+		@include core.set-font-size-level(-2);
 
 		.bbp-reply-topic-title {
-			@include snow-monkey-bbpress-support-widget-link-base();
 			display: block;
-			@include _set-font-size-level(-1);
+			@include core.set-font-size-level(-1);
+			@include snow-monkey-bbpress-support-widget-link-base();
 		}
 
 		.bbp-author-name {

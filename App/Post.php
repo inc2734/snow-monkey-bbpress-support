@@ -30,7 +30,7 @@ class Post {
 		$data['post_content'] = preg_replace( '/[\n(&nbsp;)]*$/', '', $data['post_content'] );
 		$data['post_content'] = trim( $data['post_content'] );
 
-		// Code block
+		// Code block.
 		$data['post_content'] = preg_replace(
 			'|<code></code>`\n([^`]*?)\n<code></code>`|ms',
 			'<pre><code>$1</code></pre>',

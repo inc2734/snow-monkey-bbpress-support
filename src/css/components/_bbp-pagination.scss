@@ -1,5 +1,7 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .bbp-pagination {
-	@include _set-font-size-level(-1);
+	@include core.set-font-size-level(-1);
 
 	.bbp-pagination-links {
 		margin-top: var(--_margin-2);

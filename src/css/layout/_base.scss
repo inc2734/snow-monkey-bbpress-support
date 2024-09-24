@@ -1,5 +1,7 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 [id="bbpress-forums"] {
-	@include _set-content-level(1);
+	@include core.set-content-level(1);
 
 	.bbp-pagination + .bbp-topics,
 	.bbp-topics + .bbp-pagination,

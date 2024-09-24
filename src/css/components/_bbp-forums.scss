@@ -1,3 +1,5 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 [id="bbpress-forums"] {
 	> [id="subscription-toggle"],
 	> [id="favorite-toggle"] {
@@ -24,13 +26,13 @@
 			}
 
 			.bbp-forum-content {
-				@include _set-font-size-level(-2);
+				@include core.set-font-size-level(-2);
 			}
 
 			.bbp-forum-topic-count,
 			.bbp-forum-reply-count,
 			.bbp-forum-freshness {
-				@include _set-font-size-level(-2);
+				@include core.set-font-size-level(-2);
 			}
 
 			.bbp-forum-freshness {
@@ -38,7 +40,7 @@
 					color: var(--wp--preset--color--sm-text);
 					text-decoration: none;
 
-					@include _hover() {
+					@include core.hover() {
 						text-decoration: underline;
 					}
 				}
