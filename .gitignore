@@ -11,6 +11,8 @@ snow-monkey-bbpress-support.zip
 .travis/github_deploy_key
 yarn-error.log
 /.themes/
+/.plugins/*
+!/.plugins/*.zip
 .wp-env.override.json
 /.export/*
 .phpunit.result.cache
