@@ -55,7 +55,7 @@
 		"posttest:php:unit": "wp-env stop --config=.wp-env.tests.json",
 		"test:unit:php": "npm run test:php:unit",
 		"test:unit": "run-s test:unit:*",
-		"test": "run-s test:*",
+		"test": "run-s test:lint test:unit",
 		"clean:css": "rimraf assets/css && mkdir -p assets/css",
 		"clean:js": "rimraf assets/js && mkdir -p assets/js",
 		"clean:zip": "rimraf snow-monkey-bbpress-support.zip",
