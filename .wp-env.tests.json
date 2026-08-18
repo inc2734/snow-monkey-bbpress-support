@@ -1,12 +1,12 @@
 {
 	"core": null,
+	"port": 8889,
+	"testsEnvironment": false,
 	"plugins": [
 		".",
 		"https://downloads.wordpress.org/plugin/bbpress.zip"
 	],
 	"config": {
 		"WP_DEBUG": true
-	},
-	"port": 8889,
-	"testsEnvironment": false
+	}
 }

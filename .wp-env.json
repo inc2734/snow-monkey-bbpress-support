@@ -1,5 +1,7 @@
 {
 	"core": null,
+	"port": 8888,
+	"testsEnvironment": false,
 	"plugins": [
 		".",
 		"https://downloads.wordpress.org/plugin/bbpress.zip"
@@ -9,6 +11,5 @@
 	},
 	"mappings": {
 		".export": "./.export"
-	},
-	"testsEnvironment": false
+	}
 }
