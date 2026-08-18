@@ -7,8 +7,6 @@
 	"config": {
 		"WP_DEBUG": true
 	},
-	"mappings": {
-		".export": "./.export"
-	},
+	"port": 8889,
 	"testsEnvironment": false
 }
