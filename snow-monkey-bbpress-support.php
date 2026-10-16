@@ -35,7 +35,7 @@ class Bootstrap {
 	 * Bootstrap.
 	 */
 	public function _bootstrap() {
-		add_action( 'init', array( $this, '_load_textdomain' ) );
+		$this->_load_textdomain();
 
 		new App\Updater();
 
