@@ -1,10 +1,10 @@
 {
 	"engines": {
-		"node": ">=20.19.0",
-		"npm": ">=10.2.3"
+		"node": ">=24.22.1",
+		"npm": ">=11.18.0"
 	},
 	"volta": {
-		"node": "24.19.0"
+		"node": "24.22.1"
 	},
 	"author": "inc2734",
 	"license": "GPL-2.0+",
@@ -13,12 +13,13 @@
 		"sass-basis": "^20.0.1"
 	},
 	"devDependencies": {
-		"@wordpress/browserslist-config": "^6.53.0",
-		"@wordpress/env": "^11.13.0",
-		"@wordpress/scripts": "^34.1.0",
+		"@wordpress/browserslist-config": "^7.0.0",
+		"@wordpress/env": "^12.0.0",
+		"@wordpress/scripts": "^37.0.0",
 		"autoprefixer": "^10.5.4",
 		"cpy-cli": "^7.0.0",
 		"cssnano": "^8.0.6",
+		"jsdom": "^30.1.3",
 		"npm-run-all": "^4.1.5",
 		"postcss-cli": "^11.0.1",
 		"rimraf": "^6.1.3",
@@ -41,19 +42,20 @@
 		"stop": "npm run export && wp-env stop",
 		"destroy": "wp-env destroy && wp-env destroy --config=.wp-env.tests.json",
 		"cli": "wp-env run cli --env-cwd=\"wp-content/plugins/snow-monkey-bbpress-support\"",
-		"wp": "npm run cli wp",
+		"wp": "npm run cli -- wp",
 		"composer": "wp-env run --env-cwd=\"wp-content/plugins/snow-monkey-bbpress-support\" cli composer",
 		"test:php:start": "wp-env start --config=.wp-env.tests.json",
+		"test:php:stop": "wp-env stop --config=.wp-env.tests.json",
 		"test-composer": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-bbpress-support\" cli composer",
-		"pretest:php:lint": "npm run test:php:start && npm run test-composer install",
+		"pretest:php:lint": "npm run test:php:start && npm run test-composer install -- --no-interaction",
 		"test:php:lint": "npm run test-composer lint",
-		"posttest:php:lint": "wp-env stop --config=.wp-env.tests.json",
-		"test:lint:php": "npm run test:php:lint",
+		"posttest:php:lint": "npm run test:php:stop",
+		"test:lint:php": "npm run test:php:lint || (status=$?; npm run test:php:stop; exit $status)",
 		"test:lint": "run-s test:lint:*",
-		"pretest:php:unit": "npm run test:php:start && npm run test-composer install && npm run test-composer install-theme && npm run test-composer install-plugin",
-		"test:php:unit": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-bbpress-support\" wordpress vendor/bin/phpunit -c .phpunit.xml.dist",
-		"posttest:php:unit": "wp-env stop --config=.wp-env.tests.json",
-		"test:unit:php": "npm run test:php:unit",
+		"pretest:php:unit": "npm run test:php:start && npm run test-composer install -- --no-interaction && npm run test-composer install-theme && npm run test-composer install-plugin",
+		"test:php:unit": "wp-env run --config=.wp-env.tests.json --env-cwd=\"wp-content/plugins/snow-monkey-bbpress-support\" wordpress vendor/bin/phpunit -c .phpunit.xml.dist --verbose",
+		"posttest:php:unit": "npm run test:php:stop",
+		"test:unit:php": "npm run test:php:unit || (status=$?; npm run test:php:stop; exit $status)",
 		"test:unit": "run-s test:unit:*",
 		"test": "run-s test:lint test:unit",
 		"clean:css": "rimraf assets/css && mkdir -p assets/css",
@@ -66,8 +68,10 @@
 		"build": "npm-run-all -p css js",
 		"make-pot": "wp-env start && npm run wp i18n -- make-pot . ./languages/snow-monkey-bbpress-support.pot -- --exclude=.*,src",
 		"make-php": "npm run cli php -- ./bin/l10n.php",
-		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && wp-env start && npm run composer install -- --no-dev -d snow-monkey-bbpress-support",
+		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-bbpress-support && wp-env start && npm run composer install -- --no-interaction --no-dev -d snow-monkey-bbpress-support",
 		"zip:archive": "zip -9 -qmr snow-monkey-bbpress-support.zip snow-monkey-bbpress-support",
-		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
+		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
+		"pretest:unit:js": "npm run js",
+		"test:unit:js": "node --test tests/js/*.test.cjs"
 	}
 }

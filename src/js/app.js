@@ -1,109 +1,87 @@
-import $ from 'jquery';
+function bindStars(selector, configName, idType) {
+  document.querySelectorAll(selector).forEach((button) => {
+    button.addEventListener('click', async () => {
+      try {
+        const config = window[configName];
+        const response = await fetch(config.endpoint, {
+          method: 'POST',
+          credentials: 'same-origin',
+          body: new URLSearchParams({
+            action: config.action,
+            secure: config.secure,
+            [`${idType}Id`]: parseInt(button.dataset[`${idType}Id`], 10),
+            authorId: parseInt(button.dataset[`${idType}Author`], 10),
+          }),
+        });
 
-$(() => {
-  /**
-   * Add close mark
-   */
-  $('.status-closed').find('.c-entry__title, .bbp-topic-title').prepend(
-    $('<i class="fas fa-check" aria-hidden="true" />')
-  );
+        if (!response.ok) {
+          throw new Error(`Star request failed: ${response.status}`);
+        }
 
-  /**
-   * Add replies stars
-   */
-  $('button.smbbpress-replies-stars').on('click', (e) => {
-    const btn = $(e.currentTarget);
-    const replyId = parseInt(btn.attr('data-reply-id'));
-    const authorId = parseInt(btn.attr('data-reply-author'));
-    const starsUsers = $(btn).next('.smbbpress-stars-users');
+        const result = await response.json();
+        const counter = button.querySelector('.smbbpress-stars__count');
+        if (counter) {
+          counter.textContent = result.stars;
+        }
 
-    $.post(
-      SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.endpoint,
-      {
-        action: SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.action,
-        secure: SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS.secure,
-        replyId: replyId,
-        authorId: authorId,
-      },
-      (response) => {
-        const counter = btn.find('.smbbpress-stars__count');
-        counter.text(response.stars);
-        const names = starsUsers.find('.smbbpress-stars-users__names');
-        names.html(response.users);
+        const users = button.nextElementSibling;
+        const names = users?.matches('.smbbpress-stars-users')
+          ? users.querySelector('.smbbpress-stars-users__names')
+          : null;
+        if (names) {
+          names.innerHTML = result.users;
+        }
+      } catch (error) {
+        console.error('Failed to update stars.', error);
       }
-    );
+    });
+  });
+}
+
+function initialize() {
+  // Mark closed topics in both the topic page and the topic list.
+  document.querySelectorAll('.status-closed .c-entry__title, .status-closed .bbp-topic-title').forEach((title) => {
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-check';
+    icon.setAttribute('aria-hidden', 'true');
+    title.prepend(icon);
   });
 
-  /**
-   * Add topic stars
-   */
-  $('button.smbbpress-topic-stars').on('click', (e) => {
-    const btn = $(e.currentTarget);
-    const topicId = parseInt(btn.attr('data-topic-id'));
-    const authorId = parseInt(btn.attr('data-topic-author'));
-    const starsUsers = $(btn).next('.smbbpress-stars-users');
-
-    $.post(
-      SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.endpoint,
-      {
-        action: SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.action,
-        secure: SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS.secure,
-        topicId: topicId,
-        authorId: authorId,
-      },
-      (response) => {
-        const counter = btn.find('.smbbpress-stars__count');
-        counter.text(response.stars);
-        const names = starsUsers.find('.smbbpress-stars-users__names');
-        names.html(response.users);
-      }
-    );
-  });
+  bindStars('button.smbbpress-replies-stars', 'SNOW_MONKEY_BBPRESS_SUPPORT_REPLIES_STARS', 'reply');
+  bindStars('button.smbbpress-topic-stars', 'SNOW_MONKEY_BBPRESS_SUPPORT_TOPIC_STARS', 'topic');
 
   /**
    * @link https://github.com/WordPress/wordpress.org/blob/72e581d7e397451260771be596c0463fcc26b9b1/wordpress.org/public_html/wp-content/themes/pub/wporg-support/js/forums.js#L26-L50
    */
-  $('#wp-bbp_reply_content-wrap').on('paste', (e) => {
-    const textarea = $(e.target);
-    const val      = $(e.target).val();
-    const paste    = (e.originalEvent.clipboardData || window.clipboardData).getData('text').trimEnd();
-
-    // If no pasted text, skip.
-    if (! paste.length) {
+  document.getElementById('wp-bbp_reply_content-wrap')?.addEventListener('paste', (event) => {
+    const textarea = event.target;
+    const clipboard = event.clipboardData || window.clipboardData;
+    if (!(textarea instanceof HTMLTextAreaElement) || !clipboard) {
       return;
     }
 
-    // Start with non-byte characters, skip.
-    if (! paste.match(/^[A-Za-z\t\s_/]/)) {
+    const value = textarea.value;
+    const paste = clipboard.getData('text').trimEnd();
+    if (!paste.length || !paste.match(/^[A-Za-z\t\s_/]/)) {
       return;
     }
 
-    if (
-      paste.length < 500 &&        // Super long pastes get code wrapped
-      paste.split("\n").length < 3 // in addition to many-lines pastes.
-    ) {
+    if (paste.length < 500 && paste.split('\n').length < 3) {
       return;
     }
 
-    // See if the author is pasting into a code block already
-    if ('`' === val.substr(textarea.prop('selectionStart') - 1, 1)) {
+    const { selectionStart, selectionEnd } = textarea;
+    if (value.substr(selectionStart - 1, 1) === '`' || paste.startsWith('`') || paste.endsWith('`')) {
       return;
     }
 
-    // If the code being pasted is already wrapped in backticks (well, starts with OR ends with), skip.
-    if (
-      '`' === paste.substr(0, 1) ||
-      '`' === paste.substr(-1, 1)
-    ) {
-      return;
-    }
-
-    $(e.target).val(
-      val.substr(0, textarea.prop('selectionStart')) +      // Text before cusor/selection
-      "`" + paste + "`" +                                   // The pasted text, wrapping with `
-      val.substr(textarea.prop('selectionEnd'), val.length) // Text after cursor position/selection
-    );
-
-    e.preventDefault();
+    textarea.value = value.slice(0, selectionStart) + '`' + paste + '`' + value.slice(selectionEnd);
+    event.preventDefault();
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initialize, { once: true });
+} else {
+  initialize();
+}
